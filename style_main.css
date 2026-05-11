@@ -1,0 +1,119 @@
+/***********************************
+***                              ***
+***      MAIN STYLES SHEET       ***
+***                              ***
+***********************************/
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  min-height: 100vh;
+}
+
+/*** BACKGROUND ELEMENTS ***/
+
+  .page_background {
+    width: 100%;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: opacity 1.5s ease;
+
+    padding: 0;
+    margin: 0;
+  }
+  #page_bcg_1 {
+    z-index: -2;
+    opacity: 1;
+  }
+  #page_bcg_2 {
+    z-index: -1;
+    opacity: 0;
+  }
+
+/*** END BACKGROUND ELEMENTS ***/
+
+/*** HEADER ELEMENTS ***/
+
+  header {
+    width: 100%;
+    height: 100px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: white;
+  }
+
+/*** END HEADER ELEMENTS ***/
+
+/*** MAIN ELEMENTS ***/
+
+  main {
+    padding-top: 120px;
+  }
+
+/*** END MAIN ELEMENTS ***/
+
+/*** ALL IMPORTED FONTS AND THEIR ATTRIBUTES ***/
+
+  /* PIXEL BLOCK LETTERS */
+  .press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /* HEADING TEXT */
+  .basic-regular {
+    font-family: "Basic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /* FANCY LOOKING FONT */
+  .story-script-regular {
+    font-family: "Story Script", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /* NORMAL FONT | THIN */
+  .fira-sans-thin {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  /* NORMAL FONT | REGULAR */
+  .fira-sans-regular {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /* NORMAL FONT | BOLD */
+  .fira-sans-bold {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+/*** END IMPORTED FONTS ***/
+
+/*** GLOBAL CLASSES ***/
+
+  .flexed {
+    display: flex;
+  }
+
+/*** END GLOBAL CLASSES ***/
+
+
