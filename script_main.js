@@ -4,7 +4,12 @@
 ///                                           ///
 /////////////////////////////////////////////////
 
+// ALL IMPORTS 
+
 import { backgroundSlideshow } from './script_background.js';
+import { fillNavbar } from './script_nav.js';
+
+//-----------------------------------------------------------------//
 
 // checks what page the user is currently on
 // each page on the site has an id'd body searched for
@@ -13,4 +18,8 @@ function checkCurrentPage() {
     return currentPage;
 }
 
-backgroundSlideshow(checkCurrentPage());
+// GRAB THE CURRENT PAGE
+const page = checkCurrentPage();
+
+backgroundSlideshow(page);
+fillNavbar(page);

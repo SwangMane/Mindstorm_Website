@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="fira-sans-regular">
 
-<!-- -----------------------------
- ---                           ---
- ---        INDEX PAGE         ---
- ---                           ---
- --------------------------------->
+<!--******************************
+ ***                           ***
+ ***        INDEX PAGE         ***
+ ***                           ***
+ ***************************** -->
 
 <!-- HEAD HEAD HEAD -->
   <head>
@@ -32,21 +32,37 @@
   </head>
 <!-- /HEAD /HEAD /HEAD -->
 
-<!-- BODY BODY BODY -->
-  <body id="index">
+<!-- BODY BODY BODY --> 
+  <body id="index"> <!-- ID'D -->
 
     <!-- BACKGROUND ELEMENTS -->
-    <div id="page_bcg_1" class="page_background"></div> <!-- starts visible -->
-    <div id="page_bcg_2" class="page_background"></div> <!-- starts hidden -->
+    <div id="page_bcg_1" class="page_background"></div> <!-- starts visible --> <!-- ID'D -->
+    <div id="page_bcg_2" class="page_background"></div> <!-- starts hidden --> <!-- ID'D -->
 
-    <header>
+    <!-- HEADER HEADER HEADER -->
+    <header class="flexed">
+
+      <!-- SERVER STATUS ICON | online = green circle | offline = red circle -->
+      <p>Server Status <span id="server_status_icon"></span></p> <!-- ID'D -->
+
+      <!-- NAV ELEMENT -->
+      <nav>
+
+        <!-- NAV BAR-->
+        <ul id="navbar_list" class="flexed"> <!-- ID'D -->
+
+        </ul>
+        <!-- /NAV BAR -->
+
+      </nav>
+      <!-- /NAV ELEMENT -->
 
     </header>
+    <!-- /HEADER /HEADER /HEADER -->
 
 
 
     <main>
-
 
     </main>
 
@@ -56,11 +72,11 @@
 
     </footer>
 
+    <!-- ALL SCRIPTS -->
+    <script type="module" src="script_main.js"></script>
+    <script src="https://mcapi.us/scripts/minecraft.min.js"></script>
+
   </body>
 <!-- /BODY /BODY /BODY -->
-
-  <!-- ALL SCRIPTS -->
-  <script type="module" src="script_main.js" defer></script>
-  <script src="https://mcapi.us/scripts/minecraft.min.js"></script>
 
 </html>

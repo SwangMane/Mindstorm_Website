@@ -5,7 +5,10 @@
 /////////////////////////////////////////////////
 
 // ALL IMPORTS 
+
 import { siteImages, siteVariables } from './script_variables.js';
+
+//-----------------------------------------------------------------//
 
 // used for the background image rotator
 const backgroundIndex = {};
@@ -22,8 +25,6 @@ export function backgroundSlideshow(page) {
   if (backgroundIndex[page] === undefined) {
       backgroundIndex[page] = 0;
   }
-
-  console.log("hello");
 
   // creates a static index of the images being loaded
   // leps the images loaded 
