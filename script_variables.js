@@ -89,30 +89,19 @@ export const siteImages = {
 
 
 // used to generate the nav bar items 
-const generateNavItem = (item, isActive = false) => {
+const generateNavItem = (item, isActive = false) => { // link | class (active, classname) | title
     return `
-        <li class="${isActive ? 'active container' : ''}">
-            <div class="${navBarItems.liTags.classes}">
-                <a href="${item.link}" class="${navBarItems.aTags.classes}" title="${item.title}">
-                    ${item.title}
-                </a>
-            </div>
+        <li class="${item.liClass || ''}">
+            <a href="${item.link}" class="${isActive ? 'active_link' : ''} ${item.class || ''}" title="${item.title}">
+                ${item.title}
+            </a>
         </li>
     `;
-};
+}
 
 // this is the list the <ul> inside each html page will fill off of
 // Elements of the same page will not be displayed and will be auto filtered out
 export const navBarItems = {
-
-    // LI class names
-    liTags: {
-        classes: 'nav-link-wrap', // add more classes for each <li> item here
-    },
-    // a class names
-    aTags: {
-        classes: 'nav-links', // add more classes for each <a> item here
-    },
 
     // all individual site pages | priority number
     sitePages: {
@@ -186,6 +175,25 @@ export const navBarItems = {
             // generate the contents of the nav link
             contents: (item, isActive = false) => generateNavItem(item, isActive)
         },
+
+
+        // NOT IN NAV
+
+        // the login / create account page
+        login: {
+            // text displayed in nav item
+            title: "Login",
+            // the link on the nav item
+            link: "login.html",
+            // priority in the nav list
+            priority: 6,
+            // if the element is displayed or not
+            displayed: true,
+            // classes to add the the <li> element
+            liClass: "login_link",
+            // generate the contents of the nav link
+            contents: (item, isActive = false) => generateNavItem(item, isActive)    
+        }
 
     }
 }

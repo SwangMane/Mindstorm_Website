@@ -1,0 +1,88 @@
+/***********************************
+***                              ***
+***      MAIN STYLES SHEET       ***
+***                              ***
+***********************************/
+
+/*** MEDIA UNDER 1280PX ***/
+@media (max-width: 1280px) {
+
+  /*** HEADER ELEMENTS ***/
+
+    /*** entire header wrap ***/
+    header {
+      align-items: center;
+      justify-content: center;
+
+      padding: 0;
+
+      width: 100%;
+    }
+
+    /*** nav wrapper ***/
+    nav  {
+      padding: 0 2rem;
+    }
+
+    /*** server status ***/
+    header p {
+      display: none;
+    }
+
+  /*** END HEADER ELEMENTS ***/
+
+}
+
+/*** MEDIA UNDER 960PX ***/
+@media (max-width: 960px) {
+
+  /*** HEADER ELEMENTS ***/
+
+    /*** button to toggle the nav bar ***/
+    .nav_toggle {
+      display: block;
+
+      font-size: 2rem;
+    }
+
+    /*** title element wrapper on the nav bar ***/
+    .nav_title {
+      display: flex;
+    }
+
+    /*** nav wrapper ***/
+    nav  {
+      position: absolute;
+
+      top: 100px;
+
+      background: #545454;
+    }
+
+    /*** nav wrapper ***/
+    nav ul  {
+      flex-direction: column;
+    }
+
+    /*** nav bar item wraps ***/
+    nav ul li {
+      box-shadow: inset 0 0 2px 1px black;
+    }
+
+    /*** login link element | inside of nav ul ***/
+    .login_link {
+      margin-left: 0;
+    }
+
+  /*** END HEADER ELEMENTS ***/
+
+
+
+  /*** MAIN ELEMENTS ***/
+
+    .main_title {
+      display: none;
+    }
+
+  /*** END MAIN ELEMENTS ***/
+}

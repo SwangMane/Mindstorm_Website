@@ -22,6 +22,7 @@
 
     <!-- External stylesheets -->
     <link rel="stylesheet" href="style_main.css">
+    <link rel="stylesheet" href="style_mobile.css">
 
     <!-- Imported fonts -->
     <!-- Press start 20 (Pixel Text) | Basic (Std text, thicker) | Mozilla text (basic text, thinner) | Story script (cursive-ish, nice look) -->
@@ -40,7 +41,7 @@
     <div id="page_bcg_2" class="page_background"></div> <!-- starts hidden --> <!-- ID'D -->
 
     <!-- HEADER HEADER HEADER -->
-    <header class="flexed">
+    <header>
 
       <!-- SERVER STATUS ICON | online = green circle | offline = red circle -->
       <p>Server Status <span id="server_status_icon"></span></p> <!-- ID'D -->
@@ -49,7 +50,7 @@
       <nav>
 
         <!-- NAV BAR-->
-        <ul id="navbar_list" class="flexed"> <!-- ID'D -->
+        <ul id="navbar_list"> <!-- ID'D -->
 
         </ul>
         <!-- /NAV BAR -->
@@ -57,14 +58,31 @@
       </nav>
       <!-- /NAV ELEMENT -->
 
+      <!-- NAV TITLE ELEMENT | Only visible UNDER 960px screen width -->
+      <div class="nav_title">
+        <h1>Mindstorm</h1>
+        <h2>A minecraft community</h2>
+      </div>
+
+      <!-- NAV TOGGLE BUTTON | Only visible UNDER 960px screen width -->
+      <button class="nav_toggle" aria-expanded="false" aria-controls="navbar_list">☰</button>
+
     </header>
     <!-- /HEADER /HEADER /HEADER -->
 
 
-
+    <!-- MAIN MAIN MAIN -->
     <main>
 
+      <!-- MAIN TITLE ELEMENT | Only visible OVER 960px screen width -->
+      <div class="main_title">
+        <h1>Mindstorm</h1>
+        <h2>A Minecraft community</h2>
+      </div>
+
+
     </main>
+    <!-- /MAIN /MAIN /MAIN -->
 
 
 
