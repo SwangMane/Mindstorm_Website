@@ -9,7 +9,7 @@
 
   red   (scarlet)  = #AB202A (171, 32, 42)
   grey-blue        = #335155
-  Yellow           = #f8cf22 
+  Yellow           = #f5d43e 
   off-white        = #faf9eb
   grey             = #545454
   black (not 100%) = #15141A (21, 20, 26)  
@@ -31,6 +31,21 @@ export const siteVariables = {
 
         // port number of the minecraft server
         port_number: 25565, // place server port (just numbers) here
+
+        // version of the minecraft server
+        version_number: "1.21.1",
+
+        // current server icon
+        server_icon: "images/cobblemonIcon.png",
+
+        // server offline message
+        msg_offine: `Server is <span class="red">offline</span>`,
+
+        // server online message
+        msg_online: `Server is <span class="green">online</span>`,
+
+        // the last time the server was updated
+        msg_lastUpdate: 'Server Status Updated: ' + new Date(),
 
     },
 

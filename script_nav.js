@@ -18,7 +18,10 @@ export function fillNavbar(page) {
   console.log('user currently viewing ' + page);
 
   // grab the nav element on the current page
-  const nav = document.querySelector('#navbar_list');
+  const nav = document.querySelector('nav');
+
+  // grab the nav list element on the current page
+  const navList = document.querySelector('#navbar_list');
   
   // if the nav bar is found
   if (nav) {
@@ -28,14 +31,12 @@ export function fillNavbar(page) {
     let html = "";
 
     // look for the menu toggler
-    const menuToggler = document.querySelector('#menuToggle');
+    const menuToggler = document.querySelector('.nav_toggle');
 
     // if the menu toggler button is found - aka screen is smaller than 1280px
     if (menuToggler) {
-      menuToggler.innerHTML = `<a>${navBarItems.navBtnTags.closedText}</a>`;
-
       menuToggler.addEventListener("click", () => {
-          nav.classList.toggle("active");
+          nav.classList.toggle("display");
       });
     }
 
@@ -58,7 +59,7 @@ export function fillNavbar(page) {
     });
 
     // sets the nav bar contents = to filtered contents
-    nav.innerHTML = html;
+    navList.innerHTML = html;
 
   }
   // if no navbar is found

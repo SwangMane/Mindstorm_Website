@@ -8,6 +8,7 @@
 
 import { backgroundSlideshow } from './script_background.js';
 import { fillNavbar } from './script_nav.js';
+import { fillMinecraftServerStats } from './script_mcserver.js';
 
 //-----------------------------------------------------------------//
 
@@ -23,3 +24,4 @@ const page = checkCurrentPage();
 
 backgroundSlideshow(page);
 fillNavbar(page);
+fillMinecraftServerStats(page);
