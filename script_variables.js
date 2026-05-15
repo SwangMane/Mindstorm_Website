@@ -47,6 +47,9 @@ export const siteVariables = {
         // the last time the server was updated
         msg_lastUpdate: 'Server Status Updated: ' + new Date(),
 
+        // the player count message
+        msg_playerCount: 'Player count: ',
+
     },
 
     // all backend server details

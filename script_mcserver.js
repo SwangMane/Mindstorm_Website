@@ -29,26 +29,43 @@ export function fillMinecraftServerStats(page) {
                 const serverImg = document.querySelector('.server_icon');
                 serverImg.src = siteVariables.minecraft_server.server_icon;
 
-                let serverStatus;
+                // the last updated section 
+                const lastUpdate = document.getElementById("last_updated");
+                lastUpdate.textContent = siteVariables.minecraft_server.msg_lastUpdate;
+
+                let serverStatus;   // server status
+                let serverIp; // server IP
+                let minecraftVersion // minecraft version
+                let playerCount // the servers player count
+
+                // set the server IP section
+                serverIp = `<p class="server_status_item">Server IP: ${siteVariables.minecraft_server.ip_address}</p>`;
+                // the minecraft version section
+                minecraftVersion = `<p class="server_status_item">Game Version: ${siteVariables.minecraft_server.version_number}</p>`;
 
 
                 // If the server can't be reached, only do these things
                 if (err || !status.online) {
-
                     // display the offline message
-                    serverStatus = `<h6 class="server_status_item">${siteVariables.minecraft_server.msg_offine}</h6>`
+                    serverStatus = `<p class="server_status_item">${siteVariables.minecraft_server.msg_offine}</p>`;
 
+                    // display a 0 player count
+                    playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}0</p>`;
                 }
-
                 // if the server can be reached, do these things 
                 else {
-
                     // display the status of the server
-                    serverStatus = `<h6 class="server_status_item">${status.online ? siteVariables.minecraft_server.msg_online : siteVariables.minecraft_server.msg_offine}</h6>`
+                    serverStatus = `<p class="server_status_item">${status.online ? siteVariables.minecraft_server.msg_online : siteVariables.minecraft_server.msg_offine}</p>`;
 
+                    // display the player count
+                    playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}</p>` + (status.players.now + '/' + status.players.max);
                 }
 
-                serverInfoWrap.innerHTML += serverStatus;
+                // a break element to add
+                const br = `<br>`;
+
+                // once complete add all elements to the server info wrapper
+                serverInfoWrap.innerHTML += serverStatus + br + serverIp + br + minecraftVersion + br + playerCount;
 
                 resolve(status);
 
