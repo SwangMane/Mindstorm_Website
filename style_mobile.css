@@ -55,7 +55,9 @@
 
     /*** button to toggle the nav bar ***/
     .nav_toggle {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       font-size: 2rem;
       line-height: 1;
