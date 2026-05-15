@@ -195,7 +195,7 @@ button {
 ************************************/
 
   main {
-    padding: 100px 1rem;
+    padding: 100px 1rem 0 1rem;
   }
 
   /*** title element wrapper | visible over 960px ***/
@@ -273,11 +273,42 @@ button {
     width: 80%;
     height: 1rem;
 
-    margin: 0 auto;
-    padding: 0;
+    margin: 0;
+    padding: 0 0 0 8px;
+  }
+  
+  main meter::-webkit-meter-optimum-value {
+    background: #4caf50;
+  }
+
+  main meter::-webkit-meter-bar {
+    background: #545454;
   }
 
 /*** END MAIN ELEMENTS ***/
+
+
+/************************************
+***                               ***
+***    *** FOOTER ELEMENTS ***    ***
+***                               ***
+************************************/
+
+footer {
+  padding: 0;
+}
+
+footer p {
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+
+  font-style: italic;
+
+  padding: 8px 12px;
+
+  background: rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0 0 1px 4px rgba(0, 0, 0, 0.05);
+}
 
 
 /************************************

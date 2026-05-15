@@ -120,6 +120,10 @@ export const siteImages = {
     games: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
                 "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
                 "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
+    ],
+    forum: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
+                "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
+                "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
     ],    
     loginRegister: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
                         "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
@@ -195,7 +199,7 @@ export const navBarItems = {
             // text displayed in nav item
             title: "Minigames",
             // the link on the nav item
-            link: "minigames.html",
+            link: "games.html",
             // priority in the nav list
             priority: 4,
             // if the element is displayed or not
