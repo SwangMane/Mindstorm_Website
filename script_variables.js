@@ -8,7 +8,7 @@
   site colors 
 
   red   (scarlet)  = #AB202A (171, 32, 42)
-  grey-blue        = #335155
+  grey-blue        = #335549
   Yellow           = #f5d43e 
   off-white        = #faf9eb
   grey             = #545454
@@ -26,6 +26,9 @@ export const siteVariables = {
     // all minecraft server details
     minecraft_server: {
 
+        // current player list | gets filled out with minecraft API
+        current_players: [],
+
         // IP to the minecraft server
         ip_address: '136.33.25.35', // place server ip inside '' here
 
@@ -41,6 +44,12 @@ export const siteVariables = {
         // server offline message
         msg_offine: `Server is <span class="red">offline</span>`,
 
+        // server offline message in player section
+        msg_offline_players: `Server is currently offline`,
+
+        // server online but no players
+        msg_current_players_0: 'Server is empty',
+
         // server online message
         msg_online: `Server is <span class="green">online</span>`,
 
@@ -49,6 +58,7 @@ export const siteVariables = {
 
         // the player count message
         msg_playerCount: 'Player count: ',
+
 
     },
 

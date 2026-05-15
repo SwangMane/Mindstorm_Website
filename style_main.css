@@ -220,6 +220,8 @@ html, body {
     margin: 0;
 
     font-size: 1.5rem;
+
+    white-space: nowrap;
   }
 
   /*** the last updated text ***/
@@ -227,7 +229,28 @@ html, body {
     padding: 1rem 0;
     margin: 0;
 
-    font-size: 1rem;
+    font-size: 0.75rem;
+  }
+
+  #server_details_wrap {
+    height: 180px;
+  }
+
+  main .wrapper {
+    line-height: 0;
+  }
+
+  main .wrapper_inner img {
+    border-right: 1px solid black;
+  }
+
+  #announcements p {
+    color: #f4d753;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
   }
 
 /*** END MAIN ELEMENTS ***/
@@ -292,7 +315,7 @@ html, body {
 ***                               ***
 ************************************/
 
-  .yellow_gradient {
+  .yellow_gradient_txt {
     background: linear-gradient(to bottom, #f4d753, #f5d43e);
 
     -webkit-background-clip: text;
@@ -300,6 +323,9 @@ html, body {
 
     -webkit-text-fill-color: transparent;
       color: transparent;
+  }
+  .green_gradient_bcg {
+    background: linear-gradient(to bottom, rgba(80, 127, 134, 0.5), rgba(51, 85, 73, 0.75)); 
   }
   .flexed {
     display: flex;
@@ -323,6 +349,10 @@ html, body {
     justify-content: flex-start;
     align-items: flex-start;
   }
+  .flexStart_centered {
+    justify-content: flex-start;
+    align-items: center;
+  }
   .fill_space {
     width: 100%;
     height: 100%;
@@ -345,6 +375,10 @@ html, body {
     color: green;
   }
 
+  .offWhite_text {
+    color: #faf9eb;
+  }
+
   /*** OUTER SIDE OF MAIN WRAPPERS ***/
   .wrapper_outer {
     width: 100%;
@@ -361,7 +395,7 @@ html, body {
 
     padding: 0.75rem;
 
-    border-radius: 8px;
+    border-radius: 6px;
 
     box-sizing: border-box;
   }
@@ -375,11 +409,13 @@ html, body {
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
                 inset 0 0 0 1px rgba(0, 0, 0, 1);
 
-    padding: 2px;
+    padding: 1px;
 
     border-radius: inherit;
 
     box-sizing: border-box;  
+
+    overflow: hidden;
   }
   /*** STANDARD WRAPPER TO USE ***/
   .wrapper {
@@ -390,20 +426,51 @@ html, body {
     padding: 8px;
 
     border-radius: inherit;
+
+    box-sizing: border-box;
   }
   /*** THE SERVERS ICON IMAGE ***/ 
   .server_icon {
-    width: 40%;
-    height: auto;
+    display: block;
+
+    width: auto;
+    height: 100%;
+    aspect-ratio: 1 / 1;
 
     object-fit: contain;
 
-    flex-shrink: 0;
-
-    border-right: 1px solid black;
-    border-radius: inherit;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 
     box-sizing: border-box;
+  }
+
+  /*** the center label ***/
+  .center_label {
+    text-align: center;
+
+    width: auto;
+
+    padding: 0.25rem 2rem;
+
+    border: 1px solid black;
+
+    border-radius: inherit;
+
+    display: inline-block;
+
+    font-size: 1.5rem;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+  }
+
+  .player_list {
+    padding: 0 0 1rem 0;
+    margin: 0;
   }
 
 /*** END GLOBAL CLASSES ***/

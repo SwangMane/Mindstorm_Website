@@ -43,22 +43,47 @@ export function fillMinecraftServerStats(page) {
                 // the minecraft version section
                 minecraftVersion = `<p class="server_status_item">Game Version: ${siteVariables.minecraft_server.version_number}</p>`;
 
-
-                // If the server can't be reached, only do these things
+                //////////////////////////////////////////////////
+                ///                                            ///
+                ///        If the server CANT be reached       ///
+                ///                                            ///
+                //////////////////////////////////////////////////
                 if (err || !status.online) {
                     // display the offline message
                     serverStatus = `<p class="server_status_item">${siteVariables.minecraft_server.msg_offine}</p>`;
 
                     // display a 0 player count
                     playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}0</p>`;
+
+                    // display the 'msg_offline_players' message
+                    document.querySelector('.player_list').innerHTML = siteVariables.minecraft_server.msg_offline_players;
+
                 }
-                // if the server can be reached, do these things 
+                //////////////////////////////////////////////////
+                ///                                            ///
+                ///        If the server CAN be reached        ///
+                ///                                            ///
+                //////////////////////////////////////////////////
                 else {
                     // display the status of the server
                     serverStatus = `<p class="server_status_item">${status.online ? siteVariables.minecraft_server.msg_online : siteVariables.minecraft_server.msg_offine}</p>`;
 
                     // display the player count
                     playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}</p>` + (status.players.now + '/' + status.players.max);
+                
+                    if (status.players.sample && status.players.sample.length > 0) {
+                        // if there are people actually online
+                        // create an object inside the playerList array for each player online
+                        status.players.sample.forEach(player => {
+                            siteVariables.minecraft_server.current_players.push(`<li><img class="mc-face" src="https://minotar.net/avatar/${player.name}/32"><h6>${player.name}</h6></l1>`); // Adds each onlines players name to the array
+                        });                                                                                                                              // also places the characters skin icon next to name
+                        document.querySelector('.player_list').innerHTML = playerList.join(''); // displays the array in the HTML element
+                    }
+                    // if no one is online | no one online server message
+                    else {
+                        // no one online message
+                        document.querySelector('.player_list').innerHTML = siteVariables.minecraft_server.msg_current_players_0;
+                    }               
                 }
 
                 // a break element to add
