@@ -33,6 +33,10 @@ export function fillMinecraftServerStats(page) {
                 const lastUpdate = document.getElementById("last_updated");
                 lastUpdate.textContent = siteVariables.minecraft_server.msg_lastUpdate;
 
+                // create the meter for the player count
+                const playerCount_meter = document.createElement('meter');
+                playerCount_meter.id = 'player_count_meter';
+
                 let serverStatus;   // server status
                 let serverIp; // server IP
                 let minecraftVersion // minecraft version
@@ -49,6 +53,7 @@ export function fillMinecraftServerStats(page) {
                 ///                                            ///
                 //////////////////////////////////////////////////
                 if (err || !status.online) {
+
                     // display the offline message
                     serverStatus = `<p class="server_status_item">${siteVariables.minecraft_server.msg_offine}</p>`;
 
@@ -57,6 +62,10 @@ export function fillMinecraftServerStats(page) {
 
                     // display the 'msg_offline_players' message
                     document.querySelector('.player_list').innerHTML = siteVariables.minecraft_server.msg_offline_players;
+
+                    // set the meter values
+                    playerCount_meter.max = 0;
+                    playerCount_meter.value = 0;
 
                 }
                 //////////////////////////////////////////////////
@@ -83,14 +92,20 @@ export function fillMinecraftServerStats(page) {
                     else {
                         // no one online message
                         document.querySelector('.player_list').innerHTML = siteVariables.minecraft_server.msg_current_players_0;
-                    }               
+                    }
+                    
+                    // set the meter values
+                    playerCount_meter.max = status.players.max;
+                    playerCount_meter.value = status.players.now;
                 }
 
                 // a break element to add
                 const br = `<br>`;
 
                 // once complete add all elements to the server info wrapper
-                serverInfoWrap.innerHTML += serverStatus + br + serverIp + br + minecraftVersion + br + playerCount;
+                serverInfoWrap.innerHTML += serverStatus + serverIp + minecraftVersion + playerCount;
+
+                serverInfoWrap.appendChild(playerCount_meter);
 
                 resolve(status);
 
@@ -154,10 +169,6 @@ export function fillMinecraftServerStats(page) {
             });
 
             */
-
-
-
-
         }
 
         // if not on any pages above | resolve out

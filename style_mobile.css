@@ -153,7 +153,9 @@
 
     /*** server info items ***/
     .server_status_item {
-      font-size: 1rem;
+      font-size: clamp(10px, 0.8rem, 1rem);
+
+      flex-wrap: wrap;
     }
 
   /*** END MAIN ELEMENTS ***/

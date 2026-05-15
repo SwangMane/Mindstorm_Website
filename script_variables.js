@@ -71,6 +71,20 @@ export const siteVariables = {
     }
 }
 
+export const server_announcements = {
+
+    // the list of announcements in order
+    announcements: [
+        'Mindstorm website version 3 is now live. Create an account and join our community!',
+        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">5/23/2026</span>',
+    ],
+
+    // id 
+    list_id: 'announcement_list',
+
+    li_class: 'announcement offWhite_text',
+};
+
 // all icons used on the site
 export const siteIcons = {
 
