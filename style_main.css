@@ -296,6 +296,12 @@ button {
 
 footer {
   padding: 0;
+
+  position: relative;
+
+  z-index: 900;
+
+  bottom: 0;
 }
 
 footer p {

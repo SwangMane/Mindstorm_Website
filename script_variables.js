@@ -244,3 +244,80 @@ export const navBarItems = {
     }
 }
 
+// server history stuff to pull from
+// these can change and be edited
+export const prevSeasonsList = [
+    {
+        name: 'Vanilla Season 1',
+        tagName: 'vanS1',
+        date: '2013',
+        version: 'vanilla 1.6',
+        desc: 'New beggining',
+        members: 'Dark, Debesk, Block, The_Cakeinator, BilateralPaper4, Mas',
+        pics: null, //genSeasonPics(1, 24, 'avif'), // season 1 | 24 pics in gallery
+    },  
+    {
+        name: 'Vanilla Season 2',
+        tagName: 'vanS2',
+        date: '?',
+        version: '?',
+        desc: 'fill this in',
+        members: 'Dark, Debesk, Block, Smilee, TheFull98, Dawson12XD, Hagermans_Rule, Sadfaic, Propally, SharpKiller, TheDooieBall, Allanarruda, Bubluebu, Shane, HotLava',
+        pics: null, //genSeasonPics(?, ?), 
+    },
+    {
+        name: 'Vanilla Season 3',
+        tagName: 'vanS3',
+        date: '2014',
+        version: '?',
+        desc: 'Savanah Spawn, yaDead arena',
+        members: 'Dark, Debesk, Block, Smilee, Pudding, Hagermans_Rule, Yadead1, Yadead2, TheFull98, ImmortalNerd, Allanarruda, MrTall, Dominionus, GuitarHero, Kiwi, iJevinator, CE_Winchester, Grahm, HotLava',
+        pics: null, //genSeasonPics(3, 11, 'avif'), // season 3 | 11 pics in gallery
+    },
+    {
+        name: 'Vanilla Season 4',
+        tagName: 'vanS4',
+        date: '2015',
+        version: '?',
+        desc: 'Town hall, Nether Hub, Bases',
+        members: 'Dark, Debesk, Block, Smilee, Pudding, HillbillDeluex, alexSirben, TheFull98, Alexanderrisom, menda94, Grahm, PsychoSammy, CyberPunk, Deadspace, Zufgus, Victorbjr, ColdParasite, Hagermans_Rule, Cam_2002, Hyperinsomniac, Foxtrott, GuitarHero',
+        pics: null, //genSeasonPics(4, 49, 'avif'), // season 4 | 49 pics in gallery
+    },
+    {
+        name: 'Vanilla Season 5',
+        tagName: 'vanS5',
+        date: '?',
+        version: '?',
+        desc: 'Funky path',
+        members: 'Dark, Block, Smilee, HillbillyDeluex, Pudding, ColdParasite, TheFull98, Kiwi, Debesk, Deadspace, Hyperinsomniac, John, Foxtrott, PottsGames',
+        pics: null, //genSeasonPics(5, 32, 'avif'), // season 5 | 32 pics in gallery
+    },
+    {
+        name: 'Vanilla Season 6',
+        tagName: 'vanS6',
+        date: '?',
+        version: '?',
+        desc: 'Baby sitter season',
+        members: 'Dark, Block, Smilee, Pudding, HillbillyDeluex, Gamrpanda, RiiskyPlaysMC, JTParent, FoundMissing, SquidDweller, YungJoke, Syncro, QuestFinder',
+        pics: null, //genSeasonPics(6, 7, 'avif'), // season 6 | 7 pics in gallery
+    },
+    {
+        name: 'Cobblemon Season 1',
+        tagName: 'cobS1',
+        date: '?',
+        version: '?',
+        desc: '?',
+        members: '?',
+        pics: null, //genSeasonPics(?, ?), 
+    },
+    {
+        name: 'Cobblemon Season 2',
+        tagName: 'cobS2',
+        date: '?',
+        version: '?',
+        desc: '?',
+        members: '?',
+        pics: null, //genSeasonPics(?, ?), 
+    },
+]
+

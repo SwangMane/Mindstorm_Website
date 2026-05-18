@@ -8,37 +8,36 @@
 
 //-----------------------------------------------------------------//
 
-// used to create a list with the given specifications | createList(name, 'ID', 'ID', location)
-export function createList(listName, listId, itemClass, location, spacer, spacerColor) {
+// used to create a list with the given specifications | createList(name, 'ID', 'ID', location, spacer, spacerColor, index(list index if wanted))
+export function createList(listName, listId, itemClass, location, spacer, spacerColor, index = null) {
 
-  // create an un-ordered list with the given ID
+  // create a list to append items to
   let list = `<ul id="${listId}">`;
 
-
-  // lopp through each item in the provided list
+  // loop through each item
   listName.forEach(item => {
 
-    if (spacer === true) {
+    // if index is valued | filter
+    const value = index !== null
+    ? item[index]
+    : item;
 
-    let listSpacer = `<li class="list_spacer ${spacerColor}"</li>`  
+    // add each item to the list
+    list += `<li class="${itemClass}">${value}</li>`;
 
-    // add each item to the list with a spacer
-    list += `<li class="${itemClass}">${item}</li>`;
-    list += listSpacer;
+    // if a spacer is wanted between each item
+    if (spacer) {
 
-    }
-    else {
+      // add the spacer between each item
+      list += `<li class="list_spacer ${spacerColor}"></li>`;
 
-      // add each item to the list
-      list += `<li class="${itemClass}">${item}</li>`;
-      
     }
 
   });
 
-  // close the list off
+  // break the list 
   list += `</ul>`;
 
-  // append the list to the innerHTML of the given location
+  // add the finished list to the HTML
   location.innerHTML += list;
 }

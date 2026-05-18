@@ -10,7 +10,7 @@ import { backgroundSlideshow } from './script_background.js';
 import { fillNavbar } from './script_nav.js';
 import { fillMinecraftServerStats } from './script_mcserver.js';
 import { createList } from './script_createList.js';
-import { server_announcements } from './script_variables.js';
+import { server_announcements, prevSeasonsList } from './script_variables.js';
 
 //-----------------------------------------------------------------//
 
@@ -32,5 +32,14 @@ fillMinecraftServerStats(page);
 if (page === "index") {
     let spacer = true;
     let location = document.getElementById("announcements");
+    // create a list of the server announcements 
     createList(server_announcements.announcements, server_announcements.list_id, server_announcements.li_class, location, spacer, 'yellow')
+}
+
+
+// if on the seasons page 
+if (page === "seasons") {
+    let location = document.querySelector('main');
+    // create a list of all the available seasons on variables
+    createList(prevSeasonsList, 'test', 'test', location, null, null, 'name')
 }

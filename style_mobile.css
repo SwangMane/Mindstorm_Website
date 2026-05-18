@@ -147,7 +147,7 @@
 
   /*** MAIN ELEMENTS ***/
 
-    .main_title {
+    .hidden_mobile {
       display: none;
     }
 
