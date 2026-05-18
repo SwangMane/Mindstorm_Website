@@ -8,8 +8,8 @@
 
 //-----------------------------------------------------------------//
 
-// used to create a list with the given specifications | createList(name, 'ID', 'ID', location, spacer, spacerColor, index(list index if wanted))
-export function createList(listName, listId, itemClass, location, spacer, spacerColor, index = null) {
+// used to create a list with the given specifications | createList(name, 'ID', 'ID', location, spacer, spacerColor, index(list index if wanted)
+export function createList(listName, listId, itemClass, itemId = null, location, spacer, spacerColor, index = null) {
 
   // create a list to append items to
   let list = `<ul id="${listId}">`;
@@ -23,19 +23,20 @@ export function createList(listName, listId, itemClass, location, spacer, spacer
     : item;
 
     // add each item to the list
-    list += `<li class="${itemClass}">${value}</li>`;
+    list += `
+      <li class="${itemClass}" id="${item.tagName}">
+          ${value}
+      </li>
+    `;
 
     // if a spacer is wanted between each item
     if (spacer) {
-
-      // add the spacer between each item
       list += `<li class="list_spacer ${spacerColor}"></li>`;
-
     }
 
   });
 
-  // break the list 
+  // break the list
   list += `</ul>`;
 
   // add the finished list to the HTML

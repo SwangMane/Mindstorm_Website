@@ -4,6 +4,12 @@
 ///                                           ///
 /////////////////////////////////////////////////
 
+// ALL IMPORTS 
+
+import { generateNavItem } from './script_createNav.js';
+
+//-----------------------------------------------------------------//
+
 /*     
   site colors 
 
@@ -17,7 +23,11 @@
 
 */
 
-// all site variables such as IP's and ports
+///////////////////////////////////////////
+///                                     ///
+///         ALL SITE VARIABLES          ///
+///                                     ///
+///////////////////////////////////////////
 export const siteVariables = {
 
     // amount of time per refresh on the background
@@ -68,9 +78,25 @@ export const siteVariables = {
         // IP to the data server
         ip_address: 0,
 
+    },
+
+    // server seasons items
+    seasons_page: {
+
+        // id of seasons list
+        list_id: 'server_seasons_list',
+
+        // class of each item in the list
+        li_class: 'season_wrap yellow',
+
     }
 }
 
+///////////////////////////////////////////
+///                                     ///
+///       ALL SERVER ANNOUNCEMENTS      ///
+///                                     ///
+///////////////////////////////////////////
 export const server_announcements = {
 
     // the list of announcements in order
@@ -82,10 +108,15 @@ export const server_announcements = {
     // id 
     list_id: 'announcement_list',
 
+    // class of each item in the list
     li_class: 'announcement offWhite_text',
 };
 
-// all icons used on the site
+///////////////////////////////////////////
+///                                     ///
+///           ALL SITE ICONS            ///
+///                                     ///
+///////////////////////////////////////////
 export const siteIcons = {
 
     // the offline (red circle) icon
@@ -102,7 +133,11 @@ export const siteIcons = {
 
 }
 
-// list of background images and or all images loaded
+///////////////////////////////////////////
+///                                     ///
+///     ALL SITE BACKGROUND IMAGES      ///
+///                                     ///
+///////////////////////////////////////////
 export const siteImages = {
     // main page (splash) background pictures
     index: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
@@ -134,19 +169,11 @@ export const siteImages = {
 };
 
 
-// used to generate the nav bar items 
-const generateNavItem = (item, isActive = false) => { // link | class (active, classname) | title
-    return `
-        <li class="${item.liClass || ''}">
-            <a href="${item.link}" class="${isActive ? 'active_link' : ''} ${item.class || ''}" title="${item.title}">
-                ${item.title}
-            </a>
-        </li>
-    `;
-}
-
-// this is the list the <ul> inside each html page will fill off of
-// Elements of the same page will not be displayed and will be auto filtered out
+///////////////////////////////////////////
+///                                     ///
+///       ALL ITEMS USED IN NAVBAR      ///
+///                                     ///
+///////////////////////////////////////////
 export const navBarItems = {
 
     // all individual site pages | priority number
@@ -244,8 +271,12 @@ export const navBarItems = {
     }
 }
 
-// server history stuff to pull from
-// these can change and be edited
+
+///////////////////////////////////////////
+///                                     ///
+///    ALL PREVIOUS SEASONS DETAILS     ///
+///                                     ///
+///////////////////////////////////////////
 export const prevSeasonsList = [
     {
         name: 'Vanilla Season 1',
@@ -254,7 +285,7 @@ export const prevSeasonsList = [
         version: 'vanilla 1.6',
         desc: 'New beggining',
         members: 'Dark, Debesk, Block, The_Cakeinator, BilateralPaper4, Mas',
-        pics: null, //genSeasonPics(1, 24, 'avif'), // season 1 | 24 pics in gallery
+        pics: genSeasonPics(1, 24, 'avif'), // season 1 | 24 pics in gallery
     },  
     {
         name: 'Vanilla Season 2',
@@ -263,7 +294,7 @@ export const prevSeasonsList = [
         version: '?',
         desc: 'fill this in',
         members: 'Dark, Debesk, Block, Smilee, TheFull98, Dawson12XD, Hagermans_Rule, Sadfaic, Propally, SharpKiller, TheDooieBall, Allanarruda, Bubluebu, Shane, HotLava',
-        pics: null, //genSeasonPics(?, ?), 
+        pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
     {
         name: 'Vanilla Season 3',
@@ -272,7 +303,7 @@ export const prevSeasonsList = [
         version: '?',
         desc: 'Savanah Spawn, yaDead arena',
         members: 'Dark, Debesk, Block, Smilee, Pudding, Hagermans_Rule, Yadead1, Yadead2, TheFull98, ImmortalNerd, Allanarruda, MrTall, Dominionus, GuitarHero, Kiwi, iJevinator, CE_Winchester, Grahm, HotLava',
-        pics: null, //genSeasonPics(3, 11, 'avif'), // season 3 | 11 pics in gallery
+        pics: genSeasonPics(3, 11, 'avif'), // season 3 | 11 pics in gallery
     },
     {
         name: 'Vanilla Season 4',
@@ -281,7 +312,7 @@ export const prevSeasonsList = [
         version: '?',
         desc: 'Town hall, Nether Hub, Bases',
         members: 'Dark, Debesk, Block, Smilee, Pudding, HillbillDeluex, alexSirben, TheFull98, Alexanderrisom, menda94, Grahm, PsychoSammy, CyberPunk, Deadspace, Zufgus, Victorbjr, ColdParasite, Hagermans_Rule, Cam_2002, Hyperinsomniac, Foxtrott, GuitarHero',
-        pics: null, //genSeasonPics(4, 49, 'avif'), // season 4 | 49 pics in gallery
+        pics: genSeasonPics(4, 49, 'avif'), // season 4 | 49 pics in gallery
     },
     {
         name: 'Vanilla Season 5',
@@ -290,7 +321,7 @@ export const prevSeasonsList = [
         version: '?',
         desc: 'Funky path',
         members: 'Dark, Block, Smilee, HillbillyDeluex, Pudding, ColdParasite, TheFull98, Kiwi, Debesk, Deadspace, Hyperinsomniac, John, Foxtrott, PottsGames',
-        pics: null, //genSeasonPics(5, 32, 'avif'), // season 5 | 32 pics in gallery
+        pics: genSeasonPics(5, 32, 'avif'), // season 5 | 32 pics in gallery
     },
     {
         name: 'Vanilla Season 6',
@@ -299,7 +330,7 @@ export const prevSeasonsList = [
         version: '?',
         desc: 'Baby sitter season',
         members: 'Dark, Block, Smilee, Pudding, HillbillyDeluex, Gamrpanda, RiiskyPlaysMC, JTParent, FoundMissing, SquidDweller, YungJoke, Syncro, QuestFinder',
-        pics: null, //genSeasonPics(6, 7, 'avif'), // season 6 | 7 pics in gallery
+        pics: genSeasonPics(6, 7, 'avif'), // season 6 | 7 pics in gallery
     },
     {
         name: 'Cobblemon Season 1',
@@ -308,7 +339,7 @@ export const prevSeasonsList = [
         version: '?',
         desc: '?',
         members: '?',
-        pics: null, //genSeasonPics(?, ?), 
+        pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
     {
         name: 'Cobblemon Season 2',
@@ -317,7 +348,18 @@ export const prevSeasonsList = [
         version: '?',
         desc: '?',
         members: '?',
-        pics: null, //genSeasonPics(?, ?), 
+        pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
 ]
+
+// function to generate the season pic image arrays
+// each array will be added to the appropriate image 
+// season array = season image
+function genSeasonPics(seasonNumber, imgCount, imgType) { // use the season number, then amount of images in file
+    //console.log(`generating season ${seasonNumber} image arrays`)
+    // returns arrays for each page
+    return Array.from({ length: imgCount }, (_, i) =>
+        `images/season_${seasonNumber}/season${seasonNumber}_${i + 1}.${imgType}`
+    );
+}
 

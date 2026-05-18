@@ -195,7 +195,7 @@ button {
 ************************************/
 
   main {
-    padding: 100px 1rem 0 1rem;
+    padding: 100px 2rem 0 2rem;
   }
 
   /*** title element wrapper | visible over 960px ***/
@@ -286,6 +286,87 @@ button {
   }
 
 /*** END MAIN ELEMENTS ***/
+
+/************************************
+***                               ***
+*** *** SERVER SEASONS STUFF ***  ***
+***                               ***
+************************************/
+
+/* seasons list on the seasons page */
+#server_seasons_list {
+  margin: 0;
+  padding: 2rem 0;
+
+  list-style-type: none;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 2rem;
+}
+
+/* wrappers of each season */
+.season_wrap {
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+  width: 320px;
+
+  aspect-ratio: 5 / 7;
+
+  background-size: cover;
+  background-position: center;
+
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+            inset 0 0 0 1px rgba(0, 0, 0, 1);
+
+  border-radius: 4px;
+
+  padding: 1rem 2rem;
+
+  box-sizing: border-box;
+}
+
+.list_item_wrapper {
+  width: 100%;
+
+  padding: 8px;
+
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+            inset 0 0 0 1px rgba(0, 0, 0, 1);
+
+  box-sizing: border-box;
+
+  border-radius: 4px;
+}
+
+.season_wrap p {
+  margin: 0;
+  padding: 0;
+
+  text-shadow: 0 0 12px black;
+}
+
+.season_wrap .season_title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.season_wrap .season_subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/*** END SERVER SEASONS STUFF ***/
 
 
 /************************************
@@ -386,7 +467,7 @@ footer p {
       color: transparent;
   }
   .green_gradient_bcg {
-    background: linear-gradient(to bottom, rgba(80, 127, 134, 0.5), rgba(51, 85, 73, 0.75)); 
+    background: linear-gradient(to bottom, rgba(80, 127, 134, 1), rgba(51, 85, 73, 1)); 
   }
   .flexed {
     display: flex;
@@ -428,7 +509,6 @@ footer p {
   .display {
     display: flex;
   }
-
   .list_spacer {
     width: 80%;
     border-bottom: 1px solid currentColor;
@@ -448,7 +528,9 @@ footer p {
   .yellow {
     color: #f5d43e;
   }
-
+  .max_720 {
+    max-width: 720px;
+  }
   .offWhite_text {
     color: #faf9eb;
   }
@@ -460,7 +542,6 @@ footer p {
   /*** OUTER SIDE OF MAIN WRAPPERS ***/
   .wrapper_outer {
     width: 100%;
-    max-width: 720px;
 
     margin: 2rem auto;
 

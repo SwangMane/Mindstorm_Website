@@ -158,5 +158,28 @@
       flex-wrap: wrap;
     }
 
+
+/************************************
+***                               ***
+*** *** SERVER SEASONS STUFF ***  ***
+***                               ***
+************************************/
+
+  /* seasons list on the seasons page */
+  #server_seasons_list {
+    padding: 1rem 1rem;
+
+    gap: 2rem;
+  }
+
+  /* wrappers of each season */
+  .season_wrap {
+    width: 100%;
+
+    aspect-ratio: 5 / 7;
+
+    padding: 1rem;
+  }
+
   /*** END MAIN ELEMENTS ***/
 }
