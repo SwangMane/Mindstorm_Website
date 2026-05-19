@@ -144,7 +144,7 @@ export const siteImages = {
                 "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
                 "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
     ],
-    about: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
+    about: [    "images/backgrounds/cobblemon_season_1_14.png",   /* cobblemon season 1 tournament sign */ 
                 "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
                 "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
     ],
@@ -156,13 +156,13 @@ export const siteImages = {
                 "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
                 "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
     ],
-    forum: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
-                "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
+    forum: [    "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
+                "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
                 "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
     ],    
-    loginRegister: [    "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
-                        "images/backgrounds/season4PicTownhall.jpg",    /* season4-Townhall */ 
-                        "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
+    login: [    "images/backgrounds/cobblemonSeason2Dragon.png",   /* cobblemon season 1 ender dragon */ 
+                "images/backgrounds/cobblemon_season_1_21.png",    /* cobblemon season 1 bunch of tnt */ 
+                "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */
     ],
     placeHolder: [  "images/placeholder.jpg",   /* Placeholder-image */
     ],

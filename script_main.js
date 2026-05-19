@@ -48,6 +48,6 @@ if (page === "seasons") {
     let spacer = false;
     let location = document.querySelector('#server_seasons');
     // create a list of all the available seasons on variables
-    createList(prevSeasonsList, siteVariables.seasons_page.list_id, siteVariables.seasons_page.li_class, true, location, null, null, null)
+    createList(prevSeasonsList, siteVariables.seasons_page.list_id, siteVariables.seasons_page.li_class, true, location, null, null, 'none')
     //createSeasons(prevSeasonsList, siteVariables.seasons_page.list_id, siteVariables.seasons_page.li_class, true, location, spacer, null, 'name', true, 'date');
 }

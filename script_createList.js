@@ -17,17 +17,21 @@ export function createList(listName, listId, itemClass, itemId = null, location,
   // loop through each item
   listName.forEach(item => {
 
-    // if index is valued | filter
-    const value = index !== null
-    ? item[index]
-    : item;
+    let value;
+
+    // if index = 'none' then make sure value is blank
+    if (index === 'none') {
+      value = "";
+    }
+    else {
+      // if index is valued | filter
+      value = index !== null
+      ? item[index]
+      : item;
+    }
 
     // add each item to the list
-    list += `
-      <li class="${itemClass}" id="${item.tagName}">
-          ${value}
-      </li>
-    `;
+    list += `<li class="${itemClass}" id="${item.tagName}">${value}</li>`;
 
     // if a spacer is wanted between each item
     if (spacer) {
