@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="fira-sans-regular">
+<html lang="en" class="fira-sans-regular flexed fill_space column">
 
 <!--******************************
  ***                           ***
@@ -34,7 +34,7 @@
 <!-- /HEAD /HEAD /HEAD -->
 
 <!-- BODY BODY BODY --> 
-  <body id="login"> <!-- ID'D -->
+  <body id="login" class="flexed fill_space column centered"> <!-- ID'D -->
 
     <!-- BACKGROUND ELEMENTS -->
     <div id="page_bcg_1" class="page_background fill_space no_space"></div> <!-- starts visible --> <!-- ID'D -->
@@ -72,12 +72,52 @@
 
 
     <!-- MAIN MAIN MAIN -->
-    <main class="flexed centered column">
+    <main class="flexed centered column fill_space">
 
       <!-- MAIN PAGE ELEMENT | CONTAINS SERVER DETAILS -->
-      <div class="wrapper_outer flexed centered column max_720" id="login_register"> <!-- ID'D -->
+      <div class="wrapper_outer flexed centered column max_720 fira-sans-regular" id="login_register"> <!-- ID'D -->
 
-        
+        <!-- LOGIN ELEMENT | STARTS VISIBLE -->
+        <form id="login_form" class="form_wrap column flexed">
+
+           <h2 class="no_space fira-sans-bold">Welcome Back</h2>
+
+            <!-- EMAIL INPUT -->
+            <input type="email" placeholder="Email" class="fira-sans-regular" required />
+
+            <!-- PASSWORD INPUT -->
+            <input type="password" placeholder="Password" class="fira-sans-regular" required />
+
+            <!-- LOGIN BUTTON -->
+            <button class="submit_btn" type="submit">Login</button>
+
+            <p class="no_space"><a href="#" id="forgot_password">Forgot your password?</a></p>
+
+            <P class="no_space"><a href="#" id="create_account">Create an account</a></P>
+          
+        </form>
+
+        <!-- FORGOT PASSWORD ELEMENT | STARTS HIDDEN -->
+        <form id="forgot_password_form" class="hidden form_wrap column flexed">
+
+           <h2 class="no_space fira-sans-bold">Forgot password</h2>
+
+            <!-- EMAIL INPUT -->
+            <input type="email" placeholder="Email" required />
+
+            <!-- LOGIN BUTTON -->
+            <button class="submit_btn" type="submit">Reset password</button>
+
+            <p class="no_space"><a href="#" id="login_link">Login</a></p>
+
+            <P class="no_space"><a href="#" id="create_account">Create an account</a></P>
+
+        </form>
+ 
+        <!-- CREATE ACCOUNT ELEMENT | STARTS HIDDEN -->
+        <form id="create_account_form" class="hidden form_wrap column flexed">
+
+        </form>
 
       </div>
 
@@ -92,6 +132,7 @@
 
     <!-- ALL SCRIPTS -->
     <script type="module" src="script_main.js"></script>
+    <script type="module" src="script_login.js"></script>
     <script src="https://mcapi.us/scripts/minecraft.min.js"></script>
 
   </body>

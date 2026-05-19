@@ -6,57 +6,51 @@
 
 // ALL IMPORTS 
 
-import { siteImages } from './script_variables.js';
+import { siteImages, prevSeasonsList, siteVariables } from './script_variables.js';
 
 //-----------------------------------------------------------------//
 
 // used to create a list with the given specifications | createList(name, 'ID', 'ID', location, spacer, spacerColor, index(list index if wanted), background (if wanted), subtitle (if wanted))
-export function createSeasons(listName, listId, itemClass, itemId = null, location, spacer, spacerColor, index = null, background = null, subtitle = null ) {
+export function createSeasons() {
 
-  // create a list to append items to
-  let list = `<ul id="${listId}">`;
+prevSeasonsList.forEach(season => {
+  const li = document.getElementById(season.tagName);
 
-  // loop through each item
-  listName.forEach(item => {
+  if (!li) return;
 
-    // if index is valued | filter
-    const value = index !== null
-    ? `<p class="season_title">${item[index]}`
-    : item;
+  // use first picture as background
+  const bgImage = Array.isArray(season.pics)
+  ? season.pics[0]
+  : season.pics;
 
-    // set the background to the 0 index of images
-    const bg = item.pics?.[0];
+  li.style.backgroundImage = `url(${bgImage})`;
 
-    // optional background image
-    const backgroundStyle = background && bg
-    ? `style="background-image: url('${bg}')"`
-    : '';
+  // create content container
+  const content = document.createElement('div');
+  content.className = 'season_content';
 
-    // optional subtitle
-    const subTitleHTML = subtitle !== null
-    ? `<p class="season_subtitle">${item[subtitle]}</p>`
-    : '';
+  // name
+  const nameP = document.createElement('p');
+  nameP.className = 'season_name';
+  nameP.textContent = season.name;
 
-    // add each item to the list
-    list += `
-      <li class="${itemClass}" id="${item.tagName}" ${backgroundStyle}>
-        <div class="list_item_wrapper green_gradient_bcg">
-          ${value}
-          ${subTitleHTML}
-        </div>
-      </li>
-    `;
+  // date
+  const dateP = document.createElement('p');
+  dateP.className = 'season_date';
+  dateP.textContent = season.date;
 
-    // if a spacer is wanted between each item
-    if (spacer) {
-      list += `<li class="list_spacer ${spacerColor}"></li>`;
-    }
+  li.addEventListener('click', (e) => {
+    e.stopPropagation();
 
+    // open your menu here
+    console.log(`Open menu for ${season.name}`);
   });
 
-  // break the list
-  list += `</ul>`;
+  // append everything
+  content.appendChild(nameP);
+  content.appendChild(dateP);
 
-  // add the finished list to the HTML
-  location.innerHTML += list;
+  li.appendChild(content);
+
+  })
 }

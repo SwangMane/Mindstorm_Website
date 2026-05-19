@@ -32,6 +32,24 @@
 
   /*** END HEADER ELEMENTS ***/
 
+
+  /*** MAIN ELEMENTS ***/
+
+    /*** main title tile ***/
+    .main_title h1 {
+      display: block;
+
+      font-size: clamp(6rem, 5rem, 32px);
+
+      margin-block: 0;
+
+      white-space: wrap;
+
+      line-height: 0.9;
+    }
+
+  /*** END MAIN ELEMENTS ***/
+
 }
 
 /***********************************
@@ -147,39 +165,62 @@
 
   /*** MAIN ELEMENTS ***/
 
+    .main_title h1 {
+      font-size: clamp(3rem, 2rem, 32px);
+    }
+
     .hidden_mobile {
       display: none;
     }
 
     /*** server info items ***/
     .server_status_item {
-      font-size: clamp(10px, 0.8rem, 1rem);
+      font-size: clamp(10px, 0.7rem, 1rem);
 
       flex-wrap: wrap;
+
+      padding: 0;
     }
 
 
-/************************************
-***                               ***
-*** *** SERVER SEASONS STUFF ***  ***
-***                               ***
-************************************/
 
-  /* seasons list on the seasons page */
-  #server_seasons_list {
-    padding: 1rem 1rem;
+  /************************************
+  ***                               ***
+  *** *** SERVER SEASONS STUFF ***  ***
+  ***                               ***
+  ************************************/
 
-    gap: 2rem;
-  }
+    /* seasons list on the seasons page */
+    #server_seasons_list {
+      padding: 1rem 1rem;
 
-  /* wrappers of each season */
-  .season_wrap {
-    width: 100%;
+      gap: 2rem;
+    }
 
-    aspect-ratio: 5 / 7;
+    /* wrappers of each season */
+    .season_wrap {
+      width: 100%;
 
-    padding: 1rem;
-  }
+      aspect-ratio: 5 / 7;
+
+      padding: 1rem;
+    }
+
+  /*** END SERVER SEASON STUFF ***/
+
+  /************************************
+  ***                               ***
+  ***  *** LOGIN/REGISTER STUFF *** ***
+  ***                               ***
+  ************************************/
+
+    /*** WRAPPER TO THE LOGIN/REGISTER FORMS ***/
+    #login_register {
+      width: 90%;
+    }
+
+    /*** END LOGIN/REGISTER STUFF ***/
+
 
   /*** END MAIN ELEMENTS ***/
 }

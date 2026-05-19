@@ -15,7 +15,7 @@ import { siteIcons, siteVariables, navBarItems } from './script_variables.js';
 export function fillNavbar(page) {
 
   // log users current viewing page
-  console.log('user currently viewing ' + page);
+  console.log('user currently viewing ' + page + ' page');
 
   // grab the nav element on the current page
   const nav = document.querySelector('nav');

@@ -114,7 +114,6 @@ export function fillMinecraftServerStats(page) {
         }
         // if not on any pages above | resolve out
         else {
-            console.log("not on index");
             resolve;
         }
     });

@@ -160,7 +160,7 @@ export const siteImages = {
                 "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */ 
                 "images/backgrounds/season5PicDarkCastle.jpg",  /* season5-DARKS-Castle */
     ],    
-    login: [    "images/backgrounds/cobblemonSeason2Dragon.png",   /* cobblemon season 1 ender dragon */ 
+    login: [    "images/backgrounds/cobblemon_season_1_10.png",   /* cobblemon season 1 random picture */ 
                 "images/backgrounds/cobblemon_season_1_21.png",    /* cobblemon season 1 bunch of tnt */ 
                 "images/backgrounds/season6PicFireworks.jpg",   /* Fireworks-Island-Season5 */
     ],
@@ -335,20 +335,20 @@ export const prevSeasonsList = [
     {
         name: 'Cobblemon Season 1',
         tagName: 'cobS1',
-        date: '?',
+        date: '(Jan 2025 - May 2025)',
         version: '?',
         desc: '?',
         members: '?',
-        pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
+        pics: genSeasonPics('cobblemon_1', 29, 'png'), // cobblemon season 1 | 29 pics in gallery//siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
     {
         name: 'Cobblemon Season 2',
         tagName: 'cobS2',
-        date: '?',
+        date: '(Nov 2025 - Dec 2025)',
         version: '?',
         desc: '?',
         members: '?',
-        pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
+        pics: genSeasonPics('cobblemon_2', 6, 'png'), //pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
 ]
 

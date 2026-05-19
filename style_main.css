@@ -339,7 +339,7 @@ button {
 .list_item_wrapper {
   width: 100%;
 
-  padding: 8px;
+  padding: 12px 4px;
 
   box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
             inset 0 0 0 1px rgba(0, 0, 0, 1);
@@ -356,17 +356,77 @@ button {
   text-shadow: 0 0 12px black;
 }
 
-.season_wrap .season_title {
-  font-size: 2rem;
+.season_content {
+  background: linear-gradient(to bottom, rgba(80, 127, 134, 1), rgba(51, 85, 73, 1));
+
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+            inset 0 0 0 1px rgba(0, 0, 0, 1);
+
+  border-radius: inherit;
+
+  padding: 16px 12px;
+}
+
+.season_wrap .season_name {
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
-.season_wrap .season_subtitle {
-  font-size: 1.5rem;
+.season_wrap .season_date {
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
 /*** END SERVER SEASONS STUFF ***/
+
+/************************************
+***                               ***
+***  *** LOGIN/REGISTER STUFF *** ***
+***                               ***
+************************************/
+
+/*** WRAPPER TO THE LOGIN/REGISTER FORMS ***/
+#login_register {
+  padding: 1rem 4rem;
+
+  width: auto;
+}
+
+.form_wrap {
+
+}
+
+/*** login/create account title ***/
+.form_wrap h2 {
+  font-size: 2rem;
+
+  padding: 0 0 2rem 0;
+}
+
+.form_wrap input {
+  height: 24px;
+  padding: 4px;
+}
+
+.form_wrap button {
+  margin: 1rem auto;
+
+  padding: 0 2rem;
+
+  height: 24px;
+
+  width: auto;
+}
+
+.form_wrap p {
+  text-align: center;
+
+  font-size: 1rem;
+
+  padding: 0;
+
+  margin: 1rem 0 0 0;
+}
 
 
 /************************************
@@ -471,6 +531,9 @@ footer p {
   }
   .flexed {
     display: flex;
+  }
+  .hidden {
+    display: none;
   }
   .column {
     flex-direction: column;
