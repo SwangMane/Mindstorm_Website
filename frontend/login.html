@@ -34,7 +34,7 @@
 <!-- /HEAD /HEAD /HEAD -->
 
 <!-- BODY BODY BODY --> 
-  <body id="login" class="flexed fill_space column centered"> <!-- ID'D -->
+  <body id="login" class="flexed fill_space column"> <!-- ID'D -->
 
     <!-- BACKGROUND ELEMENTS -->
     <div id="page_bcg_1" class="page_background fill_space no_space"></div> <!-- starts visible --> <!-- ID'D -->
@@ -72,10 +72,12 @@
 
 
     <!-- MAIN MAIN MAIN -->
-    <main class="flexed centered column fill_space">
+    <main class="flexed column centered">
 
       <!-- MAIN PAGE ELEMENT | CONTAINS SERVER DETAILS -->
       <div class="wrapper_outer flexed centered column max_720 fira-sans-regular" id="login_register"> <!-- ID'D -->
+
+
 
         <!-- LOGIN ELEMENT | STARTS VISIBLE -->
         <form id="login_form" class="form_wrap column flexed">
@@ -86,16 +88,21 @@
             <input type="email" placeholder="Email" class="fira-sans-regular" required />
 
             <!-- PASSWORD INPUT -->
-            <input type="password" placeholder="Password" class="fira-sans-regular" required />
+            <div class="password_wrap">
+              <input id="" type="password" placeholder="Password" class="fira-sans-regular passwordInput" required />
+              <button type="button" class="togglePassword">👁</button>
+            </div>
 
             <!-- LOGIN BUTTON -->
-            <button class="submit_btn" type="submit">Login</button>
+            <button class="submit_btn" type="submit" id="login_btn" disabled>Login</button>
 
-            <p class="no_space"><a href="#" class="forgot_password">Forgot your password?</a></p>
+            <p class="no_space"><a href="#" class="forgot_password" data-action="forgot">Forgot your password?</a></p>
 
-            <P class="no_space"><a href="#" class="create_account">Create an account</a></P>
+            <P class="no_space"><a href="#" class="create_account" data-action="create">Create an account</a></P>
           
         </form>
+
+
 
         <!-- FORGOT PASSWORD ELEMENT | STARTS HIDDEN -->
         <form id="forgot_password_form" class="hidden form_wrap column flexed">
@@ -108,41 +115,50 @@
             <input type="email" placeholder="Email" required />
 
             <!-- LOGIN BUTTON -->
-            <button class="submit_btn" type="submit">Reset password</button>
+            <button class="submit_btn" type="submit" id="reset_password_btn" disabled>Reset password</button>
 
-            <p class="no_space"><a href="#" class="login_link_account">Login</a></p>
+            <p class="no_space"><a href="#" class="login_link_account" data-action="login">Login</a></p>
 
-            <P class="no_space"><a href="#" class="create_account">Create an account</a></P>
+            <P class="no_space"><a href="#" class="create_account" data-action="create">Create an account</a></P>
 
         </form>
+
+
  
         <!-- CREATE ACCOUNT ELEMENT | STARTS HIDDEN -->
-        <form id="create_account_form" class="hidden form_wrap column flexed">
+        <form id="create_account_form" class="hidden form_wrap column flexed" method="POST">
 
-           <h2 class="no_space fira-sans-bold">Welcome! Create your account</h2>
+           <h2 class="no_space fira-sans-bold">Welcome to Mindstorm!<br><br>Create your account</h2>
 
-           <h3 class="no_space fira-sans-bold">Note: A valid Minecraft account is required for account creation</h3>
-
-            <!-- EMAIL INPUT -->
-            <input type="text" placeholder="Minecraft username" class="fira-sans-regular" required />
+           <h3 class="no_space fira-sans-bold">Note: A valid Minecraft account is required for account creation. Only one unique account per player.</h3>
 
             <!-- EMAIL INPUT -->
-            <input type="email" placeholder="Email" class="fira-sans-regular" required />
+            <input type="text" placeholder="Minecraft username" class="fira-sans-regular" id="input_minecraft_username" required />
+
+            <!-- EMAIL INPUT -->
+            <input type="email" placeholder="Email" class="fira-sans-regular" id="input_create_email" required />
 
             <!-- PASSWORD INPUT -->
-            <input type="password" placeholder="Password" class="fira-sans-regular" required />
+            <div class="password_wrap">
+              <input type="password" placeholder="Password" class="fira-sans-regular passwordInput" id="input_create_password" required />
+              <button type="button" class="togglePassword">👁</button>
+            </div>
 
             <!-- PASSWORD INPUT -->
-            <input type="password" placeholder="Confirm password" class="fira-sans-regular" required />
+            <div class="password_wrap">
+              <input type="password" placeholder="Password" class="fira-sans-regular passwordInput" id="input_create_passwordConfirm" required />
+            </div>
 
-            <!-- LOGIN BUTTON -->
-            <button class="submit_btn" type="submit">Create account</button>
+            <!-- CREATE ACCOUNT BUTTON -->
+            <button class="submit_btn" type="submit" data-action="createBtn" id="create_account_btn" disabled>Create account</button>
 
-            <p class="no_space"><a href="#" class="forgot_password">Forgot your password?</a></p>
+            <p class="no_space"><a href="#" class="forgot_password" data-action="forgot">Forgot your password?</a></p>
 
-            <p class="no_space"><a href="#" class="login_link_account">Already a member?</a></p>
+            <p class="no_space"><a href="#" class="login_link_account" data-action="login">Already a member?</a></p>
 
         </form>
+
+
 
       </div>
 
@@ -157,7 +173,7 @@
 
     <!-- ALL SCRIPTS -->
     <script type="module" src="script_main.js"></script>
-    <script type="module" src="script_login.js"></script>
+    <script type="module" src="script_login.js" defer></script>
     <script src="https://mcapi.us/scripts/minecraft.min.js"></script>
 
   </body>

@@ -22,6 +22,39 @@ function checkCurrentPage() {
     return currentPage;
 }
 
+// checks the data server to see if its online
+async function checkDataServer() {
+    try {
+        // await a server response
+        const response = await fetch(
+
+            // address to the 'health' of the data server
+            siteVariables.data_server.ip_address + siteVariables.data_server.health
+        );
+        // if there is a response but its bad
+        if (!response.ok) {
+
+            throw new Error();
+        }
+        // await a response of data
+        const data = await response.json();
+
+        console.log(data.status);
+
+        return true;
+
+    }
+    // if the server is just flat offline
+    catch {
+        console.log("Data server offline");
+        return false;
+    }
+}
+
+
+// checks if the data server is online
+checkDataServer();
+
 // GRAB THE CURRENT PAGE
 const page = checkCurrentPage();
 

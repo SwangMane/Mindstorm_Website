@@ -76,7 +76,21 @@ export const siteVariables = {
     data_server: {
 
         // IP to the data server
-        ip_address: 0,
+        ip_address: 'http://127.0.0.1:5000',
+
+        // route to check status of server
+        health: '/health',
+
+        // route to check Minecraft username
+        Minecraft_username: '/mcprofile/'
+
+    },
+
+    // login page items 
+    login_page: {
+
+        // mojang API username request
+        mojangAPI_usernameCheck: 'https://api.minecraftservices.com/minecraft/profile/lookup/',
 
     },
 

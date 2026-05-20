@@ -214,9 +214,16 @@
   ***                               ***
   ************************************/
 
+    /*** PAGE WRAPPER TO LOGIN FORMS ***/
+    #login main {
+      padding: 100px 1rem 0 1rem;
+    }
+
     /*** WRAPPER TO THE LOGIN/REGISTER FORMS ***/
     #login_register {
       width: 90%;
+
+      padding: 2rem 1rem;
     }
 
     /*** END LOGIN/REGISTER STUFF ***/

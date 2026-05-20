@@ -84,9 +84,9 @@ button {
     left: 0;
 
     background-color: #545454;
-    box-shadow: 0 2px 2px rgb(250, 249, 235, 0.8),
-                0 4px 3px rgb(250, 249, 235, 0.5),
-                0 6px 4px rgb(250, 249, 235, 0.25);
+    box-shadow: 0 2px 2px rgb(250, 249, 235, 0.5),
+                0 4px 3px rgb(250, 249, 235, 0.3),
+                0 6px 4px rgb(250, 249, 235, 0.1);
 
     align-items: center;
     justify-content: space-between;
@@ -385,15 +385,16 @@ button {
 ***                               ***
 ************************************/
 
+/*** PAGE WRAPPER TO LOGIN FORMS ***/
+#login main {
+  height: 100%;
+}
+
 /*** WRAPPER TO THE LOGIN/REGISTER FORMS ***/
 #login_register {
   padding: 1rem 4rem;
 
   width: auto;
-}
-
-.form_wrap {
-
 }
 
 /*** login/create account title ***/
@@ -434,6 +435,31 @@ button {
   padding: 0;
 
   margin: 1rem 0 0 0;
+}
+
+/*** wrapper for the passwords ***/
+.password_wrap {
+  width: 100%;
+  margin: 4px 0;
+  padding: 0;
+
+  display: flex;
+}
+
+.password_wrap input {
+  margin: 0;
+
+  flex: 1;
+}
+
+.password_wrap button {
+  font-size: 0.75rem;
+
+  padding: 0 4px;
+  margin: 0;
+
+  width: auto;
+  height: 100%;
 }
 
 
@@ -590,6 +616,7 @@ footer p {
     margin: 0 auto 1rem auto;
   }
 
+  /*** COLORS ***/
   .red {
     color: red;
   }
@@ -599,12 +626,17 @@ footer p {
   .yellow {
     color: #f5d43e;
   }
+  /*** END COLORS ***/
+
+  /*** MAX-WIDTHS ***/
   .max_720 {
     max-width: 720px;
   }
   .max_1280 {
     max-width: 1280px;
   }
+  /*** END MAX-WIDTHS ***/
+
   .offWhite_text {
     color: #faf9eb;
   }
