@@ -1,23 +1,53 @@
 
-// login form | enabled by default
-const loginForm = document.getElementById("login_form");
 
-// forgot password form
-const forgotForm = document.getElementById("forgot_password_form");
+const formIds = {
+  // login form | enabled by default
+  loginForm: document.getElementById("login_form"),
 
-// create account form
-const createForm = document.getElementById("create_account_form");
+  // forgot password form
+  forgotForm: document.getElementById("forgot_password_form"),
+
+  // create account form
+  createForm: document.getElementById("create_account_form"),
+}
 
 
-document.getElementById("forgot_password").addEventListener('click', (e) => {
-  e.preventDefault();
-  forgotPassword();
-})
+document.querySelectorAll('.forgot_password').forEach((element) => {
 
-document.getElementById("login_link").addEventListener('click', (e) => {
-  e.preventDefault();
-  loginPage();
-})
+  element.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    forgotPassword();
+
+  });
+
+});
+
+document.querySelectorAll('.login_link_account').forEach((element) => {
+
+  element.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    loginPage();
+
+  });
+
+});
+
+document.querySelectorAll('.create_account').forEach((element) => {
+
+  element.addEventListener('click', (e) => {
+
+    e.preventDefault();
+
+    createPage();
+
+  });
+
+});
+
 
 // checks what is open based on inputs
 function openCheck(selector) {
@@ -30,29 +60,37 @@ function openCheck(selector) {
 
     if (isVisible) {
 
-      return element.id;
+      return element;
 
     }
   }
   return null;
 }
 
+
 function forgotPassword() {
 
-  console.log(openCheck('form'))
+  const currForm = openCheck('form');
 
-  loginForm.style.display = 'none';
+  if (currForm) currForm.style.display = 'none';
 
-  forgotForm.style.display = 'flex'
-
-  console.log(openCheck('form'))
-
+  formIds.forgotForm.style.display = 'flex'
 }
 
 function loginPage() {
 
-  loginForm.style.display = 'none';
+  const currForm = openCheck('form');
 
-  forgotForm.style.display = 'flex'
+  if (currForm) currForm.style.display = 'none';
 
+  formIds.loginForm.style.display = 'flex'
+}
+
+function createPage() {
+
+  const currForm = openCheck('form');
+
+  if (currForm) currForm.style.display = 'none';
+
+  formIds.createForm.style.display = 'flex'
 }

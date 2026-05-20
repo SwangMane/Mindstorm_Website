@@ -91,9 +91,9 @@
             <!-- LOGIN BUTTON -->
             <button class="submit_btn" type="submit">Login</button>
 
-            <p class="no_space"><a href="#" id="forgot_password">Forgot your password?</a></p>
+            <p class="no_space"><a href="#" class="forgot_password">Forgot your password?</a></p>
 
-            <P class="no_space"><a href="#" id="create_account">Create an account</a></P>
+            <P class="no_space"><a href="#" class="create_account">Create an account</a></P>
           
         </form>
 
@@ -102,20 +102,45 @@
 
            <h2 class="no_space fira-sans-bold">Forgot password</h2>
 
+           <h3 class="no_space fira-sans-bold">Enter your email to recieve a password reset</h3>
+
             <!-- EMAIL INPUT -->
             <input type="email" placeholder="Email" required />
 
             <!-- LOGIN BUTTON -->
             <button class="submit_btn" type="submit">Reset password</button>
 
-            <p class="no_space"><a href="#" id="login_link">Login</a></p>
+            <p class="no_space"><a href="#" class="login_link_account">Login</a></p>
 
-            <P class="no_space"><a href="#" id="create_account">Create an account</a></P>
+            <P class="no_space"><a href="#" class="create_account">Create an account</a></P>
 
         </form>
  
         <!-- CREATE ACCOUNT ELEMENT | STARTS HIDDEN -->
         <form id="create_account_form" class="hidden form_wrap column flexed">
+
+           <h2 class="no_space fira-sans-bold">Welcome! Create your account</h2>
+
+           <h3 class="no_space fira-sans-bold">Note: A valid Minecraft account is required for account creation</h3>
+
+            <!-- EMAIL INPUT -->
+            <input type="text" placeholder="Minecraft username" class="fira-sans-regular" required />
+
+            <!-- EMAIL INPUT -->
+            <input type="email" placeholder="Email" class="fira-sans-regular" required />
+
+            <!-- PASSWORD INPUT -->
+            <input type="password" placeholder="Password" class="fira-sans-regular" required />
+
+            <!-- PASSWORD INPUT -->
+            <input type="password" placeholder="Confirm password" class="fira-sans-regular" required />
+
+            <!-- LOGIN BUTTON -->
+            <button class="submit_btn" type="submit">Create account</button>
+
+            <p class="no_space"><a href="#" class="forgot_password">Forgot your password?</a></p>
+
+            <p class="no_space"><a href="#" class="login_link_account">Already a member?</a></p>
 
         </form>
 
