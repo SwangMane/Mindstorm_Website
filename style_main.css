@@ -24,6 +24,8 @@ button {
   color: inherit;
 }
 
+/*** END MAIN STYLES ***/
+
 
 /************************************
 ***                               ***
@@ -222,6 +224,29 @@ button {
     margin-block: 0;
   }
 
+  /*** the center label ***/
+  .center_label {
+    text-align: center;
+
+    width: auto;
+
+    font-weight: bold;
+
+    padding: 0.5rem 2rem;
+
+    border: 1px solid black;
+
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+
+    border-radius: inherit;
+
+    font-size: 1.75rem;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+  }
+
   /*** wrap for server info items ***/
   #server_status_wrap {
     padding: 0 0 0 4px;
@@ -261,6 +286,15 @@ button {
     border-right: 1px solid black;
   }
 
+  .player_list, #announcement_list {
+    padding: 0 1rem 2rem 1rem;
+    margin: 0;
+
+    font-size: 1.25rem;
+
+    list-style-type: none;
+  }
+
   #announcements_wrap p {
     color: #f4d753;
 
@@ -268,6 +302,10 @@ button {
 
     justify-content: center;
     align-items: center;
+  }
+  .announcement {
+    padding: 0 0 1rem 0;
+    margin: 0;
   }
   #player_count_meter {
     width: 80%;
@@ -293,124 +331,231 @@ button {
 ***                               ***
 ************************************/
 
-/* seasons list on the seasons page */
-#server_seasons_list {
-  margin: 0;
-  padding: 2rem 0;
+  /* seasons list on the seasons page */
+  #server_seasons_list {
+    margin: 0;
+    padding: 2rem 0;
 
-  list-style-type: none;
+    list-style-type: none;
 
-  display: flex;
+    display: flex;
 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 
-  align-items: flex-start;
-  justify-content: center;
+    align-items: flex-start;
+    justify-content: center;
 
-  gap: 2rem;
-}
+    gap: 2rem;
+  }
 
-#server_seasons {
-  position: relative;
-  overflow: visible;
-}
+  #server_seasons {
+    position: relative;
+    overflow: visible;
+  }
 
-/* wrappers of each season */
-.season_wrap {
-  display: flex;
+  /* wrappers of each season */
+  .season_wrap {
+    display: flex;
 
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 
-  width: 320px;
+    width: 320px;
 
-  aspect-ratio: 5 / 7;
+    aspect-ratio: 5 / 7;
 
-  background-size: cover;
-  background-position: center;
+    background-size: cover;
+    background-position: center;
 
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
-            inset 0 0 0 1px rgba(0, 0, 0, 1);
-
-  border-radius: 4px;
-
-  padding: 1rem 2rem;
-
-  box-sizing: border-box;
-}
-
-#season_expanded_wrapper_out {
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
               inset 0 0 0 1px rgba(0, 0, 0, 1);
 
-  width: calc(100% - 4rem);
-  height: auto;
+    border-radius: 4px;
 
-  left: 50%;
-  top: 50%;
+    padding: 1rem 2rem;
 
-  transform: translate(-50%, -50%);
+    box-sizing: border-box;
+  }
 
-  position: fixed;
+  /*** text content inside of each season wrapper ***/
+  .season_wrap p {
+    margin: 0;
+    padding: 0;
 
-  z-index: 500;
+    text-shadow: 0 0 12px black;
+  }
 
-  box-sizing: border-box;
+  /*** outter wrapper for clicked season detail ***/
+  #season_expanded_wrapper_out {
+    max-height: calc(100vh - 150px);
 
-  border-radius: inherit;
-}
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+                inset 0 0 0 1px rgba(0, 0, 0, 1);
 
-#close_seasons {
-  width: 32px;
+    width: calc(100% - 4rem);
+    height: auto;
 
-  position: absolute;
+    left: 50%;
+    top: 125px;
 
-  top: 1rem;
-  left: 1rem;
-}
+    padding: 0;
 
-.list_item_wrapper {
-  width: 100%;
+    transform: translate(-50%, 0);
 
-  padding: 12px 4px;
+    position: fixed;
 
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
-            inset 0 0 0 1px rgba(0, 0, 0, 1);
+    z-index: 1000;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  border-radius: 4px;
-}
+    border-radius: inherit;
+  }
 
-.season_wrap p {
-  margin: 0;
-  padding: 0;
+  #season_expanded_wrapper_out .scroll_box::-webkit-scrollbar {
+    width: 40px;
 
-  text-shadow: 0 0 12px black;
-}
+    scrollbar-width: 40px;
+  }
 
-.season_content {
-  background: linear-gradient(to bottom, rgba(80, 127, 134, 1), rgba(51, 85, 73, 1));
+  /*** inner wrapper for clicked season ***/
+  #season_expanded_wrapper_in {
+    height: auto;
 
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
-            inset 0 0 0 1px rgba(0, 0, 0, 1);
+    box-sizing: border-box;
 
-  border-radius: inherit;
+    border: 1px solid black;
 
-  padding: 16px 12px;
-}
+    margin: 0;
+    padding: 50px 1rem 1rem 1rem;
 
-.season_wrap .season_name {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
+    overflow-y: auto;
+    overflow-x: hidden;
 
-.season_wrap .season_date {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
+    border-radius: inherit;
+  }
+
+  /*** normal text content inside the wrapper ***/
+  #season_expanded_wrapper_out p {
+    font-size: 1.5rem;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  #season_expanded_wrapper_out .members_title {
+    width: 100%;
+    text-align: center;
+
+    padding: 1rem;
+  }
+
+  /*** season detail description headers ***/
+  .season_pretext {
+    
+  }
+
+  /*** season detail descriptions ***/
+  .season_description_item {
+   
+  }
+
+  /*** season deetail player list ***/
+  #season_expanded_wrapper_in ul {
+    list-style-type: none;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 2rem;
+    line-height: 1rem;
+
+    padding: 1rem;
+    margin: 1rem 0 0 0;
+  }
+
+  /*** season detail players list player wrappers ***/
+  #season_expanded_wrapper_in ul li {
+    padding: 4px;
+  }
+
+  /*** season details button closer ***/
+  #close_seasons {
+    width: 32px;
+
+    position: fixed;
+
+    top: 8px;
+    right: 1rem;
+  }
+
+  /*** season titles wrappers ***/
+  .season_content {
+    background: linear-gradient(to bottom, rgba(80, 127, 134, 1), rgba(51, 85, 73, 1));
+
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+              inset 0 0 0 1px rgba(0, 0, 0, 1);
+
+    border-radius: inherit;
+
+    padding: 16px 12px;
+  }
+
+  .season_wrap .season_name {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .season_wrap .season_date {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .img_viewer {
+    width: 80%;
+    max-width: 720px;
+    overflow: hidden;
+    position: relative;
+
+    box-sizing: border-box;
+
+    margin: 1rem auto;
+
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+            0 1px 0 6px #f5d43e,
+            0 3px 4px 8px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 1px rgba(0, 0, 0, 0.5);
+  }
+
+  .img_track {
+    display: flex;
+    transition: transform 0.4s ease;
+
+    width: auto;
+
+    padding: 0;
+    margin: 0;
+  }
+  .slide {
+    min-width: 100%;
+    object-fit: contain;
+  }
+  .season_pictures_Btn {
+    position: absolute;
+
+    font-size: 1.5rem;
+
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 400;
+  }
+  .btn_next {
+    right: 4px;
+  }
+  .btn_prev {
+    left: 4px;
+  }
 
 /*** END SERVER SEASONS STUFF ***/
 
@@ -420,83 +565,84 @@ button {
 ***                               ***
 ************************************/
 
-/*** PAGE WRAPPER TO LOGIN FORMS ***/
-#login main {
-  height: 100%;
-}
+  /*** PAGE WRAPPER TO LOGIN FORMS ***/
+  #login main {
+    height: 100%;
+  }
 
-/*** WRAPPER TO THE LOGIN/REGISTER FORMS ***/
-#login_register {
-  padding: 1rem 4rem;
+  /*** WRAPPER TO THE LOGIN/REGISTER FORMS ***/
+  #login_register {
+    padding: 1rem 4rem;
 
-  width: auto;
-}
+    width: auto;
+  }
 
-/*** login/create account title ***/
-.form_wrap h2 {
-  font-size: 2rem;
+  /*** login/create account title ***/
+  .form_wrap h2 {
+    font-size: 2rem;
 
-  padding: 0 0 2rem 0;
-}
+    padding: 0 0 2rem 0;
+  }
 
-.form_wrap h3 {
-  font-size: 1.5rem;
+  .form_wrap h3 {
+    font-size: 1.5rem;
 
-  padding: 0 0 2rem 0;
-}
+    padding: 0 0 2rem 0;
+  }
 
-.form_wrap input {
-  height: 24px;
-  padding: 4px;
+  .form_wrap input {
+    height: 24px;
+    padding: 4px;
 
-  margin: 4px 0;
-}
+    margin: 4px 0;
+  }
 
-.form_wrap button {
-  margin: 1rem auto;
+  .form_wrap button {
+    margin: 1rem auto;
 
-  padding: 0 2rem;
+    padding: 0 2rem;
 
-  height: 24px;
+    height: 24px;
 
-  width: auto;
-}
+    width: auto;
+  }
 
-.form_wrap p {
-  text-align: center;
+  .form_wrap p {
+    text-align: center;
 
-  font-size: 1rem;
+    font-size: 1rem;
 
-  padding: 0;
+    padding: 0;
 
-  margin: 1rem 0 0 0;
-}
+    margin: 1rem 0 0 0;
+  }
 
-/*** wrapper for the passwords ***/
-.password_wrap {
-  width: 100%;
-  margin: 4px 0;
-  padding: 0;
+  /*** wrapper for the passwords ***/
+  .password_wrap {
+    width: 100%;
+    margin: 4px 0;
+    padding: 0;
 
-  display: flex;
-}
+    display: flex;
+  }
 
-.password_wrap input {
-  margin: 0;
+  .password_wrap input {
+    margin: 0;
 
-  flex: 1;
-}
+    flex: 1;
+  }
 
-.password_wrap button {
-  font-size: 0.75rem;
+  .password_wrap button {
+    font-size: 0.75rem;
 
-  padding: 0 4px;
-  margin: 0;
+    padding: 0 4px;
+    margin: 0;
 
-  width: auto;
-  height: 100%;
-}
+    width: auto;
+    height: 100%;
+  }
 
+/*** END LOGIN / REGISTER STUFF ***/ 
 
 /************************************
 ***                               ***
@@ -525,6 +671,8 @@ footer p {
 
   box-shadow: 0 0 1px 4px rgba(0, 0, 0, 0.05);
 }
+
+/*** END FOOTER ELEMENTS ***/
 
 
 /************************************
@@ -585,61 +733,14 @@ footer p {
 ***    *** GLOBAL CLASSES ***     ***
 ***                               ***
 ************************************/
-
-  .yellow_gradient_txt {
-    background: linear-gradient(to bottom, #f4d753, #f5d43e);
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-      color: transparent;
-  }
   .green_gradient_bcg {
     background: linear-gradient(to bottom, rgba(80, 127, 134, 1), rgba(51, 85, 73, 1)); 
-  }
-  .flexed {
-    display: flex;
   }
   .hidden {
     display: none;
   }
   .column {
     flex-direction: column;
-  }
-  .centered {
-    justify-content: center;
-    align-items: center;
-  }
-  .left_centered {
-    justify-content: center;
-    align-items: flex-start;
-  }
-  .left_spaceEvenly {
-    justify-content: space-evenly;
-    align-items: flex-start;
-  }
-  .left_flexStart {
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  .flexStart_centered {
-    justify-content: flex-start;
-    align-items: center;
-  }
-  .fill_space {
-    width: 100%;
-    height: 100%;
-  }
-  .square {
-    aspect-ratio: 1 / 1;
-  }
-  .centered_text {
-    text-align: center;
-  }
-  .no_space {
-    margin: 0;
-    padding: 0;
   }
   .display {
     display: flex;
@@ -656,141 +757,165 @@ footer p {
   .invisible {
     opacity: 0;
   }
-
   .fade_in_1s {
     animation: fadeIn 1s forwards;
   }
 
+
+  /*** POSITIONING ***/
+    .centered {
+      justify-content: center;
+      align-items: center;
+    }
+    .left_centered {
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .left_spaceEvenly {
+      justify-content: space-evenly;
+      align-items: flex-start;
+    }
+    .left_flexStart {
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .flexStart_centered {
+      justify-content: flex-start;
+      align-items: center;
+    }
+  /*** END POSITIONING ***/
+
+
+  /*** SPACING STUFF ***/
+    .flexed {
+      display: flex;
+    }
+    .fill_space {
+      width: 100%;
+      height: 100%;
+    }
+    .no_space {
+      margin: 0;
+      padding: 0;
+    }
+    .square {
+      aspect-ratio: 1 / 1;
+    }
+  /*** END SPACING STUFF ***/
+
+
+  /*** ALL TEXT STUFF ***/
+    .centered_text {
+      text-align: center;
+    }
+    .underline_text {
+      text-decoration: underline;
+    }
+  /*** END ALL TEXT STUFF ***/
+
+
   /*** COLORS ***/
-  .red {
-    color: red;
-  }
-  .green {
-    color: green;
-  }
-  .yellow {
-    color: #f5d43e;
-  }
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+    .yellow {
+      color: #f5d43e;
+    }
+    .offWhite_text {
+      color: #faf9eb;
+    }
+    .yellow_gradient_txt {
+      background: linear-gradient(to bottom, #f4d753, #f5d43e);
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+        color: transparent;
+    }  
   /*** END COLORS ***/
 
+
   /*** MAX-WIDTHS ***/
-  .max_720 {
-    max-width: 720px;
-  }
-  .max_1280 {
-    max-width: 1280px;
-  }
+    .max_720 {
+      max-width: 720px;
+    }
+    .max_1280 {
+      max-width: 1280px;
+    }
   /*** END MAX-WIDTHS ***/
 
-  .offWhite_text {
-    color: #faf9eb;
-  }
 
-  .underline_text {
-    text-decoration: underline;
-  }
+  /*** ALL WRAPPERS ***/
+    
+    .wrapper_outer {  /*** OUTER SIDE OF MAIN WRAPPERS ***/
+      width: 100%;
 
-  /*** OUTER SIDE OF MAIN WRAPPERS ***/
-  .wrapper_outer {
-    width: 100%;
+      margin: 2rem auto;
 
-    margin: 2rem auto;
+      box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+                  0 1px 0 6px #f5d43e,
+                  0 3px 4px 8px rgba(0, 0, 0, 0.6),
+                  inset 0 1px 0 1px rgba(0, 0, 0, 0.5);
 
-    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
-                0 1px 0 6px #f5d43e,
-                0 3px 4px 8px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 1px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to bottom, #faf9eb, #d9d8cd);
 
-    background: linear-gradient(to bottom, #faf9eb, #d9d8cd);
+      padding: 0.75rem;
 
-    padding: 0.75rem;
+      border-radius: 6px;
 
-    border-radius: 6px;
+      box-sizing: border-box;
+    }
 
-    box-sizing: border-box;
-  }
+    .wrapper_inner {  /*** INNER SIDE OF MAIN WRAPPERS ***/
+      width: 100%;
 
-  /*** INNER SIDE OF MAIN WRAPPERS ***/
-  .wrapper_inner {
-    width: 100%;
+      margin: 0;
 
-    margin: 0;
+      box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+                  inset 0 0 0 1px rgba(0, 0, 0, 1);
 
-    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
-                inset 0 0 0 1px rgba(0, 0, 0, 1);
+      padding: 1px;
 
-    padding: 1px;
+      border-radius: inherit;
 
-    border-radius: inherit;
+      box-sizing: border-box;  
 
-    box-sizing: border-box;  
+      overflow: hidden;
+    }    
 
-    overflow: hidden;
-  }
-  /*** STANDARD WRAPPER TO USE ***/
-  .wrapper {
-    flex: 1;
+    .wrapper {  /*** STANDARD WRAPPER TO USE ***/
+      flex: 1;
 
-    align-self: stretch;
+      align-self: stretch;
 
-    border-radius: inherit;
+      border-radius: inherit;
 
-    box-sizing: border-box;
-  }
+      box-sizing: border-box;
+    }
+  /*** END ALL WRAPPERS ***/
+
+
   /*** THE SERVERS ICON IMAGE ***/ 
-  .server_icon {
-    display: block;
+    .server_icon {
+      display: block;
 
-    width: auto;
-    height: 100%;
-    aspect-ratio: 1 / 1;
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1 / 1;
 
-    object-fit: contain;
+      object-fit: contain;
 
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
 
-    box-sizing: border-box;
-  }
-
-  /*** the center label ***/
-  .center_label {
-    text-align: center;
-
-    width: auto;
-
-    font-weight: bold;
-
-    padding: 0.5rem 2rem;
-
-    border: 1px solid black;
-
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 1);
-
-    border-radius: inherit;
-
-    font-size: 1.75rem;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-  }
-
-  .player_list, #announcement_list {
-    padding: 0 1rem 2rem 1rem;
-    margin: 0;
-
-    font-size: 1.25rem;
-
-    list-style-type: none;
-  }
-
-  .announcement {
-    padding: 0 0 1rem 0;
-    margin: 0;
-  }
+      box-sizing: border-box;
+    }
 
 /*** END GLOBAL CLASSES ***/
 

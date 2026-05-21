@@ -113,29 +113,38 @@ function openSeason(name) {
       // clear the wrapper 
       wrapperIn.innerHTML = '';
 
+      const classes = 'season_description_item';
+      const pretextClasses = 'yellow season_pretext';
+
       // the title is the seasons name
       const title = document.createElement('p');
-            title.className = '';
-            title.textContent = 'Season: ' + season.name;
+            title.className = classes;
+            title.innerHTML = `<span class="${pretextClasses}">Season: </span>` + season.name;
 
       // seasons date
       const date = document.createElement('p');
-            date.className = '';
-            date.textContent = 'Date: ' + season.date; 
+            date.className = classes;
+            date.innerHTML = `<span class="${pretextClasses}">Date: </span>` + season.date; 
 
       // seasons version
       const version = document.createElement('p');
-            version.className = '';
-            version.textContent = 'Minecraft version: ' + season.version;
+            version.className = classes;
+            version.innerHTML = `<span class="${pretextClasses}">Version: </span>` + season.version;
 
       // seasons description
       const description = document.createElement('p');
-            description.className = '';
-            description.textContent = 'Season description: ' + season.desc;
+            description.className = classes;
+            description.innerHTML = `<span class="${pretextClasses}">Description: </span>` + season.desc;
+
+      // members title
+      const memberTitle = document.createElement('p');
+            memberTitle.classList = 'members_title';
+            memberTitle.innerHTML = `<span class="${pretextClasses}">Season Members</span>`;
 
       // seasons memberlist
       const memberList = document.createElement('ul');
             memberList.className = '';
+
 
       // loop through each member and add them to the list of members
       season.members.forEach((member) => {
@@ -148,9 +157,51 @@ function openSeason(name) {
 
       })
 
+      const viewer = document.createElement('div');
+      viewer.className = 'img_viewer';
+
+      const track = document.createElement('div');
+      track.className = 'img_track';
+
+      viewer.appendChild(track);
+
+      season.pics.forEach((src) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'slide';
+
+        track.appendChild(img);
+      });
+
+      let index = 0;
+
+      function updateSlider() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      const next = document.createElement('button');
+      next.textContent = '>';
+      next.className = 'season_pictures_Btn btn_next';
+
+      const prev = document.createElement('button');
+      prev.textContent = '<';
+      prev.className = 'season_pictures_Btn btn_prev';
+
+      next.addEventListener('click', () => {
+        index = (index + 1) % season.pics.length;
+        updateSlider();
+      });
+
+      prev.addEventListener('click', () => {
+        index = (index - 1 + season.pics.length) % season.pics.length;
+        updateSlider();
+      });
+
+      viewer.append(prev, track, next);
+
 
       // display all the information given
-      wrapperIn.replaceChildren(title, date, version, description, memberList);
+      wrapperIn.replaceChildren(title, date, version, description,memberTitle, memberList, viewer);
 
     }
 
