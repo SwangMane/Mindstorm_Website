@@ -103,6 +103,14 @@ export const siteVariables = {
         // class of each item in the list
         li_class: 'season_wrap yellow',
 
+        // wrapper of the season details
+        season_wrapper_out: 'season_expanded_wrapper_out',
+
+        season_wrapper_in: 'season_expanded_wrapper_in',
+
+        // season details closers
+        close_seasons_btn: 'close_seasons',
+
     }
 }
 
@@ -298,7 +306,7 @@ export const prevSeasonsList = [
         date: '2013',
         version: 'vanilla 1.6',
         desc: 'New beggining',
-        members: 'Dark, Debesk, Block, The_Cakeinator, BilateralPaper4, Mas',
+        members: ['Dark', 'Debesk', 'Block', 'The_Cakeinator', 'BilateralPaper4', 'Mas'],
         pics: genSeasonPics(1, 24, 'avif'), // season 1 | 24 pics in gallery
     },  
     {
@@ -307,7 +315,7 @@ export const prevSeasonsList = [
         date: '?',
         version: '?',
         desc: 'fill this in',
-        members: 'Dark, Debesk, Block, Smilee, TheFull98, Dawson12XD, Hagermans_Rule, Sadfaic, Propally, SharpKiller, TheDooieBall, Allanarruda, Bubluebu, Shane, HotLava',
+        members: ['Dark', 'Debesk', 'Block', 'Smilee', 'TheFull98', 'Dawson12XD', 'Hagermans_Rule', 'Sadfaic', 'Propally', 'SharpKiller', 'TheDooieBall', 'Allanarruda', 'Bubluebu', 'Shane', 'HotLava'],
         pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
     {
@@ -316,7 +324,7 @@ export const prevSeasonsList = [
         date: '2014',
         version: '?',
         desc: 'Savanah Spawn, yaDead arena',
-        members: 'Dark, Debesk, Block, Smilee, Pudding, Hagermans_Rule, Yadead1, Yadead2, TheFull98, ImmortalNerd, Allanarruda, MrTall, Dominionus, GuitarHero, Kiwi, iJevinator, CE_Winchester, Grahm, HotLava',
+        members: ['Dark', 'Debesk', 'Block', 'Smilee', 'Pudding', 'Hagermans_Rule', 'Yadead1', 'Yadead2', 'TheFull98', 'ImmortalNerd', 'Allanarruda', 'MrTall', 'Dominionus', 'GuitarHero', 'Kiwi', 'iJevinator', 'CE_Winchester', 'Grahm', 'HotLava'],
         pics: genSeasonPics(3, 11, 'avif'), // season 3 | 11 pics in gallery
     },
     {
@@ -325,7 +333,7 @@ export const prevSeasonsList = [
         date: '2015',
         version: '?',
         desc: 'Town hall, Nether Hub, Bases',
-        members: 'Dark, Debesk, Block, Smilee, Pudding, HillbillDeluex, alexSirben, TheFull98, Alexanderrisom, menda94, Grahm, PsychoSammy, CyberPunk, Deadspace, Zufgus, Victorbjr, ColdParasite, Hagermans_Rule, Cam_2002, Hyperinsomniac, Foxtrott, GuitarHero',
+        members: ['Dark', 'Debesk', 'Block', 'Smilee', 'Pudding', 'HillbillDeluex', 'alexSirben', 'TheFull98', 'Alexanderrisom', 'menda94', 'Grahm', 'PsychoSammy', 'CyberPunk', 'Deadspace', 'Zufgus', 'Victorbjr', 'ColdParasite', 'Hagermans_Rule', 'Cam_2002', 'Hyperinsomniac', 'Foxtrott', 'GuitarHero'],
         pics: genSeasonPics(4, 49, 'avif'), // season 4 | 49 pics in gallery
     },
     {
@@ -334,7 +342,7 @@ export const prevSeasonsList = [
         date: '?',
         version: '?',
         desc: 'Funky path',
-        members: 'Dark, Block, Smilee, HillbillyDeluex, Pudding, ColdParasite, TheFull98, Kiwi, Debesk, Deadspace, Hyperinsomniac, John, Foxtrott, PottsGames',
+        members: ['Dark', 'Block', 'Smilee', 'HillbillyDeluex', 'Pudding', 'ColdParasite', 'TheFull98', 'Kiwi', 'Debesk', 'Deadspace', 'Hyperinsomniac', 'John', 'Foxtrott', 'PottsGames'],
         pics: genSeasonPics(5, 32, 'avif'), // season 5 | 32 pics in gallery
     },
     {
@@ -343,7 +351,7 @@ export const prevSeasonsList = [
         date: '?',
         version: '?',
         desc: 'Baby sitter season',
-        members: 'Dark, Block, Smilee, Pudding, HillbillyDeluex, Gamrpanda, RiiskyPlaysMC, JTParent, FoundMissing, SquidDweller, YungJoke, Syncro, QuestFinder',
+        members: ['Dark', 'Block', 'Smilee', 'Pudding', 'HillbillyDeluex', 'Gamrpanda', 'RiiskyPlaysMC', 'JTParent', 'FoundMissing', 'SquidDweller', 'YungJoke', 'Syncro', 'QuestFinder'],
         pics: genSeasonPics(6, 7, 'avif'), // season 6 | 7 pics in gallery
     },
     {
@@ -352,7 +360,7 @@ export const prevSeasonsList = [
         date: '(Jan 2025 - May 2025)',
         version: '?',
         desc: '?',
-        members: '?',
+        members: ['?'],
         pics: genSeasonPics('cobblemon_1', 29, 'png'), // cobblemon season 1 | 29 pics in gallery//siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
     {
@@ -361,7 +369,7 @@ export const prevSeasonsList = [
         date: '(Nov 2025 - Dec 2025)',
         version: '?',
         desc: '?',
-        members: '?',
+        members: ['?'],
         pics: genSeasonPics('cobblemon_2', 6, 'png'), //pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
 ]
