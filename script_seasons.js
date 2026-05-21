@@ -61,6 +61,15 @@ prevSeasonsList.forEach(season => {
 
 function openSeason(name) {
 
+
+  // enable the faded background
+  const bcg = document.getElementById(siteVariables.background_fader);
+
+
+  bcg.style.display = 'block';
+  bcg.classList.add('fade_in_1s');
+
+
   const clickedSeason = name;
 
   // set the outside wrapper as a constant
@@ -79,6 +88,7 @@ function openSeason(name) {
   function closeSeason() {
     wrapperOut.classList.remove(addClass);
     wrapperOut.style.display = 'none';
+    bcg.style.display = 'none';
 
     document.removeEventListener('click', outsideClickListener);
   }
@@ -113,7 +123,7 @@ function openSeason(name) {
       // clear the wrapper 
       wrapperIn.innerHTML = '';
 
-      const classes = 'season_description_item';
+      const classes = 'season_description_item green_gradient_bcg';
       const pretextClasses = 'yellow season_pretext';
 
       // the title is the seasons name
@@ -138,12 +148,12 @@ function openSeason(name) {
 
       // members title
       const memberTitle = document.createElement('p');
-            memberTitle.classList = 'members_title';
+            memberTitle.classList = 'members_title green_gradient_bcg';
             memberTitle.innerHTML = `<span class="${pretextClasses}">Season Members</span>`;
 
       // seasons memberlist
       const memberList = document.createElement('ul');
-            memberList.className = '';
+            memberList.className = 'gray_gradient_bcg';
 
 
       // loop through each member and add them to the list of members

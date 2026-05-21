@@ -33,6 +33,8 @@ export const siteVariables = {
     // amount of time per refresh on the background
     background_refresh: 10000,
 
+    background_fader: 'page_fader_div',
+
     // all minecraft server details
     minecraft_server: {
 

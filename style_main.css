@@ -55,6 +55,18 @@ button {
     opacity: 0;
   }
 
+  .page_fader {
+    background: rgba(0, 0, 0, 0.6);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 400;
+
+    overflow: hidden;
+  }
+
 /*** END BACKGROUND ELEMENTS ***/
 
 
@@ -428,7 +440,7 @@ button {
     border: 1px solid black;
 
     margin: 0;
-    padding: 50px 1rem 1rem 1rem;
+    padding: 50px 1rem 2rem 1rem;
 
     overflow-y: auto;
     overflow-x: hidden;
@@ -440,15 +452,21 @@ button {
   #season_expanded_wrapper_out p {
     font-size: 1.5rem;
 
+    color: #faf9eb;
+
     margin: 0;
-    padding: 0;
+    padding: 1rem;
+
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+                inset 0 0 0 1px rgba(0, 0, 0, 1);
   }
 
   #season_expanded_wrapper_out .members_title {
-    width: 100%;
     text-align: center;
 
     padding: 1rem;
+
+    margin: 2rem 0 0 0;
   }
 
   /*** season detail description headers ***/
@@ -471,8 +489,15 @@ button {
     gap: 2rem;
     line-height: 1rem;
 
+    box-sizing: border-box;
+
     padding: 1rem;
-    margin: 1rem 0 0 0;
+    margin: 0;
+
+    box-shadow:   inset 0 0 1px rgba(255,255,255,0.15),
+                  inset 0 0 12px rgba(0,0,0,0.35),
+                  inset 0 0 24px rgba(0,0,0,0.2),
+                  0 0 5px rgba(0,0,0,1);
   }
 
   /*** season detail players list player wrappers ***/
@@ -513,14 +538,14 @@ button {
   }
 
   .img_viewer {
-    width: 80%;
-    max-width: 720px;
+    width: 100%;
+    max-width: 960px;
     overflow: hidden;
     position: relative;
 
     box-sizing: border-box;
 
-    margin: 1rem auto;
+    margin: 48px auto 0;
 
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
             0 1px 0 6px #f5d43e,
@@ -533,13 +558,14 @@ button {
     transition: transform 0.4s ease;
 
     width: auto;
+    aspect-ratio: 16 / 9;
 
     padding: 0;
     margin: 0;
   }
   .slide {
     min-width: 100%;
-    object-fit: contain;
+    object-fit: fill;
   }
   .season_pictures_Btn {
     position: absolute;
@@ -736,6 +762,12 @@ footer p {
   .green_gradient_bcg {
     background: linear-gradient(to bottom, rgba(80, 127, 134, 1), rgba(51, 85, 73, 1)); 
   }
+  .gray_gradient_bcg {
+    background: linear-gradient(to bottom, #faf9eb, #d9d8cd); 
+  }
+  .yellow_gradient_bcg {
+    background: linear-gradient(to bottom, #f4d753, #f5d43e);
+  }
   .hidden {
     display: none;
   }
@@ -760,7 +792,6 @@ footer p {
   .fade_in_1s {
     animation: fadeIn 1s forwards;
   }
-
 
   /*** POSITIONING ***/
     .centered {
