@@ -206,6 +206,23 @@
       padding: 1rem;
     }
 
+    /*** normal text content inside the wrapper ***/
+    #season_expanded_wrapper_out p {
+      font-size: 1.5rem;
+    }
+
+    #season_expanded_wrapper_out .members_title {
+
+      font-size: 1.5rem;
+
+    }
+
+
+    /*** season detail players list player wrappers ***/
+    #season_expanded_wrapper_in ul li {
+      font-size: 1rem;
+    }
+
   /*** END SERVER SEASON STUFF ***/
 
   /************************************

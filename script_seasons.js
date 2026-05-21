@@ -93,12 +93,16 @@ function openSeason(name) {
     document.removeEventListener('click', outsideClickListener);
   }
 
+
+/*
   // CLOSE BUTTON
   const closeBtn = document.getElementById(
     siteVariables.seasons_page.close_seasons_btn
   );
 
   closeBtn.addEventListener('click', closeSeason, { once: true });
+
+*/
 
   // OUTSIDE CLICK
   function outsideClickListener(event) {
@@ -160,7 +164,7 @@ function openSeason(name) {
       season.members.forEach((member) => {
 
         const memberElement = document.createElement('li');
-        memberElement.className = '';
+        memberElement.className = 'cinzel-bold';
         memberElement.textContent = member;
 
         memberList.appendChild(memberElement);

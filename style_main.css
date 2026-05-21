@@ -337,6 +337,33 @@ button {
 
 /*** END MAIN ELEMENTS ***/
 
+
+/************************************
+***                               ***
+***   *** SERVER ABOUT STUFF ***  ***
+***                               ***
+************************************/
+
+#about_socials {
+  margin: 48px 0 0 0;
+
+  padding: 1rem 0;
+}
+
+#about_socials img {
+  border: none;
+}
+
+.about_subtitle {
+  text-align: left;
+}
+.about_text {
+  padding-left: 1rem;
+}
+
+/*** END SERVER ABOUT STUFF ***/
+
+
 /************************************
 ***                               ***
 *** *** SERVER SEASONS STUFF ***  ***
@@ -425,12 +452,6 @@ button {
     border-radius: inherit;
   }
 
-  #season_expanded_wrapper_out .scroll_box::-webkit-scrollbar {
-    width: 40px;
-
-    scrollbar-width: 40px;
-  }
-
   /*** inner wrapper for clicked season ***/
   #season_expanded_wrapper_in {
     height: auto;
@@ -448,9 +469,27 @@ button {
     border-radius: inherit;
   }
 
+  /* Chrome, Edge, Safari */
+  #season_expanded_wrapper_in::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  /* draggable scrollbar */
+  #season_expanded_wrapper_in::-webkit-scrollbar-thumb {
+    border-radius: 0 4px 4px 0;
+
+    background: #666;
+  }
+
+  /* scrollbar track */
+  #season_expanded_wrapper_in::-webkit-scrollbar-track {
+    background: #222;
+  }
+
+
   /*** normal text content inside the wrapper ***/
   #season_expanded_wrapper_out p {
-    font-size: 1.5rem;
+    font-size: 2rem;
 
     color: #faf9eb;
 
@@ -466,17 +505,9 @@ button {
 
     padding: 1rem;
 
+    font-size: 2rem;
+
     margin: 2rem 0 0 0;
-  }
-
-  /*** season detail description headers ***/
-  .season_pretext {
-    
-  }
-
-  /*** season detail descriptions ***/
-  .season_description_item {
-   
   }
 
   /*** season deetail player list ***/
@@ -503,16 +534,24 @@ button {
   /*** season detail players list player wrappers ***/
   #season_expanded_wrapper_in ul li {
     padding: 4px;
+
+    font-size: 1.25rem;
   }
 
   /*** season details button closer ***/
   #close_seasons {
-    width: 32px;
+    width: auto;
+    height: auto;
 
     position: fixed;
 
-    top: 8px;
-    right: 1rem;
+    padding: 0 0.5rem;
+    margin: 0;
+
+    top: 1rem;
+    right: 50%;
+
+    transform: translateX(50%);
   }
 
   /*** season titles wrappers ***/
@@ -571,6 +610,8 @@ button {
     position: absolute;
 
     font-size: 1.5rem;
+
+    padding: 0.5rem;
 
     top: 50%;
     transform: translateY(-50%);
@@ -797,6 +838,10 @@ footer p {
     .centered {
       justify-content: center;
       align-items: center;
+    }
+    .centered_spaceEvenly {
+      justify-content: space-evenly;
+      align-items: center;  
     }
     .left_centered {
       justify-content: center;
