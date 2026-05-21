@@ -28,13 +28,20 @@ CORS(app)  # allow cross-origin requests
 def health():
     return {"status": "online"}
 
+@app.route("/", methods=["GET", "POST"])
+def home():
+    return jsonify({
+        "message": "API running"
+    })
+
 
 @app.route("/createAccount", methods=['GET', 'POST'])
 def createAccount():
 
     data = request.json
 
-    username = data.get("username")
+    username = data.get("minecraft_username")
+    email = data.get("email")
     password = data.get("password")
 
     if not username or not password:
@@ -71,4 +78,4 @@ def mcprofile(username):
     return jsonify(response.json())
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
