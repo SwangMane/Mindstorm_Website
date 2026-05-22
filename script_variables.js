@@ -42,7 +42,7 @@ export const siteVariables = {
         current_players: [],
 
         // IP to the minecraft server
-        ip_address: '136.33.25.35', // place server ip inside '' here
+        ip_address: '136.33.21.32', // place server ip inside '' here
 
         // port number of the minecraft server
         port_number: 25565, // place server port (just numbers) here
@@ -371,7 +371,9 @@ export const prevSeasonsList = [
         date: '(Nov 2025 - Dec 2025)',
         version: '?',
         desc: '?',
-        members: ['?'],
+        members: [  "Outlawe", "LordCozzworth","HillbillyDeluex","Syrmaa_","XVI_Legion","KitsuneNoKiubbi","Hunkanator","Blockk","CraftyMessiah","lemoffline","Plu6625","PinkRandie",
+                    "CleverFoal11555","GreeeeenThunder","Wash_Killson","Sandor_RAI","_Kitri","Ketshupflasche","_Yes_Sir","SuitFellow","Raccoonaphobic","ChiroRoy","Kyrolol","DARKminerKS","Lexi5536","theJman12","IPheI",
+                    "TheShadowRang658","Strontium38","Sam_16_","CyberrGoblin","K_FBI" ],
         pics: genSeasonPics('cobblemon_2', 6, 'png'), //pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
 ]
@@ -386,4 +388,3 @@ function genSeasonPics(seasonNumber, imgCount, imgType) { // use the season numb
         `images/season_${seasonNumber}/season${seasonNumber}_${i + 1}.${imgType}`
     );
 }
-

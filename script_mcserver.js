@@ -78,7 +78,7 @@ export function fillMinecraftServerStats(page) {
                     serverStatus = `<p class="server_status_item">${status.online ? siteVariables.minecraft_server.msg_online : siteVariables.minecraft_server.msg_offine}</p>`;
 
                     // display the player count
-                    playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}</p>` + (status.players.now + '/' + status.players.max);
+                    playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}` + ' ' + (status.players.now + '/' + status.players.max) + `</p>`;
                 
                     if (status.players.sample && status.players.sample.length > 0) {
                         // if there are people actually online
