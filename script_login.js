@@ -307,6 +307,8 @@ async function loginAccount() {
 //////////////////////////////
 async function createAccount() {
 
+  formIds.createBtn.disabled = true;
+
   console.log("creating account");
 
   let minecraft_username;
@@ -394,20 +396,25 @@ async function createAccount() {
 
     console.log("FULL ERROR: ", error);
 
-    if (error.message.includes("Player not found")) {
+    // Better than string matching:
+    switch (error.message) {
+      case "This email already exists":
+        await popup_notif('email_exists');
+        formIds.createBtn.disabled = false;
+        break;
+      case "Player not found":
+        console.log("Player not found");
 
-      console.log("Player not found");
+        minecraft_username_box.setCustomValidity(
+          "Player not found"
+        );
 
-      minecraft_username_box.setCustomValidity(
-        "Player not found"
-      );
+        minecraft_username_box.reportValidity();
 
-      minecraft_username_box.reportValidity();
-    }
-    else {
+        break;
 
-      console.error(error.message);
-
+      default:
+        console.error(error.message);
     }
   }
 }
@@ -449,6 +456,15 @@ async function popup_notif(type, creationData, playerData) {
 
       showObj(popupWrapper, popupContents, message);
 
+    }
+
+    if (popup === 'email_exists') {
+
+      const message = `<p>An account with the given email or Minecraft account already exists!</p>
+                      <br>
+                      <p>If you believe this is a mistake, please contact staff.</p>`;
+
+      showObj(popupWrapper, popupContents, message);
     }
 
     if (popup === 'password_length') {
