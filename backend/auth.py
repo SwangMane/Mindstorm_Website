@@ -3,6 +3,7 @@ from flask_cors import cross_origin
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
+from flask_login import login_manager, login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -23,8 +24,10 @@ def create_account():
     password = data.get("password")
 
     user = User.query.filter_by(email=email).first()
+    usernameExists = User.query.filter_by(user_name=username).first()
 
-    if user:
+
+    if user or usernameExists:
         return jsonify({"error": "This email already exists"}), 400
 
     elif not username:
@@ -82,6 +85,12 @@ def login():
                 "success": False,
                 "message": "Email does not exist"
             }), 404
+        
+        if not user.password:
+          return jsonify({
+              "success": False,
+              "message": "Password not set"
+          }), 500
 
         if not check_password_hash(user.password, password):
           return jsonify({
@@ -90,10 +99,14 @@ def login():
               "message": "Invalid email or password"
           }), 401
 
-        return jsonify({
-            "success": True,
-            "message": "Login successful"
-        }), 200
+        elif check_password_hash(user.password, password):
+
+          login_user(user, remember=True)
+          
+          return jsonify({
+              "success": True,
+              "message": "Login successful"
+          }), 200
 
     except Exception as e:
         return jsonify({
@@ -106,5 +119,10 @@ def login():
 # Logout account route
 # -------------------------
 @auth.route("/logout", methods=["POST"])
+@login_required
 def logout():
+    
+    logout_user()
+
+
     return jsonify({"message": "Logout not implemented"}), 501

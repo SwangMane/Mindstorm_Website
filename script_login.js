@@ -271,9 +271,16 @@ async function loginAccount() {
     }
 
     if (!response.ok) {
-      const err = new Error(data?.message || "Login failed");
+
+      console.log("FULL SERVER RESPONSE:", data);
+
+      const err = new Error(
+        data?.error || data?.message || "Login failed"
+      );
+
       err.code = data?.code;
       err.status = response.status;
+
       throw err;
     }
 
@@ -283,7 +290,7 @@ async function loginAccount() {
     // window.location.href = "/dashboard";
 
   } catch (error) {
-    console.error("Login error:", error.message);
+    console.error("Full Login error:", error);
 
     // Better than string matching:
     switch (error.message) {
