@@ -85,16 +85,16 @@
            <h2 class="no_space fira-sans-bold">Welcome Back</h2>
 
             <!-- EMAIL INPUT -->
-            <input type="email" placeholder="Email" class="fira-sans-regular" required />
+            <input type="email" placeholder="Email" class="fira-sans-regular" id="account_email" required />
 
             <!-- PASSWORD INPUT -->
             <div class="password_wrap">
-              <input id="" type="password" placeholder="Password" class="fira-sans-regular passwordInput" required />
+              <input type="password" placeholder="Password" class="fira-sans-regular passwordInput" id="account_password" required />
               <button type="button" class="togglePassword">👁</button>
             </div>
 
             <!-- LOGIN BUTTON -->
-            <button class="submit_btn" type="submit" id="login_btn" disabled>Login</button>
+            <button class="submit_btn" type="submit" id="login_btn" data-action="login" disabled>Login</button>
 
             <p class="no_space"><a href="#" class="forgot_password" data-action="forgot">Forgot your password?</a></p>
 
@@ -117,7 +117,7 @@
             <!-- LOGIN BUTTON -->
             <button class="submit_btn" type="submit" id="reset_password_btn" disabled>Reset password</button>
 
-            <p class="no_space"><a href="#" class="login_link_account" data-action="login">Login</a></p>
+            <p class="no_space"><a href="#" class="login_link_account" data-action="login_page">Login</a></p>
 
             <P class="no_space"><a href="#" class="create_account" data-action="create">Create an account</a></P>
 
@@ -154,11 +154,20 @@
 
             <p class="no_space"><a href="#" class="forgot_password" data-action="forgot">Forgot your password?</a></p>
 
-            <p class="no_space"><a href="#" class="login_link_account" data-action="login">Already a member?</a></p>
+            <p class="no_space"><a href="#" class="login_link_account" data-action="login_page">Already a member?</a></p>
 
         </form>
 
+      </div>
 
+
+      <!-- WRAPPER FOR THE LOGIN POPUP -->
+      <div class="wrapper_outer centered column max_720 fira-sans-regular hidden invisible" id="login_popup_wrapper">
+
+        <!-- button to close the wrapper -->
+        <button class="button flexed centered" type="close" id="close_login_popup_btn">X</button>
+
+        <div id="login_popup"></div>
 
       </div>
 

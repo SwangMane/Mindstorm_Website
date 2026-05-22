@@ -738,6 +738,29 @@ button {
     height: 100%;
   }
 
+  /*** wrapper for the login/create/reset page to notify the user ***/
+  #login_popup_wrapper {
+    position: absolute;
+
+    z-index: 500;
+
+    width: auto;
+
+    padding-top: 50px;
+
+    animation: fadeIn 0.5s forwards;
+  }
+
+  #login_popup_wrapper button {
+    position: absolute;
+
+    right: 1rem;
+    top: 1rem;
+
+    width: 32px;
+    aspect-ratio: 1 / 1;
+  }
+
 /*** END LOGIN / REGISTER STUFF ***/ 
 
 /************************************

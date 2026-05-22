@@ -94,6 +94,14 @@ export const siteVariables = {
         // mojang API username request
         mojangAPI_usernameCheck: 'https://api.minecraftservices.com/minecraft/profile/lookup/',
 
+        // id for the login popup wrapper
+        popup_wrapper: 'login_popup_wrapper',
+
+        popup_contents: 'login_popup',
+
+        // id for the login popup wrapper close btn
+        popup_close_btn: 'close_login_popup_btn',
+
     },
 
     // server seasons items

@@ -125,19 +125,23 @@ window.addEventListener('DOMContentLoaded', () => {
       const action = actionEl.dataset.action;
 
       if (action === 'forgot') {
-          forgotPassword();
+        forgotPassword();
       }
 
-      else if (action === 'login') {
-          loginPage();
+      else if (action === 'login_page') {
+        loginPage();
       }
 
       else if (action === 'create') {
-          createPage();
+        createPage();
       }
 
       else if (action === 'createBtn') {
-          createAccount();
+        createAccount();
+      }
+
+      else if (action === 'login') {
+        loginAccount();
       }
   });
 
@@ -193,7 +197,7 @@ function validateForm(formSelector, button) {
 
 //////////////////////////////
 ///                        ///
-///  FORGOT PASSWORD FUNC  ///
+///  FORGOT PASSWORD PAGE  ///
 ///                        ///
 //////////////////////////////
 function forgotPassword() {
@@ -202,12 +206,13 @@ function forgotPassword() {
 
 //////////////////////////////
 ///                        ///
-///       LOGIN FUNC       ///
+///       LOGIN PAGE       ///
 ///                        ///
 //////////////////////////////
 function loginPage() {
   window.location.hash = '#login';
 }
+
 
 //////////////////////////////
 ///                        ///
@@ -218,21 +223,82 @@ function createPage() {
   window.location.hash = '#create';
 }
 
-console.log(
-  document.querySelector('#input_minecraft_username')
-);
 
-console.log(
-  document.querySelector('#input_create_email')
-);
+//////////////////////////////
+///                        ///
+///   LOGIN ACCOUNT FUNC   ///
+///                        ///
+//////////////////////////////
+async function loginAccount() {
+  console.log("logging into account");
 
-console.log(
-  document.querySelector('#input_create_password')
-);
+  try {
+    const emailInput = document.querySelector('#account_email');
+    const passwordInput = document.querySelector('#account_password');
 
-console.log(
-  document.querySelector('#input_create_passwordConfirm')
-);
+    const email = emailInput.value.trim();
+    const password = passwordInput.value; // don't trim passwords
+
+    if (!email) {
+      await popup_notif('email_empty');
+      throw new Error("Email is empty");
+    }
+
+    if (!password) {
+      await popup_notif('password_empty');
+      throw new Error("Password is empty");
+    }
+
+    if (password.length < 10) {
+      await popup_notif('password_length');
+      throw new Error("Password must be 10 or more characters");
+    }
+
+    const response = await fetch(
+      `${siteVariables.data_server.ip_address}/login`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      }
+    );
+
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      throw new Error("Invalid server response");
+    }
+
+    if (!response.ok) {
+      const err = new Error(data?.message || "Login failed");
+      err.code = data?.code;
+      err.status = response.status;
+      throw err;
+    }
+
+    console.log("Account access successful");
+
+    // Example UX action:
+    // window.location.href = "/dashboard";
+
+  } catch (error) {
+    console.error("Login error:", error.message);
+
+    // Better than string matching:
+    switch (error.message) {
+      case "Password is incorrect":
+        popup_notif("wrong_password");
+        break;
+      case "Email is empty":
+        popup_notif("email_empty");
+        break;
+      default:
+        popup_notif("login_failed");
+        break;
+    }
+  }
+}
 
 //////////////////////////////
 ///                        ///
@@ -243,32 +309,40 @@ async function createAccount() {
 
   console.log("creating account");
 
+  let minecraft_username;
+
+  const email_box = document.querySelector('#input_create_email');
+  const password_box = document.querySelector('#input_create_password');
+  const confirm_password_box = document.querySelector('#input_create_passwordConfirm');
+  const minecraft_username_box = document.querySelector('#input_minecraft_username');
+
   try {
 
     // gather form information
 
-    const minecraft_username = document.querySelector('#input_minecraft_username').value.trim();
+    minecraft_username = document.querySelector('#input_minecraft_username').value.trim();
 
     const email = document.querySelector('#input_create_email').value.trim();
 
-    const password = document.querySelector('#input_create_password').value.trim();
+    const password = document.querySelector('#input_create_password').value;
 
-    const confirm_password = document.querySelector('#input_create_passwordConfirm').value.trim();
+    const confirm_password = document.querySelector('#input_create_passwordConfirm').value;
 
 
     if (!minecraft_username) {
       throw new Error("Minecraft username is empty");
     }
-
-    if (!email) {
+    else if (!email) {
       throw new Error("Email is empty");
     }
-
-    if (!password) {
+    else if (!password) {
       throw new Error("Password is empty");
     }
-
-    if (password !== confirm_password) {
+    else if (password.length < 10) {
+      const alertMsg = await popup_notif('password_length');
+      throw new Error("Password must be 10 or more characters")
+    }
+    else if (password !== confirm_password) {
       throw new Error("Passwords do not match");
     }
 
@@ -308,11 +382,121 @@ async function createAccount() {
       throw new Error(createData.error || 'Failed to create account');
     }
 
-    console.log("Account created:", createData);
+    console.log("Account created:", createData, data);
+
+    const openPopup = await popup_notif('account_created', createData, data);
+
+    loginPage();
 
   }
 
   catch (error) {
-    console.error(error.message);
+
+    console.log("FULL ERROR: ", error);
+
+    if (error.message.includes("Player not found")) {
+
+      console.log("Player not found");
+
+      minecraft_username_box.setCustomValidity(
+        "Player not found"
+      );
+
+      minecraft_username_box.reportValidity();
+    }
+    else {
+
+      console.error(error.message);
+
+    }
   }
+}
+
+//////////////////////////////
+///                        ///
+/// ACCOUNT / LOGIN POPUP  ///
+///                        ///
+//////////////////////////////
+
+async function popup_notif(type, creationData, playerData) {
+  return new Promise((resolve) => {
+    let popup = type;
+    let createData;
+    let data;
+    let closeBtn;
+    let playerName;
+
+    if (creationData) {
+      createData = creationData;
+    }
+    if (playerData) {
+      data = playerData;
+
+      // store the players name
+      playerName = data.name;
+    }
+
+    // grab the popup wrapper 
+    const popupWrapper = document.getElementById(siteVariables.login_page.popup_wrapper);
+    const popupContents = document.getElementById(siteVariables.login_page.popup_contents);
+
+    // if the users account is successfully created
+    if (popup === 'account_created') {
+
+      const message = `<p>Account for Minecraft user ${playerName} has been created successfully!</p>
+                      <br>
+                      <p>Please return to the login page to access your account`;
+
+      showObj(popupWrapper, popupContents, message);
+
+    }
+
+    if (popup === 'password_length') {
+
+      const password_box = document.querySelector('#input_create_password');
+
+      password_box.setCustomValidity(
+        "Password must be atleast 10 characters"
+      );
+
+      password_box.reportValidity();
+
+    }
+
+    // to show the popup wrapper
+    function showObj(popup, textArea, text) {
+      let curr = popup;
+      let contents = textArea;
+      let message = text;
+
+      curr.style.display = 'flex';
+
+      if (contents) {
+        contents.innerHTML = '';
+
+        contents.innerHTML += message;
+      }
+      else {
+        curr.innerHTML += message;
+      }
+
+      closeBtn = document.getElementById(siteVariables.login_page.popup_close_btn);
+
+      closeBtn.addEventListener('click', () => {
+
+        hideObj(curr);
+
+      }, { once: true })
+    }
+
+    // to hide the popup wrapper
+    function hideObj(name) {
+      let curr = name;
+
+      curr.style.display = 'none';
+
+      resolve();
+    
+    }
+  })
 }
