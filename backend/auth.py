@@ -8,25 +8,34 @@ from flask_login import login_manager, login_user, login_required, logout_user, 
 auth = Blueprint('auth', __name__)
 
 # -------------------------
+#
 # Create account route
+#
 # -------------------------
 @auth.route("/createAccount", methods=["POST"])
 @cross_origin()
 def create_account():
 
+    # grab the posted data from the fetch
     data = request.get_json()
 
+    # if the data provided is bad
     if not data:
         return jsonify({"error": "No JSON body provided"}), 400
+    
 
+    # Minecraft username
     username = data.get("minecraft_username")
+    # users email
     email = data.get("email")
+    # users password
     password = data.get("password")
 
+    #check if the username or email already exists in the database
     user = User.query.filter_by(email=email).first()
     usernameExists = User.query.filter_by(user_name=username).first()
 
-
+    # error cehcks
     if user or usernameExists:
         return jsonify({"error": "This email already exists"}), 400
 
@@ -39,6 +48,7 @@ def create_account():
     elif not password:
         return jsonify({"error": "Missing password"}), 400
 
+    # if all errors passed, create the users account
     else:
 
       new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username)
@@ -52,25 +62,31 @@ def create_account():
           "message": "Account created"
       })
 
+
 # -------------------------
+#
 # Login account route
+#
 # -------------------------
 @auth.route("/login", methods=["POST"])
-@cross_origin()
 def login():
 
+    #grab the info from the fetch
     try:
         data = request.get_json()
 
+        #if data return is null
         if not data:
             return jsonify({
                 "success": False,
                 "message": "No JSON provided"
             }), 400
 
+        # users provided email and password
         email = data.get('email')
         password = data.get('password')
 
+        # if the email or password is missing in the fetch
         if not email or not password:
           return jsonify({
               "success": False,
@@ -78,20 +94,24 @@ def login():
               "message": "Missing credentials"
           }), 400
 
+        #check the database for the first instance of provided email
         user = User.query.filter_by(email=email).first()
 
+        # if the email doesnt exist
         if not user:
             return jsonify({
                 "success": False,
                 "message": "Email does not exist"
             }), 404
         
+        # if the user is somehow missing a password
         if not user.password:
           return jsonify({
               "success": False,
               "message": "Password not set"
           }), 500
 
+        # check provided password against database password | fail
         if not check_password_hash(user.password, password):
           return jsonify({
               "success": False,
@@ -99,6 +119,7 @@ def login():
               "message": "Invalid email or password"
           }), 401
 
+        # if the users password is correct
         elif check_password_hash(user.password, password):
 
           login_user(user, remember=True)
@@ -106,8 +127,10 @@ def login():
           return jsonify({
               "success": True,
               "message": "Login successful"
+
           }), 200
 
+    # exception error catcher
     except Exception as e:
         return jsonify({
             "success": False,
@@ -115,8 +138,11 @@ def login():
             "error": str(e)
         }), 500
 
+
 # -------------------------
+#
 # Logout account route
+#
 # -------------------------
 @auth.route("/logout", methods=["POST"])
 @login_required

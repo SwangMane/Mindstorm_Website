@@ -11,8 +11,11 @@ views = Blueprint("views", __name__)
 def homeRun():
     return jsonify({"message": "API running"})
 
+
 # -------------------------
-# Health Check
+#
+# Health Check | initial check to see if server is online
+#
 # -------------------------
 @views.route("/health", methods=["GET"])
 def health():
@@ -20,15 +23,39 @@ def health():
 
 
 # -------------------------
+#
 # Home Route
+#
 # -------------------------
-@views.route("/", methods=["GET"])
+@views.route("/", methods=["GET"]) 
 def home():
     return jsonify({"message": "API running"})
 
 
 # -------------------------
+#
+# login check route
+#
+# -------------------------
+@views.route("/userstatus", methods=["GET"])
+def userstatus():
+    # if the current user is logged in | cookies
+    if current_user.is_authenticated:
+        return jsonify({
+            "logged_in": True,
+            "user": current_user.user_name
+        }), 200
+
+    # if they are not logged in
+    return jsonify({
+        "logged_in": False
+    }), 200
+
+
+# -------------------------
+#
 # Minecraft Profile Lookup
+#
 # -------------------------
 @views.route("/mcprofile/<username>", methods=["GET"])
 def mcprofile(username):

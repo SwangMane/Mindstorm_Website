@@ -7,15 +7,18 @@
 // ALL IMPORTS 
 
 import { siteIcons, siteVariables, navBarItems } from './script_variables.js';
+import { getUserStatus } from './script_login.js';
 
 //-----------------------------------------------------------------//
 
 // function to fill the navbar 
 // detects what page its currently on to add the 'current page' hightlight
-export function fillNavbar(page) {
+export async function fillNavbar(page) {
 
   // log users current viewing page
   console.log('user currently viewing ' + page + ' page');
+
+  const userData = await getUserStatus();
 
   // grab the nav element on the current page
   const nav = document.querySelector('nav');
@@ -53,8 +56,18 @@ export function fillNavbar(page) {
     .sort(([, a], [, b]) => a.priority - b.priority)
     .forEach(([key, item]) => {
 
-      // set the contents of html
-      html += item.contents(item, key === page);
+      let processedItem = item;
+
+      if (key === "login") {
+        processedItem = {
+          ...item,
+          title: userData.logged_in
+            ? userData.user
+            : "Login"
+        };
+      }
+
+      html += processedItem.contents(processedItem, key === page);
 
     });
 

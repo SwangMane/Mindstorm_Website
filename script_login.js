@@ -20,6 +20,10 @@ import { siteVariables } from './script_variables.js';
 //////////////////////////////
 function showFormFromHash() {
 
+    const currPage = document.body.id;
+
+    if (currPage !== 'login') return;
+
     const hash = window.location.hash || '#login';
 
     const forms = {
@@ -75,6 +79,21 @@ function clearForms() {
             el.selectedIndex = 0;
         });
     });
+}
+
+
+export async function getUserStatus() {
+
+    const response = await fetch(
+        `${siteVariables.data_server.ip_address + siteVariables.data_server.user_status}`,
+        {
+            credentials: "include"
+        }
+    );
+
+    const data = await response.json();
+
+    return data;
 }
 
 
@@ -258,6 +277,7 @@ async function loginAccount() {
       `${siteVariables.data_server.ip_address}/login`,
       {
         method: 'POST',
+        credentials: "include",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       }

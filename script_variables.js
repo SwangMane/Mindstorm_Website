@@ -7,6 +7,7 @@
 // ALL IMPORTS 
 
 import { generateNavItem } from './script_createNav.js';
+import { getUserStatus } from './script_login.js';
 
 //-----------------------------------------------------------------//
 
@@ -78,13 +79,16 @@ export const siteVariables = {
     data_server: {
 
         // IP to the data server
-        ip_address: 'http://127.0.0.1:5000',
+        ip_address: 'http://localhost:5000',
 
         // route to check status of server
         health: '/health',
 
         // route to check Minecraft username
-        Minecraft_username: '/mcprofile/'
+        Minecraft_username: '/mcprofile/',
+
+        // route to check user login status
+        user_status: '/userstatus',
 
     },
 
@@ -286,8 +290,15 @@ export const navBarItems = {
 
         // the login / create account page
         login: {
+            userData: await getUserStatus(),
             // text displayed in nav item
-            title: "Login",
+            title: async () => {
+                const userData = await getUserStatus();
+
+                return userData.logged_in
+                    ? userData.user
+                    : "Login";
+            },
             // the link on the nav item
             link: "login.html",
             // priority in the nav list

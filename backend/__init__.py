@@ -4,40 +4,48 @@ from flask_cors import CORS
 from os import path
 from flask_login import LoginManager
 
+# initialize the database system
 db = SQLAlchemy()
 
 DB_NAME = "database.db"
 
-
+# create the flask app
 def create_app():
     app = Flask(__name__)
 
-    # CONFIG
-    app.config['SECRET_KEY'] = 'asdasda asdasds'
+    # all configs for app
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_NAME}"
 
-    # INIT EXTENSIONS
+    app.config['SECRET_KEY'] = 'asdasda asdasds'
+
+    app.config['SESSION_COOKIE_SAMESITE'] = "None"
+    app.config['SESSION_COOKIE_SECURE'] = False
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
+
+    # init extenstions
     db.init_app(app)
 
 
-    # CORS (IMPORTANT: only ONCE, HERE)
-    CORS(app, resources={
-        r"/*": {
-            "origins": "http://localhost:3000"
-        }
-    })
+    # cors app
+    CORS(
+        app,
+        supports_credentials=True,
+        origins=["http://localhost:3000"],
+        allow_headers=["Content-Type"],
+        methods=["GET", "POST", "OPTIONS"]
+    )
 
-    # BLUEPRINTS
+    # blueprints
     from .views import views
     from .auth import auth
 
     app.register_blueprint(views)
     app.register_blueprint(auth)
 
-    # MODELS
+    # all models | database, etc
     from .models import User
 
-    # DB SETUP
+    # how to setup the database
     create_database(app)
 
     login_manager = LoginManager()
@@ -50,7 +58,7 @@ def create_app():
 
     return app
 
-
+# function to create a database if one is not created
 def create_database(app):
     if not path.exists(DB_NAME):
         with app.app_context():
