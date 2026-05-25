@@ -3,9 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from os import path
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
 # initialize the database system
 db = SQLAlchemy()
+migrate = Migrate()
 
 DB_NAME = "database.db"
 

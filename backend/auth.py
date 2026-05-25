@@ -4,6 +4,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_manager, login_user, login_required, logout_user, current_user
+from datetime import datetime
 
 auth = Blueprint('auth', __name__)
 
@@ -50,8 +51,11 @@ def create_account():
 
     # if all errors passed, create the users account
     else:
+      
+      join_date = datetime.now()
+      formatted = join_date.strftime("%Y-%m-%d %H:%M:%S")
 
-      new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username)
+      new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username, user_joinDate=formatted)
 
       db.session.add(new_user)
 
