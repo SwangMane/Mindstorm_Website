@@ -39,6 +39,9 @@ export const siteVariables = {
     // all minecraft server details
     minecraft_server: {
 
+        // current player list id 
+        current_players_list: 'current_player_list',
+
         // current player list | gets filled out with minecraft API
         current_players: [],
 
@@ -72,7 +75,16 @@ export const siteVariables = {
         // the player count message
         msg_playerCount: 'Player count: ',
 
+        // special player rules for the players online page
+        special_players: {
 
+            // the owners section
+            owners: [ 'hillbillydeluex', 'Blockk', 'Syrmaa'],
+
+            // all moderators
+            moderators: ['Jmann'],
+
+        }
     },
 
     // all backend server details
@@ -108,6 +120,15 @@ export const siteVariables = {
 
         // id for the login popup wrapper close btn
         popup_close_btn: 'close_login_popup_btn',
+
+    },
+
+    // account page items 
+    account_page: {
+
+        logout_btn: 'account_page_logout',
+
+        minecraft_username: 'account_page_username',
 
     },
 
@@ -289,119 +310,6 @@ export const navBarItems = {
         }
     }
 };
-/*
-export const navBarItems = {
-
-    // all individual site pages | priority number
-    sitePages: {
-        
-        // the index page | 1
-        index: {
-            // text displayed in nav item
-            title: "Home",
-            // the link on the nav item
-            link: "index.html",
-            // priority in the nav list
-            priority: 1,
-            // if the element is displayed or not
-            displayed: true,
-            // generate the contents of the nav link
-            contents: (item, isActive = false) => generateNavItem(item, isActive)
-        },
-
-        // the about page | 2
-        about: {
-            // text displayed in nav item
-            title: "Our story",
-            // the link on the nav item
-            link: "about.html",
-            // priority in the nav list
-            priority: 2,
-            // if the element is displayed or not
-            displayed: true,
-            // generate the contents of the nav link
-            contents: (item, isActive = false) => generateNavItem(item, isActive)
-        },
-
-        // the seasons page | 3
-        seasons: {
-            // text displayed in nav item
-            title: "All seasons",
-            // the link on the nav item
-            link: "seasons.html",
-            // priority in the nav list
-            priority: 3,
-            // if the element is displayed or not
-            displayed: true,
-            // generate the contents of the nav link
-            contents: (item, isActive = false) => generateNavItem(item, isActive)
-        },
-
-        // the seasons page | 3
-        games: {
-            // text displayed in nav item
-            title: "Minigames",
-            // the link on the nav item
-            link: "games.html",
-            // priority in the nav list
-            priority: 4,
-            // if the element is displayed or not
-            displayed: true,
-            // generate the contents of the nav link
-            contents: (item, isActive = false) => generateNavItem(item, isActive)
-        },
-
-        // the seasons page | 3
-        forum: {
-            // text displayed in nav item
-            title: "Forum",
-            // the link on the nav item
-            link: "forum.html",
-            // priority in the nav list
-            priority: 5,
-            // if the element is displayed or not
-            displayed: true,
-            // generate the contents of the nav link
-            contents: (item, isActive = false) => generateNavItem(item, isActive)
-        },
-
-
-        // NOT IN NAV
-
-        // the login / create account page
-        login: {
-            userData: await getUserStatus(),
-            // text displayed in nav item
-            title: async () => {
-                const userData = await getUserStatus();
-
-                return userData.logged_in
-                    ? userData.user
-                    : "Login";
-            },
-            // the link on the nav item
-            link: await getUserStatus(),
-            // text displayed in nav item
-                rel: async () => {
-                    const userData = await getUserStatus();
-
-                    return userData.logged_in
-                        ? "account.html"
-                        : "login.html";
-                },                                                                                                  //"login.html",
-            // priority in the nav list
-            priority: 6,
-            // if the element is displayed or not
-            displayed: true,
-            // classes to add the the <li> element
-            liClass: "login_link",
-            // generate the contents of the nav link
-            contents: (item, isActive = false) => generateNavItem(item, isActive)    
-        }
-
-    }
-}
-*/
 
 
 ///////////////////////////////////////////

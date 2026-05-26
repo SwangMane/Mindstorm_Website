@@ -52,6 +52,23 @@ def userstatus():
     }), 200
 
 
+#-------------------------
+#
+#   User information filler
+#
+#-------------------------
+@views.route("/userinfo", methods=["GET"])
+def userinfo():
+
+    if current_user.is_authenticated:
+
+        return jsonify({
+            "message": "success",
+        }), 200
+
+    return 
+
+
 # -------------------------
 #
 # Minecraft Profile Lookup

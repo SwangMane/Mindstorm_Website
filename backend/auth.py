@@ -153,6 +153,10 @@ def login():
 def logout():
     
     logout_user()
+    return jsonify({
+       "success": True,
+       "message": "User log out complete"
+    })
 
 
     return jsonify({"message": "Logout not implemented"}), 501

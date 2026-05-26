@@ -18,6 +18,7 @@ export async function fillNavbar(page) {
   // log users current viewing page
   console.log('user currently viewing ' + page + ' page');
 
+  // grab the users login status 
   const userData = await getUserStatus();
 
   // grab the nav element on the current page
@@ -58,21 +59,25 @@ export async function fillNavbar(page) {
 
       let processedItem = item;
 
+      html += processedItem.contents(processedItem, key === page);
+
+      navList.innerHTML = html;
+
+
       if (key === "login") {
-        processedItem = {
+        
+        const login_item = {
           ...item,
           title: userData.logged_in
             ? userData.user
             : "Login"
         };
+
+        html += login_item.contents(processedItem, key === page);
+
       }
 
-      html += processedItem.contents(processedItem, key === page);
-
     });
-
-    // sets the nav bar contents = to filtered contents
-    navList.innerHTML = html;
 
   }
   // if no navbar is found

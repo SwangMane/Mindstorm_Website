@@ -7,6 +7,7 @@
 // ALL IMPORTS 
 
 import { siteVariables } from './script_variables.js';
+import { fillAccountPage } from './script_accountPage.js';
 
 //-----------------------------------------------------------------//
 
@@ -310,7 +311,8 @@ async function loginAccount() {
     let data;
     try {
       data = await response.json();
-    } catch {
+    } 
+    catch {
       throw new Error("Invalid server response");
     }
 
@@ -328,10 +330,12 @@ async function loginAccount() {
       throw err;
     }
 
+    // redirect the user to their account page if successfull
+    window.location.href = "account.html";
+    fillAccountPage(email);
+
     console.log("Account access successful");
 
-    // Example UX action:
-    // window.location.href = "/dashboard";
 
   } catch (error) {
     console.error("Full Login error:", error);

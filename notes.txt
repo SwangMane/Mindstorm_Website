@@ -1,0 +1,2 @@
+- change nav bar to load user status after all loads complete to finish DOM structure
+- 

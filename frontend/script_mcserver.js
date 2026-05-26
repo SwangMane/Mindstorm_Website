@@ -81,12 +81,46 @@ export function fillMinecraftServerStats(page) {
                     playerCount = `<p class="server_status_item">${siteVariables.minecraft_server.msg_playerCount}` + ' ' + (status.players.now + '/' + status.players.max) + `</p>`;
                 
                     if (status.players.sample && status.players.sample.length > 0) {
+
+                        let player_class;
+
                         // if there are people actually online
                         // create an object inside the playerList array for each player online
                         status.players.sample.forEach(player => {
-                            siteVariables.minecraft_server.current_players.push(`<li><img class="mc-face" src="https://minotar.net/avatar/${player.name}/32"><h6>${player.name}</h6></l1>`); // Adds each onlines players name to the array
+
+
+                            // loop through all owners
+                            siteVariables.minecraft_server.special_players.owners.forEach(owner => {
+
+                                // if the players name matches one of the owners names
+                                if (player.name === owner) {
+
+                                    player_class = 'owner_class';
+
+                                }
+                            })
+                            // loop through all moderators
+                            siteVariables.minecraft_server.special_players.moderators.forEach(moderator => {
+
+                                // if the players name matches one of the mods names
+                                if (player.name === moderator){
+
+                                    player_class = 'moderator_class';
+
+                                }
+                            })
+
+                            if (player_class) siteVariables.minecraft_server.current_players.push(`<li class="${player_class}"><img class="mc-face" src="https://minotar.net/avatar/${player.name}/32"><p>${player.name}</p></l1>`);
+                           
+                            else {
+                                
+                                player_class = 'standard_class';
+                                siteVariables.minecraft_server.current_players.push(`<li class="${player_class}"><img class="mc-face " src="https://minotar.net/avatar/${player.name}/32"><p>${player.name}</p></l1>`);
+
+                            }
+
                         });                                                                                                                              // also places the characters skin icon next to name
-                        document.querySelector('.player_list').innerHTML = playerList.join(''); // displays the array in the HTML element
+                        document.getElementById(siteVariables.minecraft_server.current_players_list).innerHTML = siteVariables.minecraft_server.current_players.join(''); // displays the array in the HTML element
                     }
                     // if no one is online | no one online server message
                     else {
