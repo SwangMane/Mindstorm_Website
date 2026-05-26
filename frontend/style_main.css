@@ -820,6 +820,55 @@ button {
     height: 100%;
   }
 
+  #account_details {
+    position: relative;
+    padding-bottom: 4rem;
+  }
+
+  #account_details_wrap_out {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  #account_details_wrap_in {
+    flex: 1;
+    min-width: 256px;
+  }
+
+  #account_details p {
+    margin: 0;
+    padding: 1rem;
+
+    flex: 1;
+  }
+
+  #account_details button {
+    position: absolute;
+
+    bottom: 1.5rem;
+  }
+
+  .account_info_pretext {
+  }
+  .account_info_posttext {
+    margin-left: 1rem;
+  }
+
+  #account_details_wrap_out img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: inherit;
+
+    margin: auto;
+
+    padding: 1rem;
+    background: linear-gradient(to bottom, #f4d753, #f5d43e);
+    box-shadow:       0 0 3px 1px rgba(0, 0, 0, 0.5),
+                      0 0 5px 2px rgba(0, 0, 0, 0.2),                      
+                inset 0 0 3px 1px rgba(0, 0, 0, 0.6);
+  }
+
 /*** END ACCOUNT PAGE STUFF ***/ 
 
 /************************************

@@ -79,15 +79,22 @@
       <div class="wrapper_outer flexed centered column max_720" id="account_details"> <!-- ID'D -->
         
         <!-- SERVER DETAILS WRAPPER -->
-        <div class="wrapper_inner flexed centered" id="account_details_wrap">
+        <div class="wrapper_inner flexed" id="account_details_wrap_out">
 
-          <button id="account_page_logout">Logout</button>
+          <img id="account_page_profilePicture" alt="Users profile picture"/>
 
-          <P id="account_page_username"></P>
+          <div class="wrapper_inner" id="account_details_wrap_in">
+
+            <P class="account_info_pretext green_gradient_bcg">User<span class="account_info_posttext" id="account_page_username"></span></P>
+
+            <P class="account_info_pretext green_gradient_bcg">Join date<span class="account_info_posttext" id="account_page_joinDate"></span></P>
+
+          </div>
 
         </div>
 
-        
+        <button id="account_page_logout">Logout</button>
+
       </div>
 
     </main>

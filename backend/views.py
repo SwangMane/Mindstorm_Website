@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 import requests
 from flask_login import login_manager, login_required, current_user
 from .models import User
@@ -64,9 +64,13 @@ def userinfo():
 
         return jsonify({
             "message": "success",
+            "user": current_user.to_dict()
         }), 200
 
-    return 
+    return jsonify({
+        "error": "Unauthorized",
+        "code": "UNAUTHORIZED"
+    }), 401
 
 
 # -------------------------
@@ -101,3 +105,10 @@ def mcprofile(username):
         return jsonify({"error": "Player not found"}), 404
 
     return jsonify(response.json())
+
+@views.route("/debug")
+def debug():
+    return {
+        "auth": current_user.is_authenticated,
+        "cookies": dict(request.cookies)
+    }

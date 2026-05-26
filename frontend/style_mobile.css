@@ -249,6 +249,14 @@
       padding: 2rem 1rem;
     }
 
+    #login_popup_wrapper {
+
+      width: auto;
+
+      margin: 0 1rem;
+
+    }
+
     /*** END LOGIN/REGISTER STUFF ***/
 
 

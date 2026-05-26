@@ -130,6 +130,10 @@ export const siteVariables = {
 
         minecraft_username: 'account_page_username',
 
+        profile_picture: 'account_page_profilePicture',
+
+        user_joinDate: 'account_page_joinDate',
+
     },
 
     // server seasons items

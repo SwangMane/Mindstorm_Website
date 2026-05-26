@@ -332,7 +332,6 @@ async function loginAccount() {
 
     // redirect the user to their account page if successfull
     window.location.href = "account.html";
-    fillAccountPage(email);
 
     console.log("Account access successful");
 
@@ -415,6 +414,8 @@ async function createAccount() {
       throw new Error(data.error || 'Unknown server error');
     }
 
+    const user_profilePicture = `https://minotar.net/avatar/${minecraft_username}/32`;
+
     console.log("Minecraft player verified: ", data);
 
        const createResponse = await fetch(
@@ -430,7 +431,8 @@ async function createAccount() {
         body: JSON.stringify({
           minecraft_username,
           email,
-          password
+          password,
+          user_profilePicture
         })
       }
     );
@@ -475,6 +477,14 @@ async function createAccount() {
     }
   }
 }
+
+//////////////////////////////
+///                        ///
+///  USER SESSION EXPIRE   ///
+///                        ///
+//////////////////////////////
+
+
 
 //////////////////////////////
 ///                        ///

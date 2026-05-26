@@ -1,9 +1,10 @@
-from flask import Flask
+from flask import Flask, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from datetime import timedelta
 
 # initialize the database system
 db = SQLAlchemy()
@@ -20,9 +21,11 @@ def create_app():
 
     app.config['SECRET_KEY'] = 'asdasda asdasds'
 
-    app.config['SESSION_COOKIE_SAMESITE'] = "None"
     app.config['SESSION_COOKIE_SECURE'] = False
     app.config['SESSION_COOKIE_HTTPONLY'] = True
+    app.config["SESSION_COOKIE_DOMAIN"] = None
+    app.config["SESSION_PERMANENT"] = True
+    app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=30)
 
     # init extenstions
     db.init_app(app)

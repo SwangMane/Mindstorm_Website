@@ -1,2 +1,10 @@
-- change nav bar to load user status after all loads complete to finish DOM structure
-- 
+#######################################
+
+
+  TO RUN THE WEBSERVER
+
+  - NPX SERVE (FRONT END FOLDER)
+  - PYTHON RUN.PY (IN ROOT DIRECTORY FOLDER)
+
+
+#######################################

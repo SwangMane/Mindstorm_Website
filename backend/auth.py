@@ -1,9 +1,9 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from flask_cors import cross_origin
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
-from flask_login import login_manager, login_user, login_required, logout_user, current_user
+from flask_login import login_user, login_required, logout_user, current_user
 from datetime import datetime
 
 auth = Blueprint('auth', __name__)
@@ -32,6 +32,8 @@ def create_account():
     # users password
     password = data.get("password")
 
+    user_profilePicture = data.get("user_profilePicture")
+
     #check if the username or email already exists in the database
     user = User.query.filter_by(email=email).first()
     usernameExists = User.query.filter_by(user_name=username).first()
@@ -48,6 +50,9 @@ def create_account():
 
     elif not password:
         return jsonify({"error": "Missing password"}), 400
+    
+    elif not user_profilePicture:
+       return jsonify({"error": "Missing prfile picture"}), 400
 
     # if all errors passed, create the users account
     else:
@@ -55,7 +60,7 @@ def create_account():
       join_date = datetime.now()
       formatted = join_date.strftime("%Y-%m-%d %H:%M:%S")
 
-      new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username, user_joinDate=formatted)
+      new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username, user_joinDate=formatted, user_profilePicture=user_profilePicture)
 
       db.session.add(new_user)
 
@@ -117,22 +122,19 @@ def login():
 
         # check provided password against database password | fail
         if not check_password_hash(user.password, password):
-          return jsonify({
-              "success": False,
-              "code": "INVALID_CREDENTIALS",
-              "message": "Invalid email or password"
-          }), 401
+            return jsonify({
+                "success": False,
+                "code": "INVALID_CREDENTIALS",
+                "message": "Invalid email or password"
+            }), 401
 
-        # if the users password is correct
-        elif check_password_hash(user.password, password):
+        login_user(user, remember=False)
+        session.permanent = True
 
-          login_user(user, remember=True)
-          
-          return jsonify({
-              "success": True,
-              "message": "Login successful"
-
-          }), 200
+        return jsonify({
+            "success": True,
+            "message": "Login successful"
+        }), 200
 
     # exception error catcher
     except Exception as e:
@@ -157,6 +159,3 @@ def logout():
        "success": True,
        "message": "User log out complete"
     })
-
-
-    return jsonify({"message": "Logout not implemented"}), 501

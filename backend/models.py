@@ -8,8 +8,23 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(150), unique=True)
   password = db.Column(db.String(150))
   user_name = db.Column(db.String(150))
+  user_profilePicture = db.Column(db.String(255))
 
+  user_role = db.Column(db.String(150), default="Standard User")
   user_joinDate = db.Column(db.String(150))
+  user_serverPoints = db.Column(db.Integer, default=0)
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "email": self.email,
+      "user_name": self.user_name,
+      "user_profilePicture": self.user_profilePicture, 
+
+      "user_role": self.user_role,
+      "user_joinDate": self.user_joinDate,
+      "user_serverPoints": self.user_serverPoints,
+    }
 
 
 

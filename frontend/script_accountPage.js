@@ -39,7 +39,7 @@ export async function fillAccountPage() {
   const response = await fetch(
     `${siteVariables.data_server.ip_address}/userinfo`,
     {
-      method: 'POST',
+      method: 'GET',
       credentials: "include",
     }
   );
@@ -66,6 +66,8 @@ export async function fillAccountPage() {
       throw err;
     }
 
+    fillPage(data);
+
     console.log(data);
 
 
@@ -78,4 +80,29 @@ export async function fillAccountPage() {
         break;
     }
   }
+
+  function fillPage(account) {
+
+    // store the account being pulled
+    const data = account;
+
+    // profile picture img tag
+    const profile_pic = document.getElementById(siteVariables.account_page.profile_picture);
+    const picture_link = data.user.user_profilePicture;
+    profile_pic.src = picture_link;
+
+    // username stuff
+    const account_username = document.getElementById(siteVariables.account_page.minecraft_username);
+    const username = data.user.user_name;
+    account_username.textContent = username;
+
+    // user join date stuff
+    const account_joinDate = document.getElementById(siteVariables.account_page.user_joinDate);
+    const joindate = data.user.user_joinDate;
+    account_joinDate.textContent = joindate;
+
+  }
+
+
+
 }
