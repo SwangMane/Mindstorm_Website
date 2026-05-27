@@ -376,6 +376,13 @@ button {
     padding: 0 0 1rem 0;
     margin: 0;
   }
+  .announcement a:link, .announcement a:visited {
+    color: #f4d753;
+    text-decoration: none;
+  }
+  .announcement a:hover {
+    text-decoration: underline;
+  }
   #player_count_meter {
     width: 80%;
     height: 1rem;

@@ -40,6 +40,10 @@ function showFormFromHash() {
         .style.display = 'flex';
 }
 
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 //////////////////////////////
 ///                        ///
 ///  ADDS A GLOBAL EVENT   ///
@@ -271,7 +275,7 @@ function createPage() {
 ///                        ///
 //////////////////////////////
 async function loginAccount() {
-  console.log("logging into account");
+  console.log("Attempting account login");
 
   // try post request with given credentials 
   try {
@@ -281,21 +285,28 @@ async function loginAccount() {
     const email = emailInput.value.trim();
     const password = passwordInput.value; // don't trim passwords
 
+    let alertMsg;
+
     if (!email) {
       await popup_notif('email_empty');
-      throw new Error("Email is empty");
+      return;
+    }
+
+    else if (!isValidEmail(email)) {
+      alertMsg = await popup_notif('bad_email');
+      return;
     }
 
     // if the password slot is empty
-    if (!password) {
+    else if (!password) {
       await popup_notif('password_empty');
-      throw new Error("Password is empty");
+      return;
     }
 
     // users password needs to be longer then given amount
-    if (password.length < siteVariables.login_page.required_password_length) {
+    else if (password.length < siteVariables.login_page.required_password_length) {
       await popup_notif('password_length');
-      throw new Error(`Password must be ${siteVariables.login_page.required_password_length} or more characters`);
+      return;
     }
 
     const response = await fetch(
@@ -331,28 +342,21 @@ async function loginAccount() {
     }
 
     // redirect the user to their account page if successfull
-    window.location.href = "account.html";
-
     console.log("Account access successful");
+    window.location.href = "account.html";
 
 
   } catch (error) {
     console.error("Full Login error:", error);
+    console.log("ERROR CODE:", error.code);
+    console.log("ERROR MESSAGE:", error.message);
 
-    // Better than string matching:
-    switch (error.message) {
-      case "Email does not exist":
-        popup_notif("no_email");
-      case "Password is incorrect":
-        popup_notif("wrong_password");
-        break;
-      case "Email is empty":
-        popup_notif("email_empty");
-        break;
-      default:
-        popup_notif("login_failed");
-        break;
+    if (error.code === "INVALID_CREDENTIALS") {
+      await popup_notif("bad_creds");
+      return;
     }
+
+    await popup_notif("login_failed");
   }
 }
 
@@ -386,19 +390,26 @@ async function createAccount() {
 
     const confirm_password = document.querySelector('#input_create_passwordConfirm').value;
 
+    let alertMsg;
+
 
     if (!minecraft_username) {
-      throw new Error("Minecraft username is empty");
+      await popup_notif("username_empty");
+      return;
     }
     else if (!email) {
       throw new Error("Email is empty");
+    }
+    else if (!isValidEmail(email)) {
+      alertMsg = await popup_notif('bad_email');
+      return;
     }
     else if (!password) {
       throw new Error("Password is empty");
     }
     else if (password.length < siteVariables.login_page.required_password_length) {
-      const alertMsg = await popup_notif('password_length');
-      throw new Error(`Password must be ${siteVariables.login_page.required_password_length} or more characters`)
+      await popup_notif('password_length');
+      return;
     }
     else if (password !== confirm_password) {
       throw new Error("Passwords do not match");
@@ -476,6 +487,11 @@ async function createAccount() {
         console.error(error.message);
     }
   }
+
+  finally {
+    formIds.createBtn.disabled = false;
+  }
+
 }
 
 //////////////////////////////
@@ -525,6 +541,7 @@ async function popup_notif(type, creationData, playerData) {
 
     }
 
+    // if an account with the email already exists
     if (popup === 'email_exists') {
 
       const message = `<p>An account with the given email or Minecraft account already exists!</p>
@@ -534,6 +551,15 @@ async function popup_notif(type, creationData, playerData) {
       showObj(popupWrapper, popupContents, message);
     }
 
+    // if the username is blank
+    if (popup === 'username_empty') {
+
+      const message = `<p>A valid Minecraft account must be entered to create an account</p>`;
+
+      showObj(popupWrapper, popupContents, message);
+    }
+
+    // if the email does not exist in database
     if (popup === 'no_email') {
 
       const message = `<p>An account with the given email or Minecraft account does not currently exist within our records</p>
@@ -543,16 +569,34 @@ async function popup_notif(type, creationData, playerData) {
       showObj(popupWrapper, popupContents, message);
     }
 
+    // if the email is not valid
+    if (popup === 'bad_email') {
+
+      const message = `<p>The given Email account is invalid. Please try again</p>
+                      <br>
+                      <p>If you believe this is a mistake, please contact staff.</p>`;
+
+      showObj(popupWrapper, popupContents, message);
+    }
+
+    // if any of the credentials are bad
+    if (popup === 'bad_creds') {
+
+      const message = `<p>The provided email and password combination did not match our system. Please try again</p>
+                      <br>
+                      <p>If you believe this is a mistake, please contact staff.</p>`;
+
+      showObj(popupWrapper, popupContents, message);
+    }
+
+    // if the users passowrd length is too small
     if (popup === 'password_length') {
 
-      const password_box = document.querySelector('#input_create_password');
+      console.log("bad email length");
 
-      password_box.setCustomValidity(
-        "Password must be atleast 10 characters"
-      );
+      const message = `<p>The provided password must be 10 characters or more. Please try again</p>`;
 
-      password_box.reportValidity();
-
+      showObj(popupWrapper, popupContents, message);
     }
 
     // to show the popup wrapper
