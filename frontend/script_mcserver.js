@@ -83,6 +83,7 @@ export function fillMinecraftServerStats(page) {
                     if (status.players.sample && status.players.sample.length > 0) {
 
                         let player_class;
+                        let hover_state;
 
                         // if there are people actually online
                         // create an object inside the playerList array for each player online
@@ -96,6 +97,9 @@ export function fillMinecraftServerStats(page) {
                                 if (player.name === owner) {
 
                                     player_class = 'owner_class';
+                                    hover_state = "Part-owner";
+
+                                    siteVariables.minecraft_server.current_players.push(`<li class="${player_class}" data-description="${hover_state}"><img class="mc-face" src="https://minotar.net/avatar/${player.name}/32"><p>${player.name}</p></l1>`);
 
                                 }
                             })
@@ -106,11 +110,14 @@ export function fillMinecraftServerStats(page) {
                                 if (player.name === moderator){
 
                                     player_class = 'moderator_class';
+                                    hover_state = "Moderator";
+
+                                    siteVariables.minecraft_server.current_players.push(`<li class="${player_class}"><img class="mc-face" src="https://minotar.net/avatar/${player.name}/32"><p>${player.name}</p></l1>`);
 
                                 }
                             })
 
-                            if (player_class) siteVariables.minecraft_server.current_players.push(`<li class="${player_class}"><img class="mc-face" src="https://minotar.net/avatar/${player.name}/32"><p>${player.name}</p></l1>`);
+                            if (player_class) return;
                            
                             else {
                                 

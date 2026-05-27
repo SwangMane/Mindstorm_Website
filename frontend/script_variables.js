@@ -78,8 +78,8 @@ export const siteVariables = {
         // special player rules for the players online page
         special_players: {
 
-            // the owners section
-            owners: [ 'hillbillydeluex', 'Blockk', 'Syrmaa'],
+            // all owners
+            owners: [ 'DARKminerKS', 'hillbillydeluex', 'Blockk', 'Syrmaa'],
 
             // all moderators
             moderators: ['Jmann'],
@@ -134,6 +134,8 @@ export const siteVariables = {
 
         user_joinDate: 'account_page_joinDate',
 
+        user_serverCoins: 'account_page_serverCoins',
+
     },
 
     // server seasons items
@@ -165,8 +167,8 @@ export const server_announcements = {
 
     // the list of announcements in order
     announcements: [
-        'Mindstorm website version 3 is now live. Create an account and join our community!',
-        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">5/23/2026</span>',
+        'Mindstorm website version 3 is now live! <a href="login.html">Create an account</a> and join our community! (More coming soon)',
+        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">5/23/2026</span> | View our current modpack here',
     ],
 
     // id 

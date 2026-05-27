@@ -101,6 +101,11 @@ export async function fillAccountPage() {
     const joindate = data.user.user_joinDate;
     account_joinDate.textContent = joindate;
 
+    // user server coins stuff
+    const account_serverCoins = document.getElementById(siteVariables.account_page.user_serverCoins);
+    const serverCoins = data.user.user_serverPoints;
+    account_serverCoins.textContent = serverCoins;
+
   }
 
 

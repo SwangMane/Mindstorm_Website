@@ -822,7 +822,6 @@ button {
 
   #account_details {
     position: relative;
-    padding-bottom: 4rem;
   }
 
   #account_details_wrap_out {
@@ -836,33 +835,43 @@ button {
     min-width: 256px;
   }
 
+  #account_details button {
+
+    font-size: 1rem;
+
+    padding: 8px 1.5rem;
+
+    margin: 1rem 0 1rem auto;
+
+
+  }
+
   #account_details p {
     margin: 0;
     padding: 1rem;
 
     flex: 1;
-  }
 
-  #account_details button {
-    position: absolute;
+    font-size: 1.25rem;
 
-    bottom: 1.5rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
 
   .account_info_pretext {
   }
   .account_info_posttext {
-    margin-left: 1rem;
+    margin-left: 8px;
   }
 
   #account_details_wrap_out img {
     width: 100%;
-    max-width: 320px;
+    max-width: 256px;
     border-radius: inherit;
 
     margin: auto;
 
-    padding: 1rem;
+    padding: 0.5rem;
     background: linear-gradient(to bottom, #f4d753, #f5d43e);
     box-shadow:       0 0 3px 1px rgba(0, 0, 0, 0.5),
                       0 0 5px 2px rgba(0, 0, 0, 0.2),                      
