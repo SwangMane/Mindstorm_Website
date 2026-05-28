@@ -176,7 +176,7 @@ export const server_announcements = {
     // the list of announcements in order
     announcements: [
         'Mindstorm website version 3 is now live! <a href="login.html">Create an account</a> and join our community! (More coming soon)',
-        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">5/23/2026</span> | View our current modpack here',
+        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">6/6/2026</span> | <a href="" target="_blank">View our current modpack here</a>',
     ],
 
     // id 

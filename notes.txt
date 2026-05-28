@@ -8,3 +8,9 @@
 
 
 #######################################
+
+
+---------------- TO DO LIST -----------------
+
+- make owners/mods cards hoverable and flippable for descriptions
+- add modpack links

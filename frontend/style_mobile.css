@@ -260,6 +260,30 @@
     /*** END LOGIN/REGISTER STUFF ***/
 
 
+    /**************************************
+    ***                                 ***
+    *** *** SERVER MINIGAMES STUFF ***  ***
+    ***                                 ***
+    **************************************/
+
+      .game_thumbnail_wrap {
+        width: 100%;
+        min-width: unset;
+        max-width: 320px;
+        aspect-ratio: 5 / 7;
+
+        border-radius: inherit;
+      }
+      #games_list_wrapper {
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+    /*** END MINIGAMES STUFF ***/
+
+
     .staff_wrapper {
       max-width: 80%;
       overflow: hidden;

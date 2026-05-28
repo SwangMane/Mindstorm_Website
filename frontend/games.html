@@ -81,13 +81,21 @@
       <div class="main_title yellow_gradient_txt column flexed">
         <h1 class="no_space centered_text cinzel-bold">Minigames</h1>
       </div>    
-      
-      <!-- MAIN PAGE ELEMENT | CONTAINS SERVER DETAILS -->
-      <div class="wrapper_outer flexed left_centered column max_1280">
 
-        <div class="game_thumbnail_wrap yellow_gradient_bcg"></div>
+      <!-- MAIN PAGE ELEMENT | CONTAINS MINIGAMES -->
+      <div class="wrapper_outer flexed flexStart_centered max_1280" id="games_list_wrapper">
+
 
       </div>
+
+
+      <!-- GAME POPOUT WRAPPER -->
+      <div id="game_popout_wrapper">
+
+        <button id="close_minigame_button" type="button"></button>
+
+      </div>
+
 
 
     </main>
@@ -102,6 +110,7 @@
     <!-- ALL SCRIPTS -->
     <script type="module" src="script_main.js"></script>
     <script src="https://mcapi.us/scripts/minecraft.min.js"></script>
+    <script type="module" src="script_minigames.js" defer></script>
 
   </body>
 <!-- /BODY /BODY /BODY -->
