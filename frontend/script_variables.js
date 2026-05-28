@@ -155,7 +155,15 @@ export const siteVariables = {
         // season details closers
         close_seasons_btn: 'close_seasons',
 
-    }
+    },
+
+    // about page stuff
+    about_page: {
+
+        // wrapper for the staff info 
+        staff_wrapper: 'about_staffWrap',
+
+    },
 }
 
 ///////////////////////////////////////////

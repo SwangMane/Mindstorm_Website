@@ -260,5 +260,20 @@
     /*** END LOGIN/REGISTER STUFF ***/
 
 
+    .staff_wrapper {
+      max-width: 80%;
+      overflow: hidden;
+    }
+    .staff_wrapper p {
+      padding: 16px 8px;
+      font-size: 1rem;
+    }
+    #about_staffWrap {
+      gap: 2rem 0;
+
+      padding: 1rem 0;
+    }
+
+
   /*** END MAIN ELEMENTS ***/
 }

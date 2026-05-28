@@ -13,6 +13,8 @@ import { siteVariables } from './script_variables.js';
 
 window.onload = () => {
 
+  if (!document.querySelector('#account')) return;
+
   const account_page_logout_btn = document.getElementById(
     siteVariables.account_page.logout_btn
   );

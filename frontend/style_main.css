@@ -411,11 +411,24 @@ button {
 #about_socials {
   margin: 48px 0 0 0;
 
-  padding: 1rem 0;
+  padding: 0 1rem;
+  flex-wrap: wrap;
 }
 
-#about_socials img {
+#about_socials img, #about_socials svg {
   border: none;
+  padding-left: 1rem;
+}
+#about_socials a {
+  font-size: 1.5rem;
+  padding: 1.5rem 0;
+}
+#about_socials a:link, #about_socials a:visited {
+  text-decoration: none;
+  color: black;
+}
+#about_socials a:hover {
+  text-decoration: underline;
 }
 
 .about_subtitle {
@@ -423,11 +436,12 @@ button {
 
   padding: 1rem;
 
-  font-size: 2rem;
+  font-size: 2.25rem;
 
   width: 100%;
 
   box-sizing: border-box;
+  border-radius: inherit;
 
   flex: 1;
 
@@ -438,9 +452,66 @@ button {
 
   padding: 1rem 2rem;
 
-  font-size: 1.75rem;
+  font-size: 2rem;
 
   text-indent: 2rem;
+}
+
+.staff_wrapper {
+  display: flex;
+  width: auto;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 1rem;
+  background: linear-gradient(to bottom, #f4d753, #f5d43e);
+
+  border-radius: inherit;
+
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+          inset 0 0 0 1px rgba(0, 0, 0, 1);
+}
+.staff_wrapper img {
+  padding: 0;
+  margin: 0;
+
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(0, 0, 0, 1);
+}
+.staff_wrapper p {
+  padding: 16px 8px;
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0px;
+  white-space: wrap;
+  overflow: hidden;
+}
+#about_staffWrap {
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  padding: 2rem;
+  margin: 0 1rem 1rem 1rem;
+  box-sizing: border-box;
+}
+#about_staffWrapOuter {
+
+  padding: 0 1rem;
+  margin: 1rem auto;
+  box-sizing: border-box;
+
+}
+#about_staffWrapOuter h2, #about_modsWrapOuter h2 {
+  text-align: center;
+}
+#about_modsWrapOuter {
+
+  padding: 0 1rem;
+  margin: 0 auto 1rem 0;
+  box-sizing: border-box;
+
 }
 
 /*** END SERVER ABOUT STUFF ***/
@@ -498,6 +569,9 @@ button {
     padding: 1rem 2rem;
 
     box-sizing: border-box;
+  }
+  .season_wrap:hover {
+    animation: hover_grow 0.2s forwards;
   }
 
   /*** text content inside of each season wrapper ***/
@@ -707,6 +781,25 @@ button {
   }
 
 /*** END SERVER SEASONS STUFF ***/
+
+
+/**************************************
+***                                 ***
+*** *** SERVER MINIGAMES STUFF ***  ***
+***                                 ***
+**************************************/
+
+#games main {
+  height: 100%;
+}
+.game_thumbnail_wrap {
+  width: 320px;
+  aspect-ratio: 5 / 7;
+
+  border-radius: inherit;
+}
+
+/*** END MINIGAMES STUFF ***/
 
 /************************************
 ***                               ***
@@ -1009,6 +1102,9 @@ footer p {
   .fade_in_1s {
     animation: fadeIn 1s forwards;
   }
+  .hoverGrow {
+    animation: hover_grow 0.2s forwards;
+  }
 
   .owner_class {
     background: linear-gradient(to bottom, #f4d753, #f5d43e);
@@ -1199,6 +1295,17 @@ footer p {
     to {
       transform: scaleY(1);
       opacity: 1;
+    }
+  }
+  @keyframes hover_grow {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+      box-shadow: 0 0 1px 1px #f5d43e,
+                  0 0 5px 2px rgba(245, 212, 62, 0.6),
+                  0 0 5px 4px rgba(245, 212, 62, 0.3);
     }
   }
 
