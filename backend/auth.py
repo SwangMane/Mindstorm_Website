@@ -23,7 +23,7 @@ def create_account():
     # if the data provided is bad
     if not data:
         return jsonify({"error": "No JSON body provided"}), 400
-    
+
 
     # Minecraft username
     username = data.get("minecraft_username")
@@ -50,26 +50,47 @@ def create_account():
 
     elif not password:
         return jsonify({"error": "Missing password"}), 400
-    
+
     elif not user_profilePicture:
-       return jsonify({"error": "Missing prfile picture"}), 400
+        return jsonify({"error": "Missing prfile picture"}), 400
 
     # if all errors passed, create the users account
     else:
-      
-      join_date = datetime.now()
-      formatted = join_date.strftime("%Y-%m-%d %H:%M:%S")
+        
+        userRole = "Standard User"
 
-      new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username, user_joinDate=formatted, user_profilePicture=user_profilePicture)
+        owners = [
+            "DARKminerKS",
+            "Blockk",
+            "HillbillyDeluex",
+            "Syrmaa_"
+        ]
 
-      db.session.add(new_user)
+        moderators = [
+            "theJman12"
+        ]
 
-      db.session.commit()
+        if username in owners:
+            userRole = "Owner"
 
-      return jsonify({
-          "success": True,
-          "message": "Account created"
-      })
+        elif username in moderators:
+            userRole = "Moderator"
+
+            
+        
+        join_date = datetime.now()
+        formatted = join_date.strftime("%Y-%m-%d %H:%M:%S")
+
+        new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"), user_name=username, user_joinDate=formatted, user_profilePicture=user_profilePicture, user_role=userRole)
+
+        db.session.add(new_user)
+
+        db.session.commit()
+
+        return jsonify({
+            "success": True,
+            "message": "Account created"
+        })
 
 
 # -------------------------

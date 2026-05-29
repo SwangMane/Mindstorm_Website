@@ -4,28 +4,29 @@
 ***                              ***
 ***********************************/
 
-html, body {
-  height: auto;
+  html, body {
+    height: auto;
 
-  overflow-x: hidden;
-  overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 
-  font-size: 1rem; /* overall default font size */
-}
+    font-size: 1rem; /* overall default font size */
+  }
 
-button {
-  padding: 0;
-  margin: 0;
+  button {
+    padding: 0;
+    margin: 0;
 
-  font: inherit;
-  color: inherit;
-}
+    font: inherit;
+    color: inherit;
+  }
 
 /*** END MAIN STYLES ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -33,6 +34,7 @@ button {
 ***                               ***
 ************************************/
 
+  /*** background element class ***/
   .page_background {
     position: fixed;
     top: 0;
@@ -54,7 +56,7 @@ button {
     z-index: -1;
     opacity: 0;
   }
-
+  /*** if a background is faded use this ***/
   .page_fader {
     background: rgba(0, 0, 0, 0.6);
 
@@ -69,6 +71,7 @@ button {
 
 /*** END BACKGROUND ELEMENTS ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -195,6 +198,7 @@ button {
 
     text-decoration: none;
   }
+  /* hovered links */
   nav ul li a:hover {
     color: #f5d43e;
   }
@@ -212,6 +216,7 @@ button {
 
 /*** END HEADER ELEMENTS ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -297,18 +302,22 @@ button {
     font-size: 0.75rem;
   }
 
+  /*** the entire wrapper for server details ***/
   #server_details_wrap {
     height: 180px;
   }
 
+  /*** all wrappers inside index ***/
   main .wrapper {
     line-height: 0;
   }
 
+  /*** server images ***/
   main .wrapper_inner img {
     border-right: 1px solid black;
   }
 
+  /*** current player/announcement lists on index ***/
   .player_list, #announcement_list {
     padding: 0 1rem 2rem 1rem;
     margin: 0;
@@ -318,6 +327,7 @@ button {
     list-style-type: none;
   }
 
+  /*** current player list on index ***/
   .player_list {
     user-select: none;
 
@@ -357,6 +367,7 @@ button {
     color: black;
 
   }
+  /*** players actual face image ***/
   .mc-face {
     aspect-ratio: 1 / 1;
 
@@ -401,6 +412,7 @@ button {
 
 /*** END MAIN ELEMENTS ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -408,114 +420,95 @@ button {
 ***                               ***
 ************************************/
 
-#about_socials {
-  margin: 48px 0 0 0;
+  #about_socials {
+    margin: 48px 0 0 0;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+  }
 
-  padding: 0 1rem;
-  flex-wrap: wrap;
-}
+  #about_socials img, #about_socials svg {
+    border: none;
+    padding-left: 1rem;
+  }
+  #about_socials a {
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+  }
+  #about_socials a:link, #about_socials a:visited {
+    text-decoration: none;
+    color: black;
+  }
+  #about_socials a:hover {
+    text-decoration: underline;
+  }
 
-#about_socials img, #about_socials svg {
-  border: none;
-  padding-left: 1rem;
-}
-#about_socials a {
-  font-size: 1.5rem;
-  padding: 1.5rem 0;
-}
-#about_socials a:link, #about_socials a:visited {
-  text-decoration: none;
-  color: black;
-}
-#about_socials a:hover {
-  text-decoration: underline;
-}
+  .about_subtitle {
+    text-align: left;
+    padding: 1rem;
+    font-size: 2.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: inherit;
+    flex: 1;
+    margin: 0;
+  }
+  .about_text {
+    margin: 0;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    text-indent: 2rem;
+  }
 
-.about_subtitle {
-  text-align: left;
-
-  padding: 1rem;
-
-  font-size: 2.25rem;
-
-  width: 100%;
-
-  box-sizing: border-box;
-  border-radius: inherit;
-
-  flex: 1;
-
-  margin: 0;
-}
-.about_text {
-  margin: 0;
-
-  padding: 1rem 2rem;
-
-  font-size: 2rem;
-
-  text-indent: 2rem;
-}
-
-.staff_wrapper {
-  display: flex;
-  width: auto;
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  padding: 1rem;
-  background: linear-gradient(to bottom, #f4d753, #f5d43e);
-
-  border-radius: inherit;
-
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+  .staff_wrapper {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    background: linear-gradient(to bottom, #f4d753, #f5d43e);
+    border-radius: inherit;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
+            inset 0 0 0 1px rgba(0, 0, 0, 1);
+  }
+  .staff_wrapper img {
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
           inset 0 0 0 1px rgba(0, 0, 0, 1);
-}
-.staff_wrapper img {
-  padding: 0;
-  margin: 0;
-
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4),
-        inset 0 0 0 1px rgba(0, 0, 0, 1);
-}
-.staff_wrapper p {
-  padding: 16px 8px;
-  margin: 0;
-  font-size: 1.25rem;
-  letter-spacing: 0px;
-  white-space: wrap;
-  overflow: hidden;
-}
-#about_staffWrap {
-  gap: 2rem;
-  flex-wrap: wrap;
-
-  padding: 2rem;
-  margin: 0 1rem 1rem 1rem;
-  box-sizing: border-box;
-}
-#about_staffWrapOuter {
-
-  padding: 0 1rem;
-  margin: 1rem auto;
-  box-sizing: border-box;
-
-}
-#about_staffWrapOuter h2, #about_modsWrapOuter h2 {
-  text-align: center;
-}
-#about_modsWrapOuter {
-
-  padding: 0 1rem;
-  margin: 0 auto 1rem 0;
-  box-sizing: border-box;
-
-}
+  }
+  .staff_wrapper p {
+    padding: 16px 8px;
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: 0px;
+    white-space: wrap;
+    overflow: hidden;
+  }
+  #about_staffWrap {
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    margin: 0 1rem 1rem 1rem;
+    box-sizing: border-box;
+  }
+  #about_staffWrapOuter {
+    padding: 0 1rem;
+    margin: 1rem auto;
+    box-sizing: border-box;
+  }
+  #about_staffWrapOuter h2, #about_modsWrapOuter h2 {
+    text-align: center;
+  }
+  #about_modsWrapOuter {
+    padding: 0 1rem;
+    margin: 0 auto 1rem 0;
+    box-sizing: border-box;
+  }
 
 /*** END SERVER ABOUT STUFF ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -782,6 +775,7 @@ button {
 
 /*** END SERVER SEASONS STUFF ***/
 
+/****************************************************************************************************/
 
 /**************************************
 ***                                 ***
@@ -789,86 +783,115 @@ button {
 ***                                 ***
 **************************************/
 
-#games main {
-  height: auto;
-}
-#games_list_wrapper {
-  gap: 2rem;
-  flex-wrap: wrap;
-  padding: 1.5rem;
-  white-space: wrap;
-}
-.game_thumbnail_wrap {
-  width: 320px;
-  min-width: 320px;
-  aspect-ratio: 5 / 7;
+  #games main {
+    height: auto;
+  }
+  #games_list_wrapper {
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    white-space: wrap;
+  }
+  .game_thumbnail_wrap {
+    width: 320px;
+    min-width: 320px;
+    aspect-ratio: 5 / 7;
 
-  border-radius: inherit;
-  text-align: center;
-  overflow: hidden;
+    border-radius: inherit;
+    text-align: center;
+    overflow: hidden;
 
-  box-shadow:       0 0 3px 1px rgba(0, 0, 0, 0.5),
-                  0 0 5px 2px rgba(0, 0, 0, 0.2),                      
-            inset 0 0 3px 1px rgba(0, 0, 0, 0.6);
-}
-.game_thumbnail_wrap:hover {
-  animation: hover_grow .2s forwards;
-}
+    box-shadow:       0 0 3px 1px rgba(0, 0, 0, 0.5),
+                    0 0 5px 2px rgba(0, 0, 0, 0.2),                      
+              inset 0 0 3px 1px rgba(0, 0, 0, 0.6);
+  }
+  .game_thumbnail_wrap:hover {
+    animation: hover_grow .2s forwards;
+  }
 
-.game_thumbnail_wrap p {
-  padding: 0 1rem;
-}
+  .game_thumbnail_wrap p {
+    padding: 0 1rem;
+  }
 
-.game_thumbnail_wrap svg {
-  margin: auto 0;
-}
-.game_list_title {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.game_list_description {
-  font-size: 1.3rem;
-}
-.game_locked_title {
-  font-size: 1.25rem;
-}
-.minigame_play_button {
-  width: 50%;
-  margin-top: auto;
-  margin-bottom: 1rem;
+  .game_thumbnail_wrap svg {
+    margin: auto 0;
+  }
+  .game_list_title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .game_list_description {
+    font-size: 1.3rem;
+  }
+  .game_locked_title {
+    font-size: 1.25rem;
+  }
+  .minigame_play_button {
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: 1rem;
 
-}
+  }
 
-#game_popout_wrapper {
+  #game_popout_wrapper {
 
-  position: absolute;
+    position: absolute;
 
-  z-index: 1000;
+    z-index: 1000;
 
-  width: 1280px;
-  aspect-ratio: 16 / 9;
+    width: 1280px;
+    aspect-ratio: 16 / 9;
 
-  top: 55%;
-  left: 50%;
+    top: 55%;
+    left: 50%;
 
-  background: black;
+    background: black;
 
-  display: none;
+    display: none;
 
-  animation: center_grow 0.5s forwards;
+    animation: center_grow 0.5s forwards;
 
-}
+  }
 
-#close_minigame_button {
-  padding: 0;
-  margin: 0;
+  #close_minigame_button {
+    padding: 0;
+    margin: 0;
 
-  aspect-ratio: 1 / 1;
-}
-
-
+    aspect-ratio: 1 / 1;
+  }
 
 /*** END MINIGAMES STUFF ***/
+
+/****************************************************************************************************/
+
+/************************************
+***                               ***
+***   *** FORUM PAGE STUFF ***    ***
+***                               ***
+************************************/
+
+  #forum main {
+    height: 100%;
+  }
+
+  #forum_wrapper_out p {
+
+    font-size: 2rem;
+
+    text-align: center;
+
+    padding: 1rem 0;
+
+  }
+
+  #forum_wrapper_out svg {
+    padding: 1rem;
+    margin: 0;
+  }
+
+/*** END FORUM STUFF ***/
+
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -978,6 +1001,8 @@ button {
 
 /*** END LOGIN / REGISTER STUFF ***/ 
 
+/****************************************************************************************************/
+
 /************************************
 ***                               ***
 ***   *** ACCOUNT PAGE STUFF ***  ***
@@ -1004,30 +1029,38 @@ button {
     min-width: 256px;
   }
 
-  #account_details button {
+  #account_details_wrap_in select {
+    flex: 1;
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: none;
+  }
+  #account_details_wrap_in select option {
+    color: black;
+  }
 
+  #account_page_buttonWrap {
+    margin-top: 1rem;
+  }
+
+  #account_page_buttonWrap button {
     font-size: 1rem;
-
-    padding: 8px 1.5rem;
-
-    margin: 1rem 0 1rem auto;
-
-
+    padding: 1rem 1.5rem;
+    margin: 1rem;
   }
 
   #account_details p {
     margin: 0;
     padding: 1rem;
-
     flex: 1;
-
     font-size: 1.25rem;
-
     flex-wrap: nowrap;
     white-space: nowrap;
   }
 
   .account_info_pretext {
+
   }
   .account_info_posttext {
     margin-left: 8px;
@@ -1048,6 +1081,8 @@ button {
   }
 
 /*** END ACCOUNT PAGE STUFF ***/ 
+
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -1079,6 +1114,7 @@ footer p {
 
 /*** END FOOTER ELEMENTS ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -1132,6 +1168,7 @@ footer p {
 
 /*** END IMPORTED FONTS ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***
@@ -1185,6 +1222,7 @@ footer p {
     background: linear-gradient(to bottom, #a0a0a0, #8d8d8d);
   }
 
+  /****************************************************************************************************/
 
   /*** POSITIONING ***/
     .centered {
@@ -1211,8 +1249,13 @@ footer p {
       justify-content: flex-start;
       align-items: center;
     }
+    .flexEnd_centered {
+      justify-content: flex-end;
+      align-items: center;
+    }
   /*** END POSITIONING ***/
 
+  /****************************************************************************************************/
 
   /*** SPACING STUFF ***/
     .flexed {
@@ -1231,6 +1274,7 @@ footer p {
     }
   /*** END SPACING STUFF ***/
 
+  /****************************************************************************************************/
 
   /*** ALL TEXT STUFF ***/
     .centered_text {
@@ -1241,6 +1285,7 @@ footer p {
     }
   /*** END ALL TEXT STUFF ***/
 
+  /****************************************************************************************************/
 
   /*** COLORS ***/
     .red {
@@ -1266,6 +1311,7 @@ footer p {
     }  
   /*** END COLORS ***/
 
+  /****************************************************************************************************/
 
   /*** MAX-WIDTHS ***/
     .max_720 {
@@ -1276,6 +1322,7 @@ footer p {
     }
   /*** END MAX-WIDTHS ***/
 
+  /****************************************************************************************************/
 
   /*** ALL WRAPPERS ***/
     
@@ -1326,6 +1373,7 @@ footer p {
     }
   /*** END ALL WRAPPERS ***/
 
+  /****************************************************************************************************/
 
   /*** THE SERVERS ICON IMAGE ***/ 
     .server_icon {
@@ -1347,6 +1395,7 @@ footer p {
 
 /*** END GLOBAL CLASSES ***/
 
+/****************************************************************************************************/
 
 /************************************
 ***                               ***

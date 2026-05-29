@@ -108,8 +108,57 @@ export async function fillAccountPage() {
     const serverCoins = data.user.user_serverPoints;
     account_serverCoins.textContent = serverCoins;
 
+    const account_role = document.getElementById(siteVariables.account_page.user_role);
+    const serverRole = data.user.user_role;
+    account_role.textContent = serverRole;
+
+    const user_playstyle = document.getElementById(siteVariables.account_page.user_playstyle);
+    const currentPlaystyle = data.user.user_playstyle;
+
+    const saveButton = document.getElementById(siteVariables.account_page.user_saveChanges);
+
+
+    if (currentPlaystyle) user_playstyle.value = currentPlaystyle;
+
+    user_playstyle.addEventListener("change", () => {
+
+      const selectedPlaystyle = user_playstyle.value;
+
+      saveButton.disabled = false;
+      saveButton.removeEventListener('click', () => {})
+
+      saveButton.addEventListener('click', () => {
+
+        saveProfile(selectedPlaystyle);
+        saveButton.disabled = true;
+
+      }, {once: true});
+
+    });
+      
   }
 
+}
 
+async function saveProfile(playstyle) {
 
+  console.log(playstyle);
+
+  const response = await fetch(
+    `${siteVariables.data_server.ip_address}/save-playstyle`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        playstyle: playstyle
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  console.log(data);
 }

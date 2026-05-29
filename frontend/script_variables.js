@@ -79,10 +79,10 @@ export const siteVariables = {
         special_players: {
 
             // all owners
-            owners: [ 'DARKminerKS', 'hillbillydeluex', 'Blockk', 'Syrmaa'],
+            owners: [ 'DARKminerKS', 'HillbillyDeluex', 'Blockk', 'Syrmaa_'],
 
             // all moderators
-            moderators: ['Jmann'],
+            moderators: ['theJman12'],
 
         }
     },
@@ -136,6 +136,12 @@ export const siteVariables = {
 
         user_serverCoins: 'account_page_serverCoins',
 
+        user_role: 'account_page_serverRole',
+
+        user_playstyle: 'account_page_styleSelect',
+
+        user_saveChanges: 'account_page_saveChanges',
+
     },
 
     // server seasons items
@@ -176,7 +182,9 @@ export const server_announcements = {
     // the list of announcements in order
     announcements: [
         'Mindstorm website version 3 is now live! <a href="login.html">Create an account</a> and join our community! (More coming soon)',
-        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">6/6/2026</span> | <a href="" target="_blank">View our current modpack here</a>',
+        'Mindstorm Cobblemon season 3 start date: <span class="underline_text">6/6/2026</span> | <a href="seasons.html">View our current modpack here</a>',
+        '<span class="yellow">DARKminerKS</span> will be <span class="yellow">out of town starting 6/12 until 6/19.</span> Please contact all other staff for issues',
+        'Please welcome all of our new members!',
     ],
 
     // id 
@@ -344,9 +352,9 @@ export const prevSeasonsList = [
     {
         name: 'Vanilla Season 2',
         tagName: 'vanS2',
-        date: '?',
-        version: '?',
-        desc: 'fill this in',
+        date: 'Date unknown',
+        version: 'Version unknown',
+        desc: 'The forgotten season | If you have any information on this, contact DARKminerKS',
         members: ['Dark', 'Debesk', 'Block', 'Smilee', 'TheFull98', 'Dawson12XD', 'Hagermans_Rule', 'Sadfaic', 'Propally', 'SharpKiller', 'TheDooieBall', 'Allanarruda', 'Bubluebu', 'Shane', 'HotLava'],
         pics: siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
@@ -354,7 +362,7 @@ export const prevSeasonsList = [
         name: 'Vanilla Season 3',
         tagName: 'vanS3',
         date: '2014',
-        version: '?',
+        version: '1.9',
         desc: 'Savanah Spawn, yaDead arena',
         members: ['Dark', 'Debesk', 'Block', 'Smilee', 'Pudding', 'Hagermans_Rule', 'Yadead1', 'Yadead2', 'TheFull98', 'ImmortalNerd', 'Allanarruda', 'MrTall', 'Dominionus', 'GuitarHero', 'Kiwi', 'iJevinator', 'CE_Winchester', 'Grahm', 'HotLava'],
         pics: genSeasonPics(3, 11, 'avif'), // season 3 | 11 pics in gallery
@@ -363,26 +371,26 @@ export const prevSeasonsList = [
         name: 'Vanilla Season 4',
         tagName: 'vanS4',
         date: '2015',
-        version: '?',
-        desc: 'Town hall, Nether Hub, Bases',
+        version: '1.12',
+        desc: 'Mindstorms greatest season. Massive town hall, sprawling spawn town, nether hub, insane bases and awesome minigames.',
         members: ['Dark', 'Debesk', 'Block', 'Smilee', 'Pudding', 'HillbillDeluex', 'alexSirben', 'TheFull98', 'Alexanderrisom', 'menda94', 'Grahm', 'PsychoSammy', 'CyberPunk', 'Deadspace', 'Zufgus', 'Victorbjr', 'ColdParasite', 'Hagermans_Rule', 'Cam_2002', 'Hyperinsomniac', 'Foxtrott', 'GuitarHero'],
         pics: genSeasonPics(4, 49, 'avif'), // season 4 | 49 pics in gallery
     },
     {
         name: 'Vanilla Season 5',
         tagName: 'vanS5',
-        date: '?',
-        version: '?',
-        desc: 'Funky path',
+        date: 'Date unknown',
+        version: '1.13',
+        desc: 'Funky path town. This season focused a lot on shops at spawn.',
         members: ['Dark', 'Block', 'Smilee', 'HillbillyDeluex', 'Pudding', 'ColdParasite', 'TheFull98', 'Kiwi', 'Debesk', 'Deadspace', 'Hyperinsomniac', 'John', 'Foxtrott', 'PottsGames'],
         pics: genSeasonPics(5, 32, 'avif'), // season 5 | 32 pics in gallery
     },
     {
         name: 'Vanilla Season 6',
         tagName: 'vanS6',
-        date: '?',
-        version: '?',
-        desc: 'Baby sitter season',
+        date: 'Date unknown',
+        version: '1.14',
+        desc: 'Baby sitter season. Tons of drama. Unique bases.',
         members: ['Dark', 'Block', 'Smilee', 'Pudding', 'HillbillyDeluex', 'Gamrpanda', 'RiiskyPlaysMC', 'JTParent', 'FoundMissing', 'SquidDweller', 'YungJoke', 'Syncro', 'QuestFinder'],
         pics: genSeasonPics(6, 7, 'avif'), // season 6 | 7 pics in gallery
     },
@@ -390,17 +398,19 @@ export const prevSeasonsList = [
         name: 'Cobblemon Season 1',
         tagName: 'cobS1',
         date: '(Jan 2025 - May 2025)',
-        version: '?',
-        desc: '?',
-        members: ['?'],
+        version: 'Minecraft: 1.21.1 | Neo-forge',
+        desc: 'Mindstorms back from its hiatus. Our first modded season. Tons of new members joined. Jmanns pokeball loomed over the lands.<br><br>Mindstorm Cobblemon open #1<br><br>1st place: <span class="yellow">theJman12</span><br>2nd place: <span class="yellow">Sam_16_</span><br>3rd place: <span class="yellow">Hillbillydeluex</span>',
+        members: [  "Outlawe","TopTierQueer","HillbillyDeluex","MagicallyATurtle","Stealthypigeon","Simon010503","ohmygodspeed","Stalinato","BigPimpin190","Blockk","TiltCam","Sei74","itsbunter","RandieCLVR",
+                    "Sandor_RAI","RaginSapp","leshenkana","BoelBrown","iPhantom_xD","Ivy_Young","Metalina","Syrrmaa","sluglyss","DARKminerKS","Rune32","trooperx4","bagelcrispp",
+                    "qwaum","Lexi5536","EnglishSpoon","IPheI","theJman12","Luna_Leit","TheShadowRang658","Strontium38","geobobeebo","Sam_16_","CyberrGoblin","lx0525"],
         pics: genSeasonPics('cobblemon_1', 29, 'png'), // cobblemon season 1 | 29 pics in gallery//siteImages.placeHolder, //genSeasonPics(?, ?), 
     },
     {
         name: 'Cobblemon Season 2',
         tagName: 'cobS2',
         date: '(Nov 2025 - Dec 2025)',
-        version: '?',
-        desc: '?',
+        version: 'Minecraft: 1.21.1 | Neo-forge',
+        desc: 'The christmas season. The shortest season in Mindstorm history.',
         members: [  "Outlawe", "LordCozzworth","HillbillyDeluex","Syrmaa_","XVI_Legion","KitsuneNoKiubbi","Hunkanator","Blockk","CraftyMessiah","lemoffline","Plu6625","PinkRandie",
                     "CleverFoal11555","GreeeeenThunder","Wash_Killson","Sandor_RAI","_Kitri","Ketshupflasche","_Yes_Sir","SuitFellow","Raccoonaphobic","ChiroRoy","Kyrolol","DARKminerKS","Lexi5536","theJman12","IPheI",
                     "TheShadowRang658","Strontium38","Sam_16_","CyberrGoblin","K_FBI" ],

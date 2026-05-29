@@ -2,14 +2,9 @@ from flask import Blueprint, jsonify, request
 import requests
 from flask_login import login_manager, login_required, current_user
 from .models import User
+from . import db
 
 views = Blueprint("views", __name__)
-
-
-
-@views.route("/")
-def homeRun():
-    return jsonify({"message": "API running"})
 
 
 # -------------------------
@@ -73,6 +68,38 @@ def userinfo():
     }), 401
 
 
+#-------------------------
+#
+#   User playstyle saver
+#
+#-------------------------
+@views.route("/save-playstyle", methods=["POST"])
+def save_playstyle():
+
+    if not current_user.is_authenticated:
+        return jsonify({
+            "error": "Unauthorized"
+        }), 401
+
+    data = request.get_json()
+
+    playstyle = data.get("playstyle")
+
+    if playstyle is None:
+        return jsonify({
+            "error": "Missing playstyle"
+        }), 400
+
+    current_user.user_playstyle = playstyle
+
+    db.session.commit()
+
+    return jsonify({
+        "success": True,
+        "playstyle": current_user.user_playstyle
+    }), 200
+
+
 # -------------------------
 #
 # Minecraft Profile Lookup
@@ -105,6 +132,8 @@ def mcprofile(username):
         return jsonify({"error": "Player not found"}), 404
 
     return jsonify(response.json())
+
+
 
 @views.route("/debug")
 def debug():

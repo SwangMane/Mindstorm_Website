@@ -29,6 +29,8 @@ const games_list = {
 
   game_locked_signin_title: 'Must be signed in to play',
 
+  game_locked_unplayable_title: 'This game is still under development',
+
   game_locked_scrWidth_title: 'Games not available on mobile',
 
   games: [
@@ -47,6 +49,8 @@ const games_list = {
       // link to the games page
       link: 'games_blackjack.html',
 
+      playable: false,
+
     },
 
     {
@@ -62,6 +66,8 @@ const games_list = {
 
       // link to the games page
       link: 'games_budderBlock.html',
+
+      playable: false,
 
     }
 
@@ -164,7 +170,7 @@ async function fillMinigames() {
       }
     }
 
-    if (mobile_detected) {
+    if (mobile_detected || !game.playable) {
 
       game_locked = true;
 
@@ -180,7 +186,17 @@ async function fillMinigames() {
 
     const gameLockTitle = document.createElement('p');
     gameLockTitle.className = 'game_locked_title';
-    gameLockTitle.textContent = mobile_detected ? games_list.game_locked_scrWidth_title : games_list.game_locked_signin_title;
+
+    if (!game.playable) {
+
+      gameLockTitle.textContent = games_list.game_locked_unplayable_title;
+
+    }
+    else {
+
+      gameLockTitle.textContent = mobile_detected ? games_list.game_locked_scrWidth_title : games_list.game_locked_signin_title;
+
+    }
 
     if (!game_locked) {
       
@@ -194,6 +210,16 @@ async function fillMinigames() {
     div.className = className;
 
     if (game_locked) {
+
+      div.appendChild(title);
+      div.appendChild(desc);
+
+      div.insertAdjacentHTML('beforeend', gameLockIcon);
+
+      div.appendChild(gameLockTitle);
+
+    }
+    else if (!game.playable) {
 
       div.appendChild(title);
       div.appendChild(desc);

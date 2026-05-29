@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
   user_role = db.Column(db.String(150), default="Standard User")
   user_joinDate = db.Column(db.String(150))
   user_serverPoints = db.Column(db.Integer, default=0)
+  user_playstyle = db.Column(db.String(150), default=None)
 
   def to_dict(self):
     return {
@@ -24,6 +25,7 @@ class User(db.Model, UserMixin):
       "user_role": self.user_role,
       "user_joinDate": self.user_joinDate,
       "user_serverPoints": self.user_serverPoints,
+      "user_playstyle": self.user_playstyle,
     }
 
 
