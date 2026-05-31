@@ -91,7 +91,7 @@ export const siteVariables = {
     data_server: {
 
         // IP to the data server
-        ip_address: 'http://localhost:5000',
+        ip_address: 'https://mindstormgames.com',//'http://localhost:5000',
 
         // route to check status of server
         health: '/health',
