@@ -21,9 +21,9 @@ def create_app():
 
     app.config['SECRET_KEY'] = 'asdasda asdasds'
 
-    app.config['SESSION_COOKIE_SECURE'] = False
-    app.config['SESSION_COOKIE_HTTPONLY'] = True
-    app.config["SESSION_COOKIE_DOMAIN"] = None
+    app.config["SESSION_COOKIE_SECURE"] = True
+    app.config["SESSION_COOKIE_SAMESITE"] = "None"
+    app.config["SESSION_COOKIE_HTTPONLY"] = True
     app.config["SESSION_PERMANENT"] = True
     app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=30)
 

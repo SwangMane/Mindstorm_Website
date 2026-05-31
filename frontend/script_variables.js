@@ -126,6 +126,8 @@ export const siteVariables = {
     // account page items 
     account_page: {
 
+        info_fetch: '/userinfo',
+
         logout_btn: 'account_page_logout',
 
         minecraft_username: 'account_page_username',
@@ -162,6 +164,8 @@ export const siteVariables = {
         close_seasons_btn: 'close_seasons',
 
         current_season_members: 'current_season_members_list',
+
+        usersFetch: '/usernames',
 
     },
 

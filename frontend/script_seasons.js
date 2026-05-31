@@ -270,7 +270,7 @@ function openSeason(name) {
 async function getUsernames() {
     try {
         const response = await fetch(
-            'http://localhost:5000/usernames',
+            `${siteVariables.data_server.ip_address + siteVariables.seasons_page.usersFetch}`,  
             {
                 credentials: 'include'
             }
