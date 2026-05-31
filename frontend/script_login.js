@@ -101,19 +101,35 @@ function clearForms() {
 ///                        ///
 //////////////////////////////
 export async function getUserStatus() {
-
+  try {
     console.log("API BASE:", siteVariables.data_server.ip_address);
 
     const response = await fetch(
-        `${siteVariables.data_server.ip_address + siteVariables.data_server.user_status}`,
-        {
-            credentials: "include"
-        }
+      `${siteVariables.data_server.ip_address}${siteVariables.data_server.user_status}`,
+      {
+        credentials: "include"
+      }
     );
 
-    const data = await response.json();
+    if (!response.ok) {
+      return {
+        logged_in: false,
+        error: "bad_response",
+        status: response.status
+      };
+    }
 
+    const data = await response.json();
     return data;
+
+  } catch (err) {
+    console.warn("getUserStatus failed:", err);
+
+    return {
+      logged_in: false,
+      error: "network_error"
+    };
+  }
 }
 
 

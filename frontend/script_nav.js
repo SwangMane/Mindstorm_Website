@@ -56,7 +56,6 @@ export async function fillNavbar(page) {
 
         let processedItem = item;
 
-        // ✅ modify login BEFORE rendering
         if (key === "login") {
           processedItem = {
             ...item,
