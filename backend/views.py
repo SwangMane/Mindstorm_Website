@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 import requests
 from flask_login import login_manager, login_required, current_user
 from .models import User
@@ -24,7 +24,7 @@ def health():
 # -------------------------
 @views.route("/", methods=["GET"]) 
 def home():
-    return jsonify({"message": "API running"})
+    return render_template("index.html")
 
 
 # -------------------------
