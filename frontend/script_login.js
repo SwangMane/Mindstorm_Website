@@ -102,6 +102,8 @@ function clearForms() {
 //////////////////////////////
 export async function getUserStatus() {
 
+    console.log("API BASE:", siteVariables.data_server.ip_address);
+
     const response = await fetch(
         `${siteVariables.data_server.ip_address + siteVariables.data_server.user_status}`,
         {

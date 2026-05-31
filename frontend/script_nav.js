@@ -47,37 +47,29 @@ export async function fillNavbar(page) {
     // grabs the navBarItems object and filters it
     // object is found in variables.js
     Object.entries(navBarItems.sitePages)
-    .filter(([key, item]) =>
-      typeof item.contents === "function" &&
-      item.displayed &&
-      item.displayed === true
-    )
-    // sorts by the priority number
-    // priority number of each nav item in the object
-    .sort(([, a], [, b]) => a.priority - b.priority)
-    .forEach(([key, item]) => {
+      .filter(([key, item]) =>
+        typeof item.contents === "function" &&
+        item.displayed === true
+      )
+      .sort(([, a], [, b]) => a.priority - b.priority)
+      .forEach(([key, item]) => {
 
-      let processedItem = item;
+        let processedItem = item;
 
-      html += processedItem.contents(processedItem, key === page);
+        // ✅ modify login BEFORE rendering
+        if (key === "login") {
+          processedItem = {
+            ...item,
+            title: userData?.logged_in
+              ? userData.user
+              : "Login"
+          };
+        }
 
-      navList.innerHTML = html;
+        html += processedItem.contents(processedItem, key === page);
+      });
 
-
-      if (key === "login") {
-        
-        const login_item = {
-          ...item,
-          title: userData.logged_in
-            ? userData.user
-            : "Login"
-        };
-
-        html += login_item.contents(processedItem, key === page);
-
-      }
-
-    });
+    navList.innerHTML = html;
 
   }
   // if no navbar is found
