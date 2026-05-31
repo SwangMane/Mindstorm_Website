@@ -10,9 +10,15 @@ import { siteVariables } from './script_variables.js';
 
 //-----------------------------------------------------------------//
 
+///////////////////////////////////////////
+///                                     ///
+///        LOGOUT USER FUNCTION         ///
+///                                     ///
+///////////////////////////////////////////
 export async function logout_user() {
 
   try {
+    // send logout request to the backend
     const response = await fetch(
       `${siteVariables.data_server.ip_address}/logout`,
       {
@@ -33,6 +39,7 @@ export async function logout_user() {
 
     }
 
+    // error logger
     if (!response.ok) {
 
       console.log("FULL SERVER RESPONSE:", data);

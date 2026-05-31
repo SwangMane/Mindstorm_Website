@@ -242,6 +242,16 @@
     font-size: 1rem;
   }
 
+  .current_seasonDetails_listTitles {
+    font-size: 1.25rem;
+
+    white-space: wrap;
+  }
+
+  #current_season_members_list {
+    justify-content: center;
+  }
+
 /*** END SERVER SEASON STUFF ***/
 
 

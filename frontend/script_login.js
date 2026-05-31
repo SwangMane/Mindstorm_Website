@@ -12,7 +12,6 @@ import { fillAccountPage } from './script_accountPage.js';
 //-----------------------------------------------------------------//
 
 
-
 //////////////////////////////
 ///                        ///
 ///  HASHES EACH OF        ///
@@ -420,11 +419,12 @@ async function createAccount() {
     const response = await fetch(url);
     const data = await response.json();
 
-    // Now handle errors properly
+    // error handler
     if (!response.ok) {
       throw new Error(data.error || 'Unknown server error');
     }
 
+    // grab the profile picture given the users username
     const user_profilePicture = `https://minotar.net/avatar/${minecraft_username}/32`;
 
     console.log("Minecraft player verified: ", data);
@@ -494,20 +494,12 @@ async function createAccount() {
 
 }
 
-//////////////////////////////
-///                        ///
-///  USER SESSION EXPIRE   ///
-///                        ///
-//////////////////////////////
-
-
 
 //////////////////////////////
 ///                        ///
 /// ACCOUNT / LOGIN POPUP  ///
 ///                        ///
 //////////////////////////////
-
 async function popup_notif(type, creationData, playerData) {
   return new Promise((resolve) => {
     let popup = type;

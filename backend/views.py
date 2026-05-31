@@ -70,6 +70,18 @@ def userinfo():
 
 #-------------------------
 #
+#   grab all current users
+#
+#-------------------------
+@views.route('/usernames', methods=['GET'])
+def get_usernames():
+    usernames = [user.user_name for user in User.query.all()]
+    return jsonify(usernames)
+
+
+
+#-------------------------
+#
 #   User playstyle saver
 #
 #-------------------------
@@ -134,7 +146,11 @@ def mcprofile(username):
     return jsonify(response.json())
 
 
-
+# -------------------------
+#
+# Debugger
+#
+# -------------------------
 @views.route("/debug")
 def debug():
     return {

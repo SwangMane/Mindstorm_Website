@@ -4,15 +4,24 @@ from sqlalchemy.sql import func
 
 # database structure
 class User(db.Model, UserMixin):
+  #users id
   id = db.Column(db.Integer, primary_key=True)
+  #users email    
   email = db.Column(db.String(150), unique=True)
+  #users password
   password = db.Column(db.String(150))
+  #users username
   user_name = db.Column(db.String(150))
+  #users profile picture
   user_profilePicture = db.Column(db.String(255))
 
+  #users role
   user_role = db.Column(db.String(150), default="Standard User")
+  #users joindate
   user_joinDate = db.Column(db.String(150))
+  #users server points
   user_serverPoints = db.Column(db.Integer, default=0)
+  #users playstyle
   user_playstyle = db.Column(db.String(150), default=None)
 
   def to_dict(self):
@@ -27,10 +36,3 @@ class User(db.Model, UserMixin):
       "user_serverPoints": self.user_serverPoints,
       "user_playstyle": self.user_playstyle,
     }
-
-
-
-#class MinecraftAccounts(db.Model):
- # id = db.Column(db.Integer, primary_key=True)
-
-  #username = db.Column(db.String(50), unique=True, nullable=False)

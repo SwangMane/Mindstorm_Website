@@ -161,13 +161,17 @@ export const siteVariables = {
         // season details closers
         close_seasons_btn: 'close_seasons',
 
+        current_season_members: 'current_season_members_list',
+
     },
 
     // about page stuff
     about_page: {
 
         // wrapper for the staff info 
-        staff_wrapper: 'about_staffWrap',
+        ownerStaff_wrapper: 'about_staffWrap',
+
+        modStaff_wrapper: 'about_modWrap'
 
     },
 }
@@ -311,7 +315,6 @@ export const navBarItems = {
                 generateNavItem(item, isActive)
         },
 
-        // login / account page
         login: {
             userData,
 
@@ -421,6 +424,11 @@ export const prevSeasonsList = [
 // function to generate the season pic image arrays
 // each array will be added to the appropriate image 
 // season array = season image
+///////////////////////////////////////////
+///                                     ///
+///      SEASONS PICTURES GENERATOR     ///
+///                                     ///
+///////////////////////////////////////////
 function genSeasonPics(seasonNumber, imgCount, imgType) { // use the season number, then amount of images in file
     //console.log(`generating season ${seasonNumber} image arrays`)
     // returns arrays for each page

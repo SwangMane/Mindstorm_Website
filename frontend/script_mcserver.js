@@ -11,7 +11,7 @@ import { siteVariables } from './script_variables.js';
 // The server/port in reference is the minecraft server
 // Minecraft server ip and port numbers are listed in script_variables.js 
 // use this website to get more variables https://mcapi.us/#usage
-export function fillMinecraftServerStats(page) {
+export async function fillMinecraftServerStats(page) {
     return new Promise((resolve) => {
 
         // Index page server check stuff
@@ -20,7 +20,7 @@ export function fillMinecraftServerStats(page) {
             // ping the minecraft server with the IP listed in script_variables.js
             MinecraftAPI.getServerStatus(siteVariables.minecraft_server.ip_address, {
                 port: siteVariables.minecraft_server.port_number
-                }, function (err, status) {
+                }, async function (err, status) {
 
                 // the wrapper for the server status elements
                 let serverInfoWrap = document.querySelector('#server_status_wrap');
@@ -42,8 +42,11 @@ export function fillMinecraftServerStats(page) {
                 let minecraftVersion // minecraft version
                 let playerCount // the servers player count
 
+
+                serverIp = await getServerIp();
                 // set the server IP section
-                serverIp = `<p class="server_status_item">Server IP: ${siteVariables.minecraft_server.ip_address}</p>`;
+                //serverIp = `<p class="server_status_item">Server IP: ${siteVariables.minecraft_server.ip_address}</p>`;
+
                 // the minecraft version section
                 minecraftVersion = `<p class="server_status_item">Game Version: ${siteVariables.minecraft_server.version_number}</p>`;
 
@@ -155,7 +158,35 @@ export function fillMinecraftServerStats(page) {
         }
         // if not on any pages above | resolve out
         else {
-            resolve;
+            resolve();
         }
     });
 }
+
+
+async function getServerIp() {
+
+    try {
+        const response = await fetch(
+            `${siteVariables.data_server.ip_address}/userinfo`,
+            {
+                method: 'GET',
+                credentials: 'include',
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            return `<p class="server_status_item">Server IP: Login to view IP</p>`;
+        }
+
+        return `<p class="server_status_item">Server IP: ${siteVariables.minecraft_server.ip_address}</p>`;
+    }
+    catch (error) {
+        console.error(error);
+
+        return `<p class="server_status_item">Server IP: Login to view IP</p>`;
+    }
+}
+

@@ -11,33 +11,48 @@ import { siteVariables } from './script_variables.js';
 
 //-----------------------------------------------------------------//
 
+///////////////////////////////////////////
+///                                     ///
+///        ON ACCOUNT PAGE LOAD         ///
+///                                     ///
+///////////////////////////////////////////
 window.onload = () => {
 
+  // if were not of the account page exit this
   if (!document.querySelector('#account')) return;
 
+  // grab the logout button
   const account_page_logout_btn = document.getElementById(
     siteVariables.account_page.logout_btn
   );
 
+  // if the button exists
   if (account_page_logout_btn) {
 
     account_page_logout_btn.addEventListener('click', () => {
 
+      // when the logout button is clicked
       logout_user();
 
     }, { once: true });
 
   }
 
+  // call fill function
   fillAccountPage()
-
 };
 
 
+///////////////////////////////////////////
+///                                     ///
+///      FILL ACCOUNT PAGE DETAILS      ///
+///                                     ///
+///////////////////////////////////////////
 export async function fillAccountPage() {
 
  try {
 
+  // grab the users information from backend
   const response = await fetch(
     `${siteVariables.data_server.ip_address}/userinfo`,
     {
@@ -48,12 +63,14 @@ export async function fillAccountPage() {
 
     let data;
     try {
+      // all players data gathered
       data = await response.json();
     } 
     catch {
       throw new Error("Invalid server response");
     }
 
+    // error logger
     if (!response.ok) {
 
       console.log("FULL SERVER RESPONSE:", data);
@@ -68,9 +85,10 @@ export async function fillAccountPage() {
       throw err;
     }
 
+    // fill the account page based on retrieved data
     fillPage(data);
 
-    console.log(data);
+    //console.log(data);
 
 
   } catch (error) {
@@ -83,6 +101,7 @@ export async function fillAccountPage() {
     }
   }
 
+  // call to fill the users account information
   function fillPage(account) {
 
     // store the account being pulled
@@ -108,27 +127,35 @@ export async function fillAccountPage() {
     const serverCoins = data.user.user_serverPoints;
     account_serverCoins.textContent = serverCoins;
 
+    // user role
     const account_role = document.getElementById(siteVariables.account_page.user_role);
     const serverRole = data.user.user_role;
     account_role.textContent = serverRole;
 
+    // user playstyle
     const user_playstyle = document.getElementById(siteVariables.account_page.user_playstyle);
     const currentPlaystyle = data.user.user_playstyle;
 
+    // save button on account page
     const saveButton = document.getElementById(siteVariables.account_page.user_saveChanges);
 
 
+    // if the user previously selected a playstyle - display it
     if (currentPlaystyle) user_playstyle.value = currentPlaystyle;
 
+    // listen for changes on the playstyle dropdown
     user_playstyle.addEventListener("change", () => {
 
+      // grab the selected playstyle from the dropdown - the value
       const selectedPlaystyle = user_playstyle.value;
 
+      // enable the save button on changes
       saveButton.disabled = false;
       saveButton.removeEventListener('click', () => {})
 
       saveButton.addEventListener('click', () => {
 
+        // save the profile with given info - disable save button
         saveProfile(selectedPlaystyle);
         saveButton.disabled = true;
 
@@ -140,10 +167,14 @@ export async function fillAccountPage() {
 
 }
 
+///////////////////////////////////////////
+///                                     ///
+///        SAVE PROFILE FUNCTION        ///
+///                                     ///
+///////////////////////////////////////////
 async function saveProfile(playstyle) {
 
-  console.log(playstyle);
-
+  // Take the users selected play style and save it to the backend
   const response = await fetch(
     `${siteVariables.data_server.ip_address}/save-playstyle`,
     {
@@ -159,6 +190,4 @@ async function saveProfile(playstyle) {
   );
 
   const data = await response.json();
-
-  console.log(data);
 }
